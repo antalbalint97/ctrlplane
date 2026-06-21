@@ -1,0 +1,77 @@
+/* CtrlPlane — minimal global baseline. All visual styling comes from the
+   design system (tokens.css + components.css); this file only wires fonts and
+   the page baseline. Imported AFTER the DS CSS so the brand font overrides win. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Point the design-system font roles at the fonts this app actually loads
+   (next/font), scoped to the brand. The DS names the role; the app supplies
+   the face. */
+[data-brand="ctrlplane"] {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: var(--leading-normal);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background-color: var(--color-accent-muted);
+  color: var(--color-text);
+}
+
+/* Layout helpers */
+.cp-main {
+  display: block;
+}
+
+.cp-section {
+  padding-block: var(--space-16);
+}
+
+.cp-section--tight {
+  padding-block: var(--space-12);
+}
+
+.cp-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .cp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .cp-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
