@@ -105,7 +105,7 @@ export default function HomePage() {
               category={`${article.category} · ${article.type}`}
               date={article.date}
               readingTime={article.readingTime}
-              cta="PDF megnyitása"
+              cta="Elolvasom"
             />
           ))}
         </div>
