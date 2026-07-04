@@ -28,3 +28,18 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+
+# Local design exports and source materials
+CtrlPlane editorial redesign/
+CtrlPlane editorial redesign.zip
+
+# Raw article PDFs / generated export materials
+public/articles/
+content/source-pdfs/
+content/raw/
+*.zip
+
+# Optional local notes
+.local/
+notes/
