@@ -22,6 +22,44 @@ export const metadata: Metadata = {
   title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
   description:
     "Elemző blog és hírlevél AI-rendszerekről, adatcsapatokról, munkaerőpiaci jelekről és technológiai döntésekről.",
+  applicationName: "CtrlPlane",
+  authors: [{ name: "Antal Bálint", url: "https://meniva.net" }],
+  creator: "Antal Bálint",
+  publisher: "Meniva",
+  keywords: [
+    "mesterséges intelligencia",
+    "adatstratégia",
+    "technológiai szervezetek",
+    "magyar IT",
+    "Meniva",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "hu_HU",
+    siteName: "CtrlPlane",
+    title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
+    description:
+      "Antal Bálint szakmai blogja AI-rendszerekről, adatcsapatokról és technológiai döntésekről, a Meniva ökoszisztéma részeként.",
+  },
+};
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "CtrlPlane",
+  description:
+    "Antal Bálint szakmai blogja AI-rendszerekről, adatcsapatokról és technológiai döntésekről.",
+  inLanguage: "hu-HU",
+  author: {
+    "@type": "Person",
+    name: "Antal Bálint",
+    url: "https://meniva.net",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Meniva",
+    url: "https://meniva.net",
+  },
 };
 
 export default function RootLayout({
@@ -36,14 +74,18 @@ export default function RootLayout({
       className={`${inter.variable} ${interTight.variable}`}
     >
       <body className="ds-base">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+        />
         <Navbar
           sticky
           container="wide"
           logo={<LogoLockup brand="ctrlplane" href="/#top" />}
           items={[
             { label: "Írások", href: "/#irasok" },
-            { label: "Témák", href: "/#temak" },
             { label: "Rólam", href: "/#rolam" },
+            { label: "Meniva", href: "https://meniva.net" },
           ]}
           action={{ label: "Feliratkozás", href: "/#feliratkozas" }}
         />
@@ -62,7 +104,6 @@ export default function RootLayout({
               title: "CtrlPlane",
               links: [
                 { label: "Írások", href: "/#irasok" },
-                { label: "Témák", href: "/#temak" },
                 { label: "Rólam", href: "/#rolam" },
                 { label: "Feliratkozás", href: "/#feliratkozas" },
               ],

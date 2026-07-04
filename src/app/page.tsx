@@ -1,10 +1,15 @@
 import {
+  Button,
   Card,
   Hero,
+  LogoLockup,
   NewsletterSignup,
   SectionHeader,
 } from "@meniva/design-system";
 import { ArticleExplorer } from "@/components/ArticleExplorer";
+import { articles } from "@/data/articles";
+
+const featuredArticle = articles.find((article) => article.featured) ?? articles[0];
 
 export default function HomePage() {
   return (
@@ -14,38 +19,66 @@ export default function HomePage() {
           <Hero
             variant="display"
             align="left"
-            overline="CtrlPlane"
-            title="AI, adatmunka és szervezeti intelligencia"
-            description="Elemző blog és hírlevél arról, hogyan alakul át a tudásmunka infrastruktúrája. Írások AI-rendszerekről, adatcsapatokról, munkaerőpiaci jelekről, intézményi működésről és technológiai döntésekről."
-            primaryAction={{ label: "Feliratkozás", href: "#feliratkozas" }}
-            secondaryAction={{ label: "Legutóbbi írások", href: "#irasok" }}
+            overline="CtrlPlane · Kiemelt írás"
+            title={featuredArticle.title}
+            description={featuredArticle.excerpt}
+            primaryAction={{ label: "Elolvasom", href: featuredArticle.href }}
+            secondaryAction={{ label: "Minden írás", href: "#irasok" }}
           >
-            <p className="cp-hero-note">
-              Nem hype. Nem napi zaj. Rendszerek, döntések, következmények.
-            </p>
+            <div className="cp-featured-meta">
+              <span>{featuredArticle.category}</span>
+              <span aria-hidden="true">·</span>
+              <span>{featuredArticle.date}</span>
+              <span aria-hidden="true">·</span>
+              <span>{featuredArticle.readingTime}</span>
+            </div>
           </Hero>
         </div>
       </div>
 
       <ArticleExplorer />
 
+      <section id="meniva" className="ds-container ds-container--wide cp-meniva-section">
+        <Card padding="lg" className="cp-meniva-card">
+          <div className="cp-meniva-brand">
+            <span className="ds-overline">A háttérben</span>
+            <LogoLockup
+              brand="meniva"
+              href="https://meniva.net"
+              size="lg"
+              tagline="Data · BI · AI · Automation"
+            />
+          </div>
+          <div className="cp-meniva-copy">
+            <h2>A CtrlPlane a Meniva szakmai műhelyének része</h2>
+            <p>
+              Itt az AI-, adat- és szervezeti rendszerek mögötti döntésekről írok.
+              A Menivánál ugyanezekből a kérdésekből működő adat- és AI-rendszerek
+              születnek.
+            </p>
+            <Button href="https://meniva.net" variant="link" size="sm">
+              Meniva megismerése →
+            </Button>
+          </div>
+        </Card>
+      </section>
+
       <section id="rolam" className="cp-about">
         <div className="ds-container ds-container--wide cp-about-inner">
           <SectionHeader
             overline="Rólam"
-            title="A CtrlPlane a Meniva ökoszisztéma szakmai gondolkodási felülete"
-            description="AI-ról, adatokról, szervezeti működésről és technológiai átmenetekről szól, magyar kontextusban."
+            title="Szakmai jegyzetek a rendszerek mögötti döntésekről"
+            description="A CtrlPlane Antal Bálint magyar nyelvű szakmai blogja AI-ról, adatokról, szervezeti működésről és technológiai átmenetekről."
           />
           <div className="cp-about-copy">
             <p>
-              A fókusz nem az, hogy mi az aktuális eszköz vagy trend, hanem hogy
-              milyen rendszerek épülnek köréjük: milyen döntések, ösztönzők,
-              korlátok és következmények jelennek meg a háttérben.
+              A fókusz nem az aktuális eszköz vagy trend, hanem az, milyen
+              döntések, ösztönzők, korlátok és következmények épülnek köré.
             </p>
             <p>
-              A CtrlPlane nem csak mérnököknek szól. Azoknak is, akik AI-ról,
-              adatról, technológiai szervezetekről, munkaerőpiacról és az
-              intézmények modernizációjáról gondolkodnak.
+              A cél pontos, forrásalapú és gyakorlatban is használható szakmai
+              gondolkodás. A CtrlPlane ennek a nyilvános felülete, a Meniva pedig
+              a gyakorlati rendszerépítés terepe.
             </p>
           </div>
         </div>

@@ -33,6 +33,21 @@ export async function generateMetadata({
   return {
     title: `${article.title} | CtrlPlane`,
     description: article.excerpt,
+    authors: [{ name: article.author, url: "https://meniva.net" }],
+    creator: article.author,
+    publisher: "Meniva",
+    category: article.category,
+    keywords: article.tags,
+    openGraph: {
+      type: "article",
+      locale: "hu_HU",
+      siteName: "CtrlPlane",
+      title: article.title,
+      description: article.excerpt,
+      publishedTime: article.datePublished,
+      authors: [article.author],
+      tags: article.tags,
+    },
   };
 }
 
@@ -49,15 +64,44 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     .map((block, index) => ({ ...block, index }))
     .filter((block) => block.type === "heading");
   const enhancements = articleEnhancements[slug] ?? [];
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.datePublished,
+    inLanguage: "hu-HU",
+    keywords: article.tags.join(", "),
+    author: {
+      "@type": "Person",
+      name: article.author,
+      url: "https://meniva.net",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Meniva",
+      url: "https://meniva.net",
+    },
+    isPartOf: {
+      "@type": "Blog",
+      name: "CtrlPlane",
+    },
+  };
 
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <header className="cp-article-header">
         <div className="ds-container ds-container--content">
           <a className="cp-article-back" href="/#irasok">
             ← Minden írás
           </a>
           <div className="cp-article-meta">
+            <span>{article.author}</span>
+            <span aria-hidden="true">·</span>
             <span>{article.category}</span>
             <span aria-hidden="true">·</span>
             <span>{article.type}</span>
