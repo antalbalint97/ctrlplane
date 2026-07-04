@@ -1,51 +1,10 @@
 import {
-  ArticleCard,
   Card,
   Hero,
   NewsletterSignup,
   SectionHeader,
-  ServiceCard,
 } from "@meniva/design-system";
-import { articles } from "@/data/articles";
-
-const topics = [
-  {
-    number: "01",
-    title: "AI és adat",
-    description:
-      "AI-rendszerek, retrieval, modellek és a mögöttük lévő adatok és döntések.",
-  },
-  {
-    number: "02",
-    title: "Adatmunka",
-    description:
-      "Adatcsapatok, pipeline-ok, minőség és a felelősség gyakorlati kérdései.",
-  },
-  {
-    number: "03",
-    title: "Tech szervezetek",
-    description:
-      "Technológiai csapatok működése, képességei és változó felelősségi határai.",
-  },
-  {
-    number: "04",
-    title: "Intézményi intelligencia",
-    description:
-      "Szervezeti tudás, döntéshozatal és a működés lassú infrastruktúrája.",
-  },
-  {
-    number: "05",
-    title: "Munkaerőpiac",
-    description:
-      "Szerepek, képességek és jelek egy átalakuló technológiai gazdaságban.",
-  },
-  {
-    number: "06",
-    title: "Módszertan",
-    description:
-      "Mérés, kísérletezés, forráskritika és kontroll a gyakorlatban.",
-  },
-];
+import { ArticleExplorer } from "@/components/ArticleExplorer";
 
 export default function HomePage() {
   return (
@@ -68,48 +27,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <section id="temak" className="ds-container ds-container--wide cp-section">
-        <SectionHeader
-          overline="Témák"
-          title="Amiről írok"
-          description="A CtrlPlane nem egy eszközről vagy trendről szól. Azt vizsgálja, milyen rendszerek épülnek köréjük, és milyen döntések, ösztönzők, korlátok és következmények jelennek meg a háttérben."
-        />
-        <div className="ds-grid ds-grid--3 cp-section-grid">
-          {topics.map((topic) => (
-            <ServiceCard
-              key={topic.number}
-              className="cp-topic-card"
-              icon={<span className="cp-topic-number">{topic.number}</span>}
-              title={topic.title}
-              description={topic.description}
-              action={{ label: "Írások a témában", href: "#irasok" }}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section id="irasok" className="ds-container ds-container--wide cp-section cp-articles">
-        <SectionHeader
-          overline="Legutóbbi írások"
-          title="Friss elemzések"
-          description="Hosszabb elemzések és szakmai körképek AI-ról, adatokról, technológiai szervezetekről és a változás intézményi következményeiről."
-        />
-        <div className="ds-grid ds-grid--3 cp-section-grid">
-          {articles.map((article) => (
-            <ArticleCard
-              key={article.slug}
-              className="cp-article-card"
-              title={article.title}
-              href={article.href}
-              excerpt={article.excerpt}
-              category={`${article.category} · ${article.type}`}
-              date={article.date}
-              readingTime={article.readingTime}
-              cta="Elolvasom"
-            />
-          ))}
-        </div>
-      </section>
+      <ArticleExplorer />
 
       <section id="rolam" className="cp-about">
         <div className="ds-container ds-container--wide cp-about-inner">
