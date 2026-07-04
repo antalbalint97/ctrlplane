@@ -1,0 +1,1170 @@
+{
+  "nem-ai-t-kell-bevezetni-mukodest-kell-attervezni": [
+    {
+      "type": "paragraph",
+      "text": "A vezetőség aláírta a vállalati AI-licencet, mindenki kapott hozzáférést, a sajtóközlemény kész. Ez nem transzformáció - ez beszerzés. A kettő összekeverése a magyar vállalati AI-projektek leggyakoribb és legdrágább tévedése. Ez az írás arról szól, mi van a licenc és a működő, mérhető AI-működés között, és miért nem lehet ezt a távolságot egy szoftvertelepítéssel áthidalni."
+    },
+    {
+      "type": "heading",
+      "text": "1. A licenc nem transzformáció"
+    },
+    {
+      "type": "paragraph",
+      "text": "Kezdjük a kényelmetlen kontraszttal. A hazai szervezetek 85 százaléka használ ma valamilyen AI-t - derül ki a Deloitte 2025-ös magyar felméréséből. Ez jól hangzik, amíg mellé nem tesszük a másik számot. Globálisan a cégek 88 százaléka használ AI-t legalább egy funkcióban, mégis mindössze 39 százalék lát vállalati szintű EBIT-hatást, az is jellemzően 5 százalék alatt, és csak nagyjából 6 százalék tekinthető valódi értékteremtőnek (McKinsey 2025). A használat tehát majdnem mindenhol jelen van. Az érték majdnem sehol."
+    },
+    {
+      "type": "paragraph",
+      "text": "A különbség nem az eszközben rejlik. A licenc megvásárolható egy délután alatt, és holnaptól mindenki chatelhet egy nyelvi modellel. A működés átalakítása viszont nem termék, hanem folyamat: szerepek, felelősségek, adatok, mérőszámok és szokások együttes átrendezése. Aki a kettőt összekeveri, az abban a hitben él, hogy már transzformálódott, miközben valójában csak hozzáférést vásárolt. A maradék kilenc szakasz arról szól, mi a különbség - és hogyan hidalható át."
+    },
+    {
+      "type": "heading",
+      "text": "2. Miért nem változik meg egyik napról a másikra egy vállalat?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Mert egyszerre több, egymással versengő valóság él a szervezetben. Felül a vezetői lelkesedés és a KPI-nyomás: legyünk AI-cég, mire a negyedév zárul. Alul a dolgozók már rég használják az AI-t - csak épp engedély nélkül. Az UpGuard 2025-ös adata szerint a dolgozók 81 százaléka, a biztonsági vezetők 88 százaléka nyúl nem jóváhagyott eszközhöz, és 45 százalék tudatosan megkerüli a tiltást. Ez a shadow AI: száz párhuzamos, irányítatlan kísérlet, gyakran érzékeny adattal."
+    },
+    {
+      "type": "paragraph",
+      "text": "Közben az adat rendezetlen. A Gartner becslése szerint az AI-ready adat hiánya miatt 2026-ig az AI-projektek mintegy 60 százalékát elhagyják. És ott a legacy: a húszéves ERP, a kézi Excel-folyamatok, a senki földjén lévő törzsadat. Egy szervezet nem azért nem alakul át egyik napról a másikra, mert lusta, hanem mert ezek a rétegek - vezetői szándék, frontline gyakorlat, adat, rendszerek - nem mozognak egyszerre, és nem is egyforma sebességgel. A transzformáció nem kapcsoló, hanem rétegenként haladó munka."
+    },
+    {
+      "type": "paragraph",
+      "text": "A shadow AI nem ártalmatlan kényelmi kérdés. Az IBM 2025-ös elemzése szerint a nem felügyelt AI-használat a biztonsági incidensek mintegy 20 százalékát adja, és incidensenként nagyjából 670 ezer dollár többletköltséget okoz; a Stanford AI Index ugyanerre az évre 233 dokumentált AI-incidenst regisztrált, ami 56 százalékos ugrás egyetlen év alatt. A tiltás viszont önmagában nem működik, hiszen a dolgozók 45 százaléka kimutathatóan megkerüli. A reális válasz nem a betiltás, hanem a biztonságos alternatíva: egy jóváhagyott, naplózott környezet, amelyben a valós igény legálisan, kontrollált módon kielégíthető."
+    },
+    {
+      "type": "heading",
+      "text": "3. Top-down, bottom-up és middle-out"
+    },
+    {
+      "type": "paragraph",
+      "text": "A tartós AI-működésnek három irányból kell egyszerre épülnie. Felülről jön a legitimáció: ki a sponsor, mi a kockázati étvágy, honnan a büdzsé, ki dönt, ha valami kockázatos. Alulról jön a valós use case: melyik a tényleg fájó folyamat, ki használná naponta, mitől lesz kézzelfoghatóan jobb a munka. És középen áll a végrehajtási képesség - az a réteg, amely a vezetői szándékot és a frontline igényt működő, biztonságos, mért rendszerré fordítja."
+    },
+    {
+      "type": "paragraph",
+      "text": "Mindhárom kell, és bármelyik hiánya saját, jól felismerhető kudarcot szül. Ha csak a top-down van, AI-színház lesz belőle: nagy bejelentés, fényes pilot, semmi tartós hatás. Ha csak a bottom-up van, shadow AI lesz: lelkes, de szétszórt és irányítatlan használat. És ha a középső réteg hiányzik, a legjobb vezetői szándék és a legokosabb frontline-ötlet is pilotban ragad. A magyar adat épp itt ad okot aggodalomra: a Deloitte szerint a felelősség 68 százalékban meglévő szerepkörre van ráterhelve, és csak 30 százaléknál van dedikált csapat. Vagyis a leggyengébb láncszem rendszerint pont a középső, végrehajtó réteg."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ha csak a top-down van, AI-színház lesz. Ha csak a bottom-up, shadow AI. Ha a középső, végrehajtó réteg hiányzik, a legjobb szándék is pilotban ragad."
+    },
+    {
+      "type": "heading",
+      "text": "4. Az AI nem az első fázis"
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt jön a counterintuitív rész: a legtöbb szervezetnél az első helyes lépés nem AI. Érdemes egy érettségi létrában gondolkodni, amely a szétszórt manuális működéstől (0. szint) a zárt vagy félig zárt hurokig (5. szint) tart. A két szélső pont között ott a digitális és adat-alapok rétege, a determinisztikus automatizálás, az AI-augmentáció és a korlátozott agentic workflow. A gyakorlatban a legtöbb mérhető érték gyakran nem a látványos felső szinteken, hanem a 2. szinten, a determinisztikus, szabályalapú automatizálásban keletkezik - jóval kevesebb kockázattal, mint egy korai, félig autonóm ügynök."
+    },
+    {
+      "type": "paragraph",
+      "text": "Hadd illusztráljam egy anonimizált működési mintával. Egy hazai középvállalat backoffice-folyamatainak átvilágításakor a helyes sorrend a következő volt. Először discovery és folyamattérkép: mi történik valójában, ki mit csinál kézzel, hol vannak a szűk keresztmetszetek. Aztán a törzsadat rendbetétele, hogy egyetlen megbízható forrás legyen ott, ahol addig három, egymásnak ellentmondó tábla volt. Ezután a rendszerek integrációja, majd a determinisztikus automatizálás a leginkább ismétlődő, jól szabályozható lépésekre. És csak ezt követően, a mérési alapok lerakása után került egyáltalán szóba bármilyen AI-réteg."
+    },
+    {
+      "type": "paragraph",
+      "text": "A tanulság általánosítható, és független attól, milyen iparágról van szó: AI-t arra a folyamatra érdemes engedni, amelyet előbb megértettünk, rendbe tettünk és mérni tudunk. Fordított sorrendben - rendezetlen adatra, feltérképezetlen folyamatra ráengedett AI - a technológia nem megoldja, hanem felgyorsítja a meglévő káoszt. A rosszul feltett kérdésre az AI gyorsabban ad rossz választ."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kísértés érthető: az AI-réteg a látványos, jól bemutatható rész, a folyamattérkép és a törzsadat-tisztítás pedig a hálátlan, lassú alapozás. Csakhogy a sorrend felcserélése nem spórol időt, csak elhalasztja a számlát. A rendezetlen adatra húzott megoldás nem azért hallucinál vagy ad rossz javaslatot, mert a modell gyenge, hanem mert rossz adatból dolgozik - a hibás kimenet itt tünet, nem ok. Az alapozás unalmas munka, de nem kihagyható lépés."
+    },
+    {
+      "type": "heading",
+      "text": "5. Hogyan válasszunk use case-t?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Nem minden, amit AI-nak hívunk, ugyanaz a dolog. Legalább öt különböző kategória keveredik egyetlen szó alatt: az egyéni produktivitási eszköz, a determinisztikus workflow-automatizálás, a döntéstámogatás, az ügyfélnek szóló AI-termék, és a több lépéses, eszközhasználó agentic rendszer. Mindegyik más autonómiát, más governance-t és más sikermutatót igényel - és súlyos hiba mindet egyetlen kalap alatt, AI-transzformációként kezelni."
+    },
+    {
+      "type": "paragraph",
+      "text": "A választáshoz súlyozott pontozás kell, nem megérzés. A pozitív oldalon: üzleti érték, elérési gyakoriság, idő- és költségmegtakarítás, az adat rendelkezésre állása. A fordított oldalon, ahol az alacsony érték a kedvező: az integrációs komplexitás, a hibaköltség és a jogi-reputációs kockázat. Két szempont pedig kiemelten fontos, mert ezek döntik el, mekkora autonómiát engedhetünk: az emberi ellenőrizhetőség és a visszafordíthatóság. Egy rosszul megfogalmazott e-mail-vázlat olcsó hiba, amelyet bárki észrevesz és kijavít. Egy téves, automatikusan kiküldött ügyfél-árajánlat nem az. A jó belépő use case ott kezdődik, ahol az érték magas, az adat kész, és a hiba olcsón, gyorsan visszavonható."
+    },
+    {
+      "type": "paragraph",
+      "text": "Egy példa a gyakorlatból: a „csináljunk egy AI-chatbotot az ügyfélszolgálatra” kérés valójában legalább három különböző use case lehet. Lehet belső produktivitási eszköz, amely az ügyintézőnek javasol választ, miközben a döntés az emberé marad. Lehet döntéstámogatás, amely a beérkező ügyeket priorizálja és címkézi. És lehet ügyfélnek szóló AI-termék, amely közvetlenül, ember nélkül válaszol - ez utóbbi a legmagasabb kockázatú, mert a hiba azonnal az ügyfélhez ér. A három teljesen más adatot, más governance-t és más mérőszámot kíván. Aki nem választja szét őket a tervezés elején, könnyen a legkockázatosabb változatot építi meg a legkevesebb kontrollal."
+    },
+    {
+      "type": "heading",
+      "text": "6. Pilotból működő rendszer"
+    },
+    {
+      "type": "paragraph",
+      "text": "A pilot és az üzem két külön képesség, és a kettő összetévesztése a második leggyakoribb buktató. A MIT NANDA 2025-ös elemzése szerint az AI-pilotok mintegy 95 százaléka nem hoz mérhető P&L-hatást. A szám előzetes és vitatott, de az iránya egybevág a McKinsey 6 százalékos high-performer arányával, és a fő ok mindkét olvasatban ugyanaz: nem a modell gyenge, hanem a pilot soha nem válik rendszerré."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ennek leggyakoribb jele a KPI és a baseline hiánya. Ha nem rögzítettük előre, mihez képest és mit mérünk, akkor a pilot végén nincs mit eldönteni - marad a benyomás, hogy „valahogy jobb lett”. Ezért minden pilotnak előre meghatározott kimenettel kell indulnia, és három lehetséges végkifejlettel: scale, redesign vagy kill. Scale, ha a baseline-hoz mérve elérte a célt, és az adat, az integráció és a governance is készen áll az éles üzemre. Redesign, ha van érték, de a folyamat, az adat vagy a felhasználói élmény még nem ülteti át. Kill, ha nincs mért hatás, túl magas a hibaköltség, vagy egy egyszerű determinisztikus megoldás olcsóbban hozza ugyanazt."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kill nem szégyen, hanem forrásfelszabadítás. Az a szervezet ragad pilot-csapdába, amelyik képtelen leállítani: tucatnyi proof of concept fut párhuzamosan, mindegyik ígéretes, egyik sem ér üzemig, és közben a figyelem és a büdzsé szétforgácsolódik. A leállítási döntés képessége legalább annyira fontos, mint az indításé."
+    },
+    {
+      "type": "heading",
+      "text": "7. Az emberi és szervezeti réteg"
+    },
+    {
+      "type": "paragraph",
+      "text": "A technológia a könnyebbik fele a feladatnak. Az AI-működés szerepeket, felelősségeket és napi szokásokat alakít át, és ehhez világos operating model kell. A kulcsszerepek: executive sponsor, AI- vagy product owner, domain owner, adatgazda, platformcsapat, a security-legal-compliance hármas, change & learning lead, frontline champion és mérési felelős. Egy KKV-ban ezek nem feltétlenül külön emberek - ugyanaz a személy több kalapot is viselhet -, de minden felelősségnek kell legyen néven nevezett gazdája. A „majd valaki” a leggyorsabb út a senki földjére."
+    },
+    {
+      "type": "paragraph",
+      "text": "És kell képzés, mégpedig szerepfüggő. A magyar dolgozók kétharmada ma képzés nélkül használ AI-t (Deloitte), ami egyszerre biztonsági kockázat és kihagyott lehetőség: a frontline munkatársnak más tudás kell, mint a domain szakértőnek vagy a vezetőnek. Itt válik gyakorlativá a Google DORA 2025 központi megállapítása, amelyet nagyjából ötezer fejlesztőn mértek: az AI erősítő, nem javító. Egy jól működő, tiszta felelősségű csapatban felgyorsítja az értékteremtést. Egy zűrös, rendezetlen szervezetben ugyanolyan megbízhatóan felgyorsítja a zűrzavart. Az AI nem helyettesíti a szervezeti rendet - feltételezi azt."
+    },
+    {
+      "type": "paragraph",
+      "text": "Az elfogadás külön munka, nem következik automatikusan a hozzáférésből. A Deloitte adatai szerint a hazai szervezetek nagyjából hatodánál a belső ellenállás valós akadály. Ennek kezelése nem győzködés, hanem bizonyítás: ha a frontline champion a saját napi munkájában mutatja meg, hogy a megoldás tényleg gyorsabb és kevésbé fárasztó, az többet ér minden vezetői körlevélnél. A változásmenedzsment itt nem puha kiegészítő, hanem a megtérülés feltétele - hiába jó a rendszer, ha nem használják, vagy ha rosszul használják."
+    },
+    {
+      "type": "heading",
+      "text": "8. Mikor szabad agentet építeni?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az agentic AI vonzó, mert azt ígéri, hogy magától, végponttól végpontig elvégzi a munkát. De az autonómia nem belépő szint, hanem érettségi következmény. A McKinsey szerint a cégek 62 százaléka kísérletezik ügynökökkel, ám csak 23 százalék skáláz legalább egy funkcióban - és a sikeresek 65 százaléka tart embert a hurokban, szemben a többiek 23 százalékával. A kontroll és a teljesítmény tehát együtt jár, nem egymás rovására megy."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ügynököt akkor szabad építeni, ha a folyamat alapjai készen állnak: tiszta adat, stabil integráció, világos helyességi kritérium, és - kritikusan - meghatározott korlátok. Jogosultsági határok, költségplafon, eszkalációs szabály, naplózás, visszafordíthatóság. Az autonómia mértékét a hibatűréshez kell igazítani: ott engedjük az ügynököt önállóan cselekedni, ahol a hiba olcsó és visszavonható, és ott tartjuk emberi jóváhagyás mögött, ahol drága vagy végleges. Az ügynök, amelyik pont ott hibázik, ahol a legtöbbe kerül, nem innováció, hanem kezeletlen kockázat. A jó kérdés nem az, „tudunk-e agentet építeni”, hanem hogy „melyik folyamat bírja el az adott autonómiaszintet”."
+    },
+    {
+      "type": "paragraph",
+      "text": "A felépítés és a megvásárlás kérdése is ide tartozik. A MIT NANDA adatai szerint a megvásárolt, beágyazott megoldások jellemzően gyakrabban váltak sikeressé, mint a nulláról saját fejlesztésűek - nem azért, mert a saját fejlesztés eleve rossz, hanem mert a legtöbb szervezetnek nincs kapacitása egy ügynök teljes életciklusát üzemeltetni és karbantartani. A reális kérdés ezért gyakran nem az, hogy „építsünk vagy vegyünk”, hanem hogy hol van az a kevés, valóban megkülönböztető pont, ahová saját fejlesztés kell, és hol elég egy jól integrált, kész komponens."
+    },
+    {
+      "type": "heading",
+      "text": "9. Mit kell mérni?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Amit nem mérünk, arról nem tudjuk, hogy működik-e - és arról sem, mikor kezdett el romlani. Kétféle mérés kell, és a kettő nem helyettesíti egymást. Technikai evaluation: pontosság, hibaarány, regresszió, és folyamatos monitoring éles üzem alatt, mert a modell viselkedése idővel változhat. És üzleti evaluation: a baseline-hoz mért tényleges hatás bevételre, költségre vagy kockázatra."
+    },
+    {
+      "type": "paragraph",
+      "text": "A leggyakoribb mérési hiba a bemondott időmegtakarítás eredményként való elszámolása. A Faros AI 2025-ös telemetriája tízezer fejlesztőn pontosan ezt a rést tárja fel: egyéni szinten plusz 21 százalék elvégzett feladat és plusz 98 százalék merge-elt pull request, miközben a tényleges, csapatszintű szállítási metrikák laposak maradtak. Az egyéni gyorsulás nem feltétlenül fordul át rendszerszintű eredménybe. Ezért nem elég megkérdezni, „mennyi időt spóroltál” - mérni kell, eljutott-e a gyorsulás az üzleti kimenetig. Végül egy könyvelési fegyelem: külön kell tartani az AI-projekt költségét a digitalizáció költségétől. A folyamattérkép, a törzsadat és az integráció akkor is szükséges és költséges lett volna, ha a végén nincs AI-réteg - ezt méltánytalan és félrevezető az „AI megtérülése” terhére elszámolni."
+    },
+    {
+      "type": "paragraph",
+      "text": "Mérni kell a governance-t is, nem csak a teljesítményt. Az EU AI Act fokozatosan életbe lépő kötelezettségei - a tiltott gyakorlatok és az AI-jártassági előírás 2025 februárjától, a nagy kockázatú rendszerek többségére vonatkozó szabályok 2026 augusztusától - audithálható nyomot követelnek arról, mit, milyen adattal és milyen kontrollal csinál a rendszer. És érdemes a mérleg másik serpenyőjét is feltenni: a Google Cloud 2025-ös, több mint háromezer vezetőt megkérdező felmérésében a válaszadók 74 százaléka jelzett első éves megtérülést. A szám szállítói forrásból származik és önbevallott, tehát óvatosan kezelendő - de azt jelzi, hogy a mérhető hozam nem lehetetlen, csupán fegyelmet kíván. A távolság a 6 és a 74 százalék között jórészt épp a mérés komolyanvételén múlik."
+    },
+    {
+      "type": "heading",
+      "text": "10. A második hullám valódi versenye"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az első hullám az eszközökről szólt: ki vezeti be hamarabb, ki vásárol több licencet, ki tart több hackathont. Ez a verseny nagyrészt lefutott - 85 százalék már használ valamit. A második hullám nem erről szól, és nem is ugyanazok nyerik."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nem az a vállalat kerül előnybe, amelyik a legtöbb AI-eszközt vásárolja, hanem az, amelyik az üzleti céljait, a munkafolyamatait, az adatait, az embereit és a technológiáját egyetlen, mérhető működési rendszerbe szervezi. A különbség a 6 százalék és a többiek között nem a modell és nem a licencszám - hanem hogy ki volt hajlandó a működést áttervezni, nem csupán az AI-t bevezetni. Ez egybecseng a hazai szakmai konszenzussal is: a 2026-os AI Hungary csúcs felsővezetői épp összehangolt, mérhető és végrehajtható programot sürgettek a szétszórt kezdeményezések helyett."
+    },
+    {
+      "type": "paragraph",
+      "text": "A jó hír, hogy ez a verseny most kezdődik, és nem a legnagyobb büdzsé dönti el, hanem a legtisztább végrehajtás. Aki ma rendet tesz a folyamataiban, az adataiban és a felelősségeiben, az nem egy AI-projektet csinál - működést tervez, amelyre az AI már csak ráépül. Nem AI-t kell bevezetni. Működést kell áttervezni."
+    }
+  ],
+  "ai-val-gyorsabban-termelunk-kodot-de-ki-fogja-atnezni": [
+    {
+      "type": "paragraph",
+      "text": "Egy platform engineer tavaly még napi két-három pull requestet nézett át egy közepes magyar csapatnál. Idén tízet. A változások egy része ezer sor körüli, néhol ott a ticketen kívüli, „amúgy is itt jártam” módosítás. A CI néha alig bírja, a review-sor folyamatosan tele, és a kódbázis lassan olyan, mintha többen írták volna, mint ahányan valójában dolgoznak rajta. A csapat nem lett kétszer akkora. A coding agent viszont megérkezett."
+    },
+    {
+      "type": "paragraph",
+      "text": "Könnyű ezt egyéni panaszként elintézni. Pedig nem az. A GitHub 2025-ös Octoverse-jelentése szerint a platformon havonta átlagosan 43,2 millió pull request olvad be - ami 23%-os éves növekedés -, és 2025-ben közel egymilliárd commit született. Csak a Copilot kódoló ügynöke öt hónap alatt több mint egymillió PR-t nyitott. A „PR-gyár” érzete tehát nem hangulat, hanem egy globális volumenrobbanás helyi lecsapódása. A kérdés, amit ez a cikk feltesz, ennyi: ha a kódírás öt-tízszer gyorsabb lett, ki fogja öt-tízszer gyorsabban átnézni, megérteni és vállalni, amit legenerálunk?"
+    },
+    {
+      "type": "heading",
+      "text": "1. Mi változott meg valójában?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Érdemes tisztázni, mi a coding agent, mert a köznyelvben összemosódik a régi autocomplete-tel. A mai agent már nem csak sort egészít ki: tervet készít, több fájlt módosít, tesztet ír, pull requestet nyit, alügynököket indít, és előre beállított ellenőrzéseket - hookokat - futtat. Ez minőségileg más, mint két éve volt."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ettől viszont nem lett autonóm szenior mérnök. Sokkal pontosabb úgy gondolni rá, mint egy gyors, olcsó és fáradhatatlan junior-rendszerre: rengeteget termel, gyakran használhatót, de a kontextust nem érti úgy, mint aki a rendszert évek óta építi, és a felelősséget sem tudja viselni. Akkor hasznos, ha van fölötte mérnöki kontroll - specifikáció, határok, review. Magára hagyva pont azt csinálja, amit egy felügyelet nélküli junior: sokat, gyorsan, és néha magabiztosan rossz irányba. A magabiztosság itt a kockázat: az agent ritkán jelzi, ha bizonytalan, és olyan kódot is meggyőzően ír, ami szintaktikailag hibátlan, de a rendszer logikájába nem illik. Ezt jellemzően csak az veszi észre, aki a rendszert valóban érti."
+    },
+    {
+      "type": "heading",
+      "text": "2. Mi az, ami már most is látszik?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az AI-használat kérdése eldőlt. A DORA 2025-ös, közel ötezer szakembert megkérdező kutatása szerint a fejlesztők 90%-a használ AI-t, ami egy év alatt tizennégy százalékpontos ugrás. A JetBrains huszonnégyezres felmérésében 85% rendszeresen használja, és 62% legalább egy kódoló asszisztensre vagy ügynökre támaszkodik. A Stack Overflow szerint 84% használ vagy tervez használni AI-eszközt, az új GitHub-fejlesztőknek pedig 80%-a már az első héten elkezdi. Itt nincs több vita: a kérdés már nem az, hogy használjuk-e, hanem az, milyen szervezeti kontroll mellett."
+    },
+    {
+      "type": "paragraph",
+      "text": "Mert a használat mellett egy másik szám is makacsul tartja magát - a bizalomé, ami csökken. A Stack Overflow-nál a fejlesztők 46%-a kifejezetten nem bízik az AI-kimenet pontosságában; egy éve ez még 31% volt, és mindössze 3% bízik benne erősen. A Sonar 2026-os, több mint ezer fős kutatásában a fejlesztők 96%-a nem bízik teljesen abban, hogy az AI-kód funkcionálisan helyes. Ez a kettősség - magas használat, alacsony bizalom - a 2025-ös év legbeszédesebb mintázata, és nem technofóbia: egy determinista gondolkodású szakma józan reakciója egy nemdeterminista eszközre. A fejlesztők ráadásul nagyrészt hasznosnak is érzik az AI-t; a Sonar szerint 82% egyetért, hogy gyorsítja a kódolást, a JetBrains szerint 90% legalább heti egy órát spórol vele. Ezek valós érzetek - és pontosan itt kezdődik a félreértés."
+    },
+    {
+      "type": "heading",
+      "text": "3. Hol kezdődik a félreértés?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A baj abból fakad, hogy a kódírás sebességét összekeverjük a szoftverszállítás sebességével. Pedig négy különböző dolog ez, amit a hétköznapi beszéd egybemos: hogy milyen gyorsan keletkezik a kód, hogy mennyire érzi gyorsabbnak magát a fejlesztő, hogy mennyi idő alatt jut el egy igény a felhasználóig, és hogy mennyire tartható karban, amit építettünk. Az AI az első kettőt szinte mindig javítja. A harmadikat és a negyediket nem garantálja. A felbontás lényege egy költség-aszimmetria: a generálás olcsó lett, a megértés nem. Egy ezer soros, géppel írt PR átolvasása, fejben tartása és felelős jóváhagyása ugyanannyi - vagy több - kognitív munkát kíván, mint korábban; csak ma nem feltétlenül az végzi, aki a kódot „írta”, hanem a reviewer."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ezt a szakadékot két kutatás mutatja meg a legélesebben, egymással szemben. Egy korai, izolált feladatra épülő GitHub-kísérletben a Copilotot használók 55,8%-kal gyorsabban végeztek - ez a „gyorsít” tábor emblematikus száma. A METR 2025-ös randomizált kontrollált kísérletében viszont tizenhat tapasztalt nyílt forrású fejlesztő dolgozott a saját, érett kódbázisain, és AI-val 19%-kal lassabban végeztek - miközben előzetesen 24% gyorsulást vártak, és utólag is 20%-ot éreztek. A két eredmény nem mond ellent egymásnak; különböző dolgot mér. A tanulság nem az, hogy „az AI gyorsít”, és nem is az, hogy „az AI lassít”, hanem az, hogy a hatás kontextusfüggő: izolált, jól körülhatárolt feladaton jellemzően gyorsít, nagy, jól ismert kódbázison, szigorú minőségi elvárás mellett viszont a takarítás költsége felfalhatja a generálás nyereségét. A METR kis mintás volt és korai modelleket használt, a szerzők maguk is pillanatfelvételnek nevezik - de épp a percepció és a valóság közötti rés a fontos: még a saját gyorsulásunkat is rosszul becsüljük."
+    },
+    {
+      "type": "heading",
+      "text": "4. A magyar Reddit mint kvalitatív terepnapló"
+    },
+    {
+      "type": "paragraph",
+      "text": "Itthon ez a feszültség a fejlesztői fórumokon csapódik le a legélesebben. Fontos azonban tisztázni: ezek a threadek nem reprezentatív felmérések. Reprezentatív magyar adat az agentic coding hazai elterjedtségéről egyelőre alig van, ezért a fórumhangokat kvalitatív terepnaplóként kezelem, nem statisztikai bizonyítékként."
+    },
+    {
+      "type": "paragraph",
+      "text": "Jelzésként viszont pontosak, mert ugyanazok a figurák és ugyanaz a törésvonal tér vissza bennük. Ott a platform engineer, akire ráomlik a PR-volumen; a szenior reviewer, aki napokat tölt mások által generált, ránézésre rendben lévő, de gyengén megértett kód olvasásával; a termékmenedzser, aki látja, hogy az üzlet a mennyiséget díjazza; az infra engineer, akinek az AI valóban segít a scriptelésben, miközben mások elhamarkodott infra-módosításait takarítja; az AI-native fejlesztő, aki jól használja, mert tud specifikálni és ellenőrizni; és a vibe coder, aki bedob egy ticketet, és felpushol egy nagy PR-t. A konfliktus nem fejlesztők kontra menedzsment. A konfliktus a sebesség és a minőség, az üzleti nyomás és a mérnöki fegyelem, a látszólagos és a valódi haladás között feszül."
+    },
+    {
+      "type": "paragraph",
+      "text": "Van ennek egy kényelmetlen, szinte szociológiai rétege is. A precíz fejlesztő, aki valóban érti és validálja a munkát, lassabbnak látszik - mert tényleg lassabb annál, aki csak felpushol. A gyengébb fejlesztő AI-val ránézésre jobb outputot produkál. Nehezebb lett első ránézésre megmondani, ki ért hozzá valójában. Ez nemcsak minőségi, hanem bizalmi és státuszkérdés is egy csapaton belül."
+    },
+    {
+      "type": "heading",
+      "text": "5. Vibe coding és AI-assisted engineering"
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt érdemes egy különbséget élesen meghúzni, mert a magyar vita nagy része feloldható vele. A fórumokon a legtöbben nem az AI-t támadják, hanem azt, amikor az AI-val megspórolják a gondolkodást."
+    },
+    {
+      "type": "paragraph",
+      "text": "Az egyik véglet a vibe coding: egy ticket, egy Figma-kép vagy egy laza ötlet bemásolása a modellbe, nagy scope, kevés megértés, nagy PR, ticketen kívüli módosítások, „zöld a teszt, mehet” hozzáállás és elkent felelősség. A másik az AI-assisted engineering: előzetes specifikáció és engineering design, kis scope, korlátozott agent-jogosultság, karbantartott kontextusfájlok (CLAUDE.md, AGENTS.md, ai-docs), lintet, tesztet, típus- és security-ellenőrzést futtató hookok, AI-review plusz emberi review, és egyértelmű emberi felelősség. Ugyanaz a modell, ugyanaz az eszköz - két gyökeresen különböző mérnöki kultúra."
+    },
+    {
+      "type": "paragraph",
+      "text": "Megnyugtató adat egyébként, hogy a Stack Overflow szerint a fejlesztők 72%-a a saját professzionális munkájában nem vibe-codol: a jelenség hangosabb, mint amilyen elterjedt."
+    },
+    {
+      "type": "heading",
+      "text": "6. Az új senioritás"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ha az adatokat egyetlen mondatba kellene sűríteni, az így szólna: a senioritás nem szűnik meg, hanem áthelyeződik. Egy 2026-os longitudinális vizsgálat szerint a fejlesztők 82%-a kevesebb időt tölt kódírással, és a munka súlypontja a létrehozás felől a validáció felé tolódik - a szerzők ezt supervisory engineering worknek, felügyeleti mérnöki munkának nevezik. A minta kicsi és önbevalláson alapul, de az irány egybevág a többi forrással."
+    },
+    {
+      "type": "paragraph",
+      "text": "A jó szenior egyre kevésbé az, aki kézzel írja a legtöbb sort. Inkább az, aki specifikál, határokat húz, architektúrát véd, review-zik, validál, üzleti logikát fordít, security- és observability-szempontokat kér számon, és - talán a legfontosabb - eldönti, mit nem szabad az AI-ra bízni. A kézi kódolás presztízse csökkenhet, de a mérnöki ítélőképesség értéke nő. A jó munkamenet nem bonyolult: specifikáció, releváns kontextus, kis lépés, AI-implementáció, AI-review, emberi review, teszt, merge. Ebben a modellben az agent a gyors, de felügyelt junior - a végső döntés és a felelősség emberé marad. És épp ez a réteg az, ami nem automatizálódik el egyhamar: a modell és a rendszer közötti fordítás, az üzleti szándék lekódolása, és annak eldöntése, mit jelent egyáltalán, hogy valami „kész”."
+    },
+    {
+      "type": "heading",
+      "text": "7. Miért fájhat ez különösen a magyar IT-ban?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ezt óvatos hipotézisként mondom, nem ítéletként, mert reprezentatív magyar adat itt is hiányzik. Több strukturális ok miatt üthet ez nálunk élesebben."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sok magyar csapatban eleve vékony a platform-, QA-, security- és architektúra-réteg, a szeniorok pedig már az AI előtt is túlterheltek voltak. Ha erre ráengedünk egy agentic coding munkamenetet megfelelő korlátok nélkül, az nem felszabadítja a szeniorokat, hanem review-pokollá teszi a napjaikat. A kisebb cégeknél gyakran hiányzik a formális engineering governance; a multiknál és a szolgáltatóközpontoknál viszont fragmentált a tulajdonlás, sok az approval-réteg és az offshore-nearshore interfész. A munkaerőpiaci bizonytalanságban ráadásul nehezebb visszadobni egy rossz PR-t vagy nemet mondani egy irreális határidőre. És itt válik kínosan láthatóvá valami, ami eddig is így volt: sok helyen a review volt a rejtett minőségbiztosítás - az a pont, ahol egy tapasztalt ember csendben kijavította, amit a folyamat elrontott. A kockázat ráadásul szegmensfüggő: egy korai fázisú startupnál a gyors iteráció valódi előny, és a slop ára alacsony, mert a kód úgyis gyorsan cserélődik; egy banki vagy adatnehéz rendszerben viszont ugyanaz a slop évekig élhet, és sokszor csak élesben, incidensként derül ki."
+    },
+    {
+      "type": "paragraph",
+      "text": "Kontextusjelzőként ide kívánkozik a Hays magyar munkaerőpiaci jelentése, amely a szenior szakemberek túlterhelését, kiégését és az ebből fakadó fluktuációt külön kockázatként nevezi meg, stagnáló IT-bérek mellett. Ez nem reprezentatív bizonyíték az agentic coding magyar hatására - de jól mutatja, hogy épp az a réteg kerül nyomás alá, amelyből amúgy is kevés van, és amelyet a legdrágább pótolni."
+    },
+    {
+      "type": "heading",
+      "text": "8. Mit kellene mérni?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A megoldás nem AI-politikai, hanem engineering-politikai. És a kiindulópont a mérés: ha az AI-használatot a leírt kódsorokban, a PR-ok számában vagy a lezárt ticketekben mérjük, akkor olyan mutatókat figyelünk, amelyeket az AI-val triviálisan fel lehet fújni anélkül, hogy egyetlen valódi probléma is megoldódna."
+    },
+    {
+      "type": "paragraph",
+      "text": "Mit mérjen egy csapat a LOC és a PR-szám helyett?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Cycle time - az ötlettől a production deployig eltelt idő."
+    },
+    {
+      "type": "paragraph",
+      "text": "Change failure rate - a deployok hány százaléka okoz incidenst."
+    },
+    {
+      "type": "paragraph",
+      "text": "Escaped defects - a productionben kibukó hibák száma."
+    },
+    {
+      "type": "paragraph",
+      "text": "Review lead time és a review-terhelés reviewerenként."
+    },
+    {
+      "type": "paragraph",
+      "text": "A PR-méret eloszlása és a „túl nagy” PR-ok aránya."
+    },
+    {
+      "type": "paragraph",
+      "text": "Rework / churn rate - a frissen írt kód mekkora hányadát írják át rövid időn belül."
+    },
+    {
+      "type": "paragraph",
+      "text": "Incident count és MTTR (átlagos helyreállási idő)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tesztlefedettség és annak változása az AI-bevezetés óta."
+    },
+    {
+      "type": "paragraph",
+      "text": "A security findingok száma és súlyossága."
+    },
+    {
+      "type": "paragraph",
+      "text": "Az out-of-scope (ticketen kívüli) változtatások aránya."
+    },
+    {
+      "type": "paragraph",
+      "text": "A logika egyszerű: a produktivitásnyereség egy részét vissza kell forgatni minőségbe és tesztlefedettségbe, és aki AI-val generál kódot, ugyanúgy felelős érte, mintha kézzel írta volna."
+    },
+    {
+      "type": "heading",
+      "text": "9. Zárás"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az agentic coding nem azt a kérdést teszi fel, hogy kell-e még fejlesztő. Azt teszi fel, hogy volt-e valaha valódi mérnöki kultúra a kód körül."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kódgenerálás drámaian olcsóbb lett. A megértés, a validáció, az architektúra, a security és a tulajdonlás nem. Ahol van specifikáció, review, teszt, ownership és mérési fegyelem, ott az AI gyorsító, amely felszabadítja a szeniorokat az ismétlődő munka alól. Ahol ezek hiányoznak, ott az AI nem oldja meg a problémát - csak gyorsabban termeli láthatóvá. A különbség nem a modellben van, hanem a szervezetben, amelyik használja. És ezt a különbséget, ha eddig el is lehetett fedni, mostantól egyre nehezebb lesz."
+    }
+  ],
+  "nem-az-elso-hullamot-kell-megnyernunk": [
+    {
+      "type": "paragraph",
+      "text": "Nem biztos, hogy 2027-ben megérkezik az emberfeletti AI. De az már most biztosnak látszik, hogy az AI-verseny nem chatbotokról szól, hanem ipari, geopolitikai és intézményi hatalomról. A kérdés Kelet-Közép-Európa - és benne Magyarország - számára nem az, hogy meg tudjuk-e verni Silicon Valleyt. Nem tudjuk. A kérdés az, hogy találunk-e magunknak saját csatateret, mielőtt mások döntenek helyettünk arról, milyen rendszerekbe ágyazódik be a következő évtized gazdasága és közigazgatása."
+    },
+    {
+      "type": "paragraph",
+      "text": "Érdemes két szöveggel kezdeni, amelyek ugyanazt a jelenséget nézik két ellentétes pontról."
+    },
+    {
+      "type": "heading",
+      "text": "1. Mi az AI 2027 és a Europe 2031?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az AI 2027 egy részletes, hónapról hónapra haladó forgatókönyv Daniel Kokotajlo és társai tollából. A centrumból ír: egy fiktív élvonalbeli labor, az OpenBrain egyre ügyesebb kódoló- és kutatóügynököket épít, amelyek a saját fejlesztését gyorsítják fel. Ebből egy önerősítő hurok (AI-R&D feedback loop) bontakozik ki, amerikai-kínai fegyverkezési verseny, modell-lopás, kiberképességek, és a háttérben az alignment - vagyis annak kérdése, hogy a rendszerek tényleg azt akarják-e, amit a tervezőik. A történet a 2027-es év végére a szuperintelligencia küszöbéhez ér."
+    },
+    {
+      "type": "paragraph",
+      "text": "A Europe 2031 ennek a tükörképe a periféria felől. Itt Európa a főszereplő, és a kép borús: technológiai lemaradás, compute-hiány, amerikai infrastruktúra-függőség, és egy Unió, amely - hacsak nem cselekszik radikálisan - elveszíti a képességét, hogy a saját jövőjét alakítsa. A szöveg szerint a tét nem kevesebb, mint hogy lesznek-e értékek, amelyeket meg tudunk védeni, és jóléti rendszerek, amelyeket finanszírozni tudunk."
+    },
+    {
+      "type": "paragraph",
+      "text": "A két szöveget nem jóslatként érdemes kezelni, hanem stratégiai stressztesztként. Nem az a kérdés, hogy pontosan ez fog-e történni, hanem hogy mely állításaik állnak meg már most adatokkal, és hol kezdődik a spekuláció."
+    },
+    {
+      "type": "heading",
+      "text": "2. Mi az, ami már most is látszik?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A pénz mozgása nem spekuláció. Az USA privát AI-befektetése 2025-ben elérte a 285,9 milliárd dollárt - huszonháromszorosa a kínai 12,4 milliárdnak -, és ennek több mint háromnegyede egyetlen államból, Kaliforniából érkezett (Stanford AI Index 2026). Ehhez jön a hyperscalerek beruházása: a négy nagy (Amazon, Alphabet, Meta, Microsoft) 2026-ra bejelentett tőkeköltése együtt 630 és 725 milliárd dollár között mozog, szemben a 2025-ös, már akkor is rekordnak számító mintegy 390-410 milliárddal (Financial Times, CNBC). Hogy ez ne tűnjön légvárnak: a NVIDIA adatközpont-bevétele két év alatt 15 milliárdról 115 milliárd dollárra nőtt. A keresletet tehát valódi vásárlások hajtják, nem pusztán prezentációk."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ennek fizikai következménye van. A Nemzetközi Energiaügynökség szerint a globális adatközpont-áramfogyasztás 2025 és 2030 között nagyjából megduplázódik, 485-ről mintegy 945 terawattórára, és ennek hajtóereje az AI (IEA, Energy and AI). Az Egyesült Államok adja ma a globális adatközpont-fogyasztás 45%-át. A compute és az energia tehát összekapcsolódik, és mindkettő erősen amerikai súlypontú."
+    },
+    {
+      "type": "paragraph",
+      "text": "A coding agentek terén is van valós elmozdulás. A fejlesztők 84%-a használ már AI-eszközt (Stack Overflow 2025), és a Microsoft vezérigazgatója szerint a cég kódjának 20-30%-át AI generálja. A munkaerőpiacon pedig konkrét, mért hatás látszik: a Stanford Digital Economy Lab béradatokra épülő elemzése szerint a 22-25 éves szoftverfejlesztők foglalkoztatása mintegy 20%-kal esett a 2022 végi csúcsról, miközben a 30 év felettieké nőtt. Ezt a Harvard 62 millió munkavállalót vizsgáló tanulmánya is megerősíti: az AI-t bevezető cégeknél a junior foglalkoztatás 9-10%-kal csökken, a senioré alig változik."
+    },
+    {
+      "type": "paragraph",
+      "text": "Európa válasza erre eddig elsősorban szabályozás (AI Act) volt, és csak 2025-től kezdődő, határozottabb infrastruktúra-építés. Erről mindjárt - de előbb érdemes megnézni, hol válik a forgatókönyvek narratívája bizonyíthatóból feltételezetté."
+    },
+    {
+      "type": "heading",
+      "text": "3. Hol kezdődik a spekuláció?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az AI 2027 legmerészebb állítása nem a compute-növekedés, hanem az önfejlesztési hurok: hogy az AI-rendszerek érdemben felgyorsítják a saját kutatásukat, és ez exponenciális robbanáshoz vezet. Erre ma nincs publikus, független bizonyíték. A laborok belső használatról beszélnek, de a másfélszer-háromszor gyorsabb algoritmikus haladás jellegű állításokat kívülről nem lehet ellenőrizni. Ez a forgatókönyv spekulatív magja."
+    },
+    {
+      "type": "paragraph",
+      "text": "A 2027-es szuperintelligencia-határidő szintén agresszív - és ezt nem csak a szkeptikusok mondják. Maguk a szerzők is jelzik, hogy a bizonytalanságuk 2026 után jelentősen nő. A legélesebb ellenérvet Arvind Narayanan és Sayash Kapoor princetoni kutatók fogalmazzák meg AI as normal technology tézisükben: a technológiák hatását nem a feltalálás, hanem a diffúzió üteme szabja meg, és a diffúzió emberi sebességgel halad. Jellemző adatuk: bár a felnőttek 40%-a használ már generatív AI-t, ez a munkaóráknak csak 0,5-3,5%-át érinti. A képesség és a tényleges gazdasági hatás között szakadék van."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ezt a szakadékot a legkeményebben egy randomizált kísérlet mutatta meg. A METR 2025-ös vizsgálatában tapasztalt fejlesztők AI-eszközzel 19%-kal lassabban végeztek a feladataikkal - miközben 24%-os gyorsulást vártak, és utólag is 20%-ot éreztek. A benchmark tehát nem egyenlő a valós termelékenységgel, és még a felhasználói önbecslés is megbízhatatlan. Fontos viszont a kiegyensúlyozottság kedvéért: a METR 2026 eleji frissítése szerint bizonyos részmintákon már gyorsulás látszik. A hatás nem nulla és nem is egyöntetű - kontextusfüggő."
+    },
+    {
+      "type": "paragraph",
+      "text": "A Europe 2031 ellenkező irányból túloz: determinisztikus. A lemaradás valós (a foundation modellek 70%-a amerikai, és három hyperscaler uralja az európai felhőpiac kétharmadát), de a marginalizáció elkerülhetetlen következtetés nem az. A pálya nyitottabb, mint amilyennek a forgatókönyv mutatja."
+    },
+    {
+      "type": "heading",
+      "text": "4. Mit jelent ez Európának?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Európa akkor van bajban, ha csak szabályoz és importál. De nincs elveszve, ha ipari, szabályozott, doménspecifikus AI-adoptionben épít képességet."
+    },
+    {
+      "type": "paragraph",
+      "text": "A fordulat már elindult. A 2024-es Draghi-jelentés kimondta, amit régóta tudni lehetett: az EU termelékenységi szakadéka az USA-val szemben nagyrészt a tech-szektorral magyarázható, és befektetés nélkül a jóléti modell finanszírozhatatlanná válik. Erre válasz az InvestAI: 20 milliárd euró gigafactory-grant, 200 milliárd eurós mobilizálási céllal. Itt viszont fegyelmezett olvasásra van szükség. A 200 milliárd nem elkötelezett tőke, hanem remélt, magántőkével felszorzott keret; az EU tényleges hozzájárulása a beruházások mintegy 17%-a, és az első gigafactory építése csak 2027-ben kezdődik. A Mistral - Európa legjobb modellcége - eddigi teljes tőkéje nagyjából 2,8 milliárd euró, amelyhez 2025-ben az ASML chipgyártó óriás szállt be vezető befektetőként. Ez stratégiailag jelentős (összeér a chip- és az AI-ellátlánc), de léptékben egy amerikai hyperscaler néhány hetes költésével ér fel."
+    },
+    {
+      "type": "paragraph",
+      "text": "A józan európai következtetés ezért nem az, hogy a frontieren kell utolérni az USA-t. A Bruegel kutatóintézet pontosan ezt a dilemmát teszi fel: utolérni a frontiert, vagy a frontier alatt boldogulni a származtatott AI-termékek és -szolgáltatások piacán? Európa valódi tőkéje az ipari mélység, a szabályozott szektorok (egészségügy, pénzügy, energia, közigazgatás) és a megbízhatóság iránti igény. Itt nem a legnagyobb modell nyer, hanem az, amelyik auditálható, adatvédelmi szempontból megfelelő, és beépül a meglévő folyamatokba. Az energia is ezt erősíti: az IEA maga jelzi, hogy a hálózati és engedélyezési szűk keresztmetszetek - USA-ban és EU-ban egyaránt 10+ éves erőmű-engedélyezéssel - lassítják a legagresszívabb forgatókönyveket. A korlát tehát nemcsak Európát sújtja; ez némi mozgásteret is jelent."
+    },
+    {
+      "type": "heading",
+      "text": "5. Mit jelent Kelet-Közép-Európának?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A régió nem a frontier-trainingben fog nyerni. A számok egyértelműek: a teljes CEE kockázatitőke-befektetés 2024-ben mintegy 2,3 milliárd euró volt - kevesebb, mint amennyit egy hyperscaler néhány nap alatt elkölt -, a sikeres scale-upok 48%-a pedig külföldre, jellemzően az USA-ba viszi a központját (Dealroom/Vestbee). Az európai AI-kockázatitőkének több mint kétharmada tíz nagyvárosba áramlik, és a fővárosokon kívül kevesebb mint 1% landol. Frontier labort innen építeni nem reális, és nem is ez a feladat."
+    },
+    {
+      "type": "paragraph",
+      "text": "A valódi esély a második és harmadik hullámban van: amikor a modelleket valós intézményekbe, iparágakba, adatfolyamatokba és döntési rendszerekbe kell beépíteni. Ez a réteg az AI-adoption engineering: rendezetlen intézményi adatból (messy institutional data) használható rendszert építeni. Konkrétan: RAG és GraphRAG architektúrák, ontológiák és taxonómiák, evaluation-keretek, human-in-the-loop folyamatok, és doménspecifikus vertical AI-eszközök. A régió erősségei - ipari és automotive AI, gyártás, shared service centerek, fintech, kiberbiztonság, govtech, healthtech, edtech - pont ide illeszkednek."
+    },
+    {
+      "type": "paragraph",
+      "text": "És van egy konkrét magyar visszaigazolás is. A Microsoft 2025-ös adoptációs jelentése szerint Magyarország az AI-használatban a világ 20 legfejlettebb országa közé tartozik, egyes mutatókban az USA, Németország és Lengyelország előtt; a HUN-REN SZTAKI vezette konzorcium pedig elnyerte az EU AI Factory és AI Antenna pályázatát, amivel az ország közvetítő csomóponttá válhat az európai AI-hálózatban. Jakab Roland, a HUN-REN vezérigazgatója és az MI Koalíció elnöke tömören fogalmazta meg a régió logikáját: önmagában az AI nem teremt értéket, annak hoz hasznot, aki tudatosan és jól használja. Ez nem vigaszdíj. Ez a stratégia."
+    },
+    {
+      "type": "heading",
+      "text": "6. Mit jelent egy magyar szakembernek?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A következő két-öt évben azok lesznek erősek, akik a domainismeretet, a data engineeringet, a cloudot, az AI-workflow-t, a mérési kultúrát és a governance-t egyetlen kompetenciacsomagban tudják összekötni. Nem az, aki a legújabb modellt be tudja gépelni egy chatablakba - hanem aki tudja, melyik problémát érdemes egyáltalán AI-jal megoldani, és hogyan lehet bizonyítani, hogy a megoldás működik."
+    },
+    {
+      "type": "paragraph",
+      "text": "Gyakorlatban ez egy jól körülírható eszköztár. Az alapokon SQL, Python és PySpark; backend oldalon FastAPI és aszinkron feldolgozás; üzemeltetésben cloud, Docker, CI/CD. Erre épül az AI-réteg: RAG és GraphRAG, ontológia- és taxonómiakezelés, valamint - és ez a leginkább alulértékelt rész - evaluation-keretek és human-in-the-loop tervezés. Mindezt pedig csak akkor ér valamit, ha product thinking és valódi domén-szakértelem fogja keretbe."
+    },
+    {
+      "type": "paragraph",
+      "text": "Van ebben egy mélyebb, szinte személyes igazság is. A régió legértékesebb embereinek útja gyakran nem a klasszikus mérnöki vonal. Aki egy társadalomtudományi vagy más doménháttérről jutott el az AI-mérnökségig, az pontosan azt a kétnyelvűséget hozza, amire ezen a piacon szükség van: érti az adatot és érti a kontextust, amelyben az adat keletkezik és amelyben döntés lesz belőle. A második hullám nem a tisztán technikai zseniké. Azoké, akik a modell és a valóság közötti fordítást elvégzik - és ez a fordítói szerep nem automatizálódik el egyhamar."
+    },
+    {
+      "type": "heading",
+      "text": "7. Következtetés"
+    },
+    {
+      "type": "paragraph",
+      "text": "Nem az a kérdés, hogy Kelet-Közép-Európa meg tudja-e nyerni az első AI-hullámot. Valószínűleg nem. A frontier-modellek betanítása, a százmilliárdos compute, a kaliforniai tőkesűrűség - ez a meccs nagyrészt eldőlt, és nem itt."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kérdés az, hogy felismerjük-e időben a másodikat: azt a hullámot, amikor a modelleket valós intézményekbe, iparágakba, adatfolyamatokba és döntési rendszerekbe kell beépíteni. Ott nem a legnagyobb modell győz, hanem a legjobban beágyazott, leginkább auditálható, a helyi kontextust legjobban értő rendszer. Ehhez nem gigafactory kell, hanem AI-ready intézmények, tiszta adatarchitektúra, doméntudás és mérési fegyelem. Ezt a régió - és Magyarország - meg tudja építeni. De csak akkor, ha nem azt a versenyt akarja megnyerni, amelyet már elveszített, hanem azt, amelyik most kezdődik."
+    }
+  ],
+  "a-chatablaktol-a-pull-requestig": [
+    {
+      "type": "paragraph",
+      "text": "Egy fejlesztő 2022-ben bemásol egy hibás függvényt a ChatGPT-be, elolvassa a választ, és kézzel beilleszti a kódba. Ugyanez a fejlesztő néhány évvel később már csak egy issue-t ad át egy terminálban futó agentnek; a program megkeresi a releváns fájlokat, módosítja a kódot, lefuttatja a teszteket, kijavítja a hibát, és összefoglalja a diffet. A két jelenet között nem pusztán egy gyorsabb modell áll, hanem egy másik munkamegosztás. Ez a cikk azt járja körbe, mi változott meg valójában - nem technológiai idővonalként, hanem annak kérdéseként, hogy ki mit csinál, és hol húzódik a szoftverfejlesztés legkisebb értelmes munkaegysége. A vezérfonal végig ugyanaz: nem a modellek mérete vagy a benchmark-pontszám a lényeg, hanem hogy ki fogalmazza meg a feladatot, ki írja meg a megoldást, és ki vállalja érte a felelősséget."
+    },
+    {
+      "type": "paragraph",
+      "text": "Előre bocsátva a végkifejletet: a változás lényege nem az, hogy az AI gyorsabban ír kódot, hanem hogy a munka legkisebb egysége fokozatosan elmozdult - a sorról és a függvényről a komplett feladat és az issue felé. Ezzel párhuzamosan az ember szerepe is áttevődik a közvetlen implementációról a specifikáció, az irányítás, az ellenőrzés és a felelősség felé. A cikk ezt az utat járja végig négy állomáson - chatbot, copilot, vibe coding, agentic coding -, majd szembesíti a lelkesedést azzal, amit a kontrollált mérések ténylegesen mutatnak."
+    },
+    {
+      "type": "heading",
+      "text": "1. A chatbot még válaszolt"
+    },
+    {
+      "type": "paragraph",
+      "text": "A klasszikus chatbot nem értette a beszélgetést, hanem előre definiált szándékokat ismert fel. Az ELIZA 1966-ban mintaillesztett, a későbbi ipari rendszerek (Rasa, Dialogflow) intent-felismeréssel és entitáskinyeréssel, állapotgép mentén választottak következő lépést. A felület természetes nyelvű volt, a működés viszont zárt és szabálykötött."
+    },
+    {
+      "type": "paragraph",
+      "text": "A korszak nem volt meddő: a szándékfelismerés és a slot filling számtalan ügyfélszolgálati botot és hangasszisztenst működtetett. A programozáshoz azonban keveset tett hozzá: a logikát, a kódot és a hibakeresést végig az ember vitte, a gép legfeljebb sablonválaszt adott. A valódi töréspont nem a párbeszéd-felületben, hanem a mögötte álló modell általánosságában érkezett: amint egy nyelvi modell tetszőleges szöveget tudott kezelni, a chat alkalmassá vált arra is, hogy kódot magyarázzon, generáljon és átírjon."
+    },
+    {
+      "type": "paragraph",
+      "text": "A 2022. novemberi ChatGPT ezt törte meg: szabad szöveget kezelt, és a programozás azonnal az egyik legfőbb felhasználási terep lett. Karpathy híressé vált megjegyzése szerint „a legforróbb új programozási nyelv az angol”. A munkamenet azonban változatlan maradt: az ember feltette a kérdést, a választ pedig maga értelmezte, másolta és illesztette be. A chat nem látta a projektet, hallucinált nem létező könyvtárakat és API-kat, és hiányzott belőle a repository-kontextus. A teljes integráció - az illesztés, az adaptálás, a hibakeresés - emberi feladat volt. Ha pedig a kontextus a szűk keresztmetszet, adódik a következő lépés: vigyük az AI-t a kód mellé."
+    },
+    {
+      "type": "heading",
+      "text": "2. A copilot beköltözött az editorba"
+    },
+    {
+      "type": "paragraph",
+      "text": "A külön chatablakból az AI átköltözött a fejlesztői környezetbe. Az inline kiegészítés, az IDE-be épített chat és a repo-kontextus a 2021-22-es GitHub Copilottal vált tömegessé: az AI ott ajánlott, ahol a fejlesztő éppen dolgozott. Az alapegység továbbra is a kódrészlet volt, és a fejlesztő minden sort maga irányított."
+    },
+    {
+      "type": "paragraph",
+      "text": "Érdemes látni, mi maradt változatlan. A copilot a fejlesztő döntéseit gyorsította, de nem vette át őket: az ember választotta ki, mit fogad el és mit ír felül, és ő illesztette a kódot a rendszer egészébe. A GitHub Next kutatásai (Kalliamvakou és munkatársai) a befejezési arány és az elégedettség javulását is jelezték, a Stack Overflow 2025-ös felmérése szerint pedig a Copilot a fejlesztők körében továbbra is a legelterjedtebb eszközök között maradt. A kérdés tehát nem az volt, hogy segít-e, hanem hogy meddig terjedhet a segítség."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ennek a szakasznak van a legtisztább kontrollált bizonyítéka. Egy randomizált kísérletben (Peng és munkatársai) a Copilotot használó csoport egy izolált JavaScript-szerver feladatot mintegy 55,8%-kal gyorsabban oldott meg, magasabb befejezési aránnyal. A szám látványos, de a kontextusa döntő: greenfield, önálló, jól körülhatárolt feladatról van szó. Épp ez lesz a cikk visszatérő motívuma - egy zöld mezős feladaton mért gyorsulás nem általánosítható egy érett, nagy kódbázisra. A copilot tehát valódi segítség, de még mindig a fejlesztő a közvetlen kódoló. Ha a kiegészítés ennyire jól megy, jön a következő kérdés: mi történik, ha az egész terméket nyelven írjuk le?"
+    },
+    {
+      "type": "heading",
+      "text": "3. A természetes nyelv lett a prototípus nyelve"
+    },
+    {
+      "type": "paragraph",
+      "text": "2025 februárjában Andrej Karpathy egy tweetben adott nevet annak, amit sokan már csináltak: a vibe codingnak. Az eredeti jelentés radikális - „teljesen átadod magad a vibe-nak”, elfogadod és futtatod az AI outputját, a hibát visszaadod, és a kódra mint olyanra nem figyelsz. A böngészős app builderek (Lovable, Bolt, v0, Replit Agent) ezt vitték tömegpiacra: promptból teljes, működő prototípus, sokszor nem-fejlesztők kezében. A piac robbanásszerűen nőtt; a Lovable a jelentések szerint nyolc hónap alatt százmillió dolláros éves bevételi szinthez ért."
+    },
+    {
+      "type": "paragraph",
+      "text": "A fogalom gyorsan kultúrjelenséggé vált: a Collins szótár 2025-ös „Word of the Year” választása is jelezte, mennyire bevonult a köztudatba. A felfutás mögött valós munkamód állt: nem-fejlesztők - terméktulajdonosok, marketingesek, alapítók - először tudtak működő prototípust előállítani anélkül, hogy egyetlen sort is megírtak volna. Egy ilyen eszköz órák alatt elvisz a demo-szintig, ami korábban heteket vett volna igénybe. A kérdés csak az, hogy ez a prototípus meddig marad fenntartható, ha valódi felhasználók és valódi adatok kerülnek mögé."
+    },
+    {
+      "type": "paragraph",
+      "text": "Két dolgot azonban érdemes kimondani. Először: Simon Willison éles elhatárolása szerint ha átnézted, tesztelted és megértetted a kódot, az már nem vibe coding, hanem egyszerűen az LLM gépíróként való használata. A köznyelv ezt összemossa, és a „vibe coding” ma egyszerre jelöl gyors prototípust, figyelmetlen kódelfogadást, no-code réteget és tapasztalt fejlesztői gyorsítást. Másodszor: a működő demo és a fenntartható rendszer között valós szakadék húzódik. A látványos React-felszín után jön a jogosultságkezelés, az autentikáció és az adatbázis konfigurálása - itt akad el a nem-technikai felhasználó. A Guardio Labs „VibeScamming” néven mutatott be sérülékenységet generált kódban, egy ismertté vált esetben pedig egy AI-agent törölt egy éles adatbázist, miközben explicit utasítás tiltotta volna. A prototípustól tehát a megbízható, ellenőrizhető delegálás felé vezet az út."
+    },
+    {
+      "type": "heading",
+      "text": "4. Már nem kódot, hanem feladatot adunk"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az agentic coding a munka legkisebb egységét mozdítja el: a kódrészletről a feladatra vagy az issue-ra. Az agent egy cél érdekében több lépést önállóan megtervez, eszközöket használ, fájlokat módosít, parancsokat futtat, és a visszacsatolásból korrigál: cél, feltérképezés, terv, módosítás, teszt, javítás, diff és pull request. A terminál-natív eszközök - Claude Code, OpenAI Codex, Devin - ezt tették mindennapi munkamóddá. A Codex heti többmilliós felhasználói kört jelent, az Anthropic pedig azt állítja, hogy belső kódjának többségét már a Claude Code írja."
+    },
+    {
+      "type": "paragraph",
+      "text": "Addy Osmani megfogalmazásában az „agentic engineering” épp attól válik el a vibe codingtól, hogy fegyelmet visz a folyamatba: specifikáció, tesztelés és review kíséri, nem a vak elfogadás. A különbség tehát nem a modellben van, hanem a munkamódban. A gyakorlatban ez azt jelenti, hogy az agent annyit ér, amennyit a köré épített keret enged: világos feladatleírás, gyors tesztkör és szűk jogosultságok nélkül a legügyesebb modell is kárt okozhat. Ugyanaz az eszköz lehet tehát értékes páros és felügyelet nélküli kockázat - a keret dönt."
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt fontos a józanság. Armin Ronacher találóan „catnip for programmers”-nek nevezi az agentic codingot - vonzó és addiktív -, de hozzáteszi, hogy az eszközöket védeni kell az „LLM chaos monkey” ellen, vagyis az ellen, hogy a modell teljesen rosszul használja őket. Az agent nem egyetlen modell: működéséhez sandbox, szűk jogosultságok és emberi jóváhagyási pontok kellenek. A kérdés pedig adódik: mit tudnak ezek a rendszerek ténylegesen, a demókon túl?"
+    },
+    {
+      "type": "heading",
+      "text": "5. Mit tudnak ténylegesen?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A benchmarkok felső becslések, nem üzemi mércék. A SWE-bench valós GitHub-issue-kon méri, hogy egy modell képes-e végigvinni egy javítást; a 2024-es Verified változat 500 emberi validált feladatán a frontvonal mára gyakorlatilag telítődött, több modell is a 80% körüli sávban tolong. Ez azonban nem azt jelenti, hogy a feladat „megoldott”."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ezt egy másik mérce is alátámasztja. A régi benchmarkok, mint a HumanEval, rég telítődtek, mert csak izolált függvényeket mérnek, nem valós repository-munkát. A Laude Institute Terminal-Benchje épp ezért a terminál tényleges kezelését teszteli - parancsok futtatását, hibakeresést, többlépéses munkafolyamatokat -, és itt a legjobb eredmények is szerényebbek. A tanulság, hogy a szám mindig csak annyit ér, amennyit a mögötte álló feladat: a szűk, jól definiált példa és a nyílt végű, valós környezet között nagy a távolság."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kontaminációálló mércék józanító képet adnak. A Scale SEAL SWE-bench Pro változatán, standardizált eszközkészlettel, az eredmények mintegy 45-59%-ra esnek, privát, nem nyilvános kódbázison pedig 15-23%-ra - akár 35 százalékpontos zuhanás a Verifiedhez képest. Nem véletlen, hogy a benchmark-kontamináció (a modellek szó szerint reprodukálták a megoldó patcheket) miatt egyes szereplők 2026 elején abba is hagyták a Verified-eredmények jelentését. A tanulság kettős: egyrészt a mérési szám és a production-teljesítmény között nagy a távolság, másrészt egyre inkább nem a modell, hanem a köré épített harness (eszközkészlet, sandbox, kontextuskezelés) dönti el a tényleges eredményt. És ha gyorsan generál a rendszer, abból még nem következik, hogy jobb szoftver születik."
+    },
+    {
+      "type": "heading",
+      "text": "6. A gyorsabb kód nem feltétlenül jobb szoftver"
+    },
+    {
+      "type": "paragraph",
+      "text": "A legösszetörtebb intuició az, hogy az AI gyorsabbá tesz, és ez önmagában jó. A METR kontrollált kísérlete mindkét felet éles megvilágításba helyezi. Tapasztalt, nyílt forrású fejlesztők saját, ismerős kódbázisukon 2025 elején nem gyorsultak, hanem mintegy 19%-kal lassultak az AI-eszközöktől - miközben azt hitték, hogy gyorsabbak lettek. Az észlelés és a mért valóság szétvált. (Egy későbbi, késő-2025-ös eszközökkel végzett követő mérés már gyorsulást jelez az eredeti résztvevőknél, de erős szelekciós torzítással - vagyis a kép időben és mintától függően változik.)"
+    },
+    {
+      "type": "paragraph",
+      "text": "A METR eredményét könnyű félreolvasni, ezért fontos a pontosság: nem azt mondja, hogy az AI haszontalan, hanem hogy a tapasztalt fejlesztő ismerős, érett kódbázison másképp viselkedik, mint amit a kontrollálatlan önbevallás sugall. Az észlelés és a mért teljesítmény közötti rés önmagában tanulság: ha nem mérünk, hajlamosak vagyunk túlbecsülni a saját gyorsulásunkat, és ez épp a legrosszabb alapja egy fontos beruházási vagy folyamat-döntésnek."
+    },
+    {
+      "type": "paragraph",
+      "text": "A minőségi oldal még egyértelműbb. A Veracode 2025-ös vizsgálata szerint a generált kód mintegy 45%-a tartalmazott OWASP Top 10 típusú sérülékenységet, és a biztonsági hibák aránya többszöröse volt az emberi alapvonalnak; az újabb és nagyobb modellek nem teljesítettek jobban. Az Apiiro elemzése a jogosultság-eszkalációs utak és a tervezési hibák jelentős növekedését jelezte, a GitClear longitudinális adatai pedig a refaktor visszaesését, a duplikáció többszöröződését és a kód-churn növekedését. A logika egyszerű: az AI csökkenti a kód előállításának költségét, de növeli az ellenőrizendő kód mennyiségét és a review-terhet. A DORA találó megfogalmazásában az AI „erősítő”: a rendezett szervezetben gyorsít, a kaotikusban a diszfunkciót nagyítja fel. Ha pedig nő a review-teher, mi lesz a fejlesztő szerepével?"
+    },
+    {
+      "type": "heading",
+      "text": "7. Mi történik a fejlesztő szerepével?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A hangsúly a közvetlen implementációtól a specifikáció, az architektúra, az ellenőrzés és a felelősség felé tolódik - de juniornál és seniornál másképp. A junior oldalán a számok nyugtalanítóak: a Stanford és az ADP elemzése szerint a 22-25 éves, AI-nak erősen kitett szakmákban dolgozók foglalkoztatása 2022 óta mintegy 13%-kal relatíve csökkent, a tech-gyakornoki hirdetések pedig látványosan visszaestek."
+    },
+    {
+      "type": "paragraph",
+      "text": "Steve Yegge ellennarratívája szerint épp fordítva is olvasható a helyzet: az AI a kezdőt korábban juttatja érdemi munkához, mert a legrutinszerűbb feladatok egy részét leveszi a válláról. A két értelmezés nem zárja ki egymást: előfordulhat, hogy a belépés küszöbét magasabbra teszi, miközben annak, aki bejut, több eszközt ad a kezébe. Épp ezért szabad csak óvatosan okságot olvasni a munkaerőpiaci számokból."
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt azonban kötelező az ellenbizonyíték. Humlum és Vestergaard dán adatokon nem talált különbséget az AI-t adoptáló és nem-adoptáló cégek junior-felvétele között, és súlyos makrokonfundálók torzítják a képet: a kamatkörnyezet, a pandémia utáni túlfoglalkoztatás kiigazítása és az informatikai diplomások létszámának évtizedes megduplázódása egyaránt nyom. A korreláció tehát erős, az okság vitatott. A senior oldalon a szerep inkább felértékelődik: az „agent manager” a rendszertervezést, a feladatbontást, az elfogadási kritériumokat, a tesztstratégiát és a review-t viszi. A megtartandó ellenérv viszont az, hogy ha az AI az architektúrában, a hibakeresésben és a tervezésben is javul, akkor a „magasabb szintű gondolkodás” nem feltétlenül tartós emberi menedék. A gyakorlati kérdés ezért nem az, hogy eltűnik-e a fejlesztő, hanem hogy hogyan érdemes ma használni ezeket az eszközöket."
+    },
+    {
+      "type": "heading",
+      "text": "8. Hogyan érdemes ma használni?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A leghasznosabb keret nem eszközökben, hanem feladattípusban és kockázatban gondolkodik. Alacsony kockázatú, jól körülhatárolt munkánál (boilerplate, dokumentáció, egyszerű átalakítás) az agent szabadon engedésének hozadéka magas, a kára alacsony. Közepes kockázatnál (több fájlt érintő feature, migráció) már érdemes szűkebb feladatot és erős tesztet adni. Magas kockázatú területen (autentikáció, pénzügyi logika, kriptó, production deploy) az emberi jóváhagyás nem opcionális."
+    },
+    {
+      "type": "paragraph",
+      "text": "A keret lényege, hogy nem az eszköz, hanem a feladat kockázata dönt. Ugyanaz a terminál-agent lehet ideális egy dokumentáció-generáláshoz és veszélyes egy fizetési modul átírásához - a különbség nem a modellben, hanem abban van, mennyit bízunk rá felügyelet nélkül. Érdemes ezért a feladatokat először kockázat szerint beosztani, és csak utána választani módot és eszközt; így a gyorsítás ott jelentkezik, ahol olcsó a hiba, és marad az emberi kontroll ott, ahol drága."
+    },
+    {
+      "type": "paragraph",
+      "text": "A három mód a gyakorlatban egyetlen munkanapon belül is váltakozik. Egy ismeretlen hibánál a fejlesztő először tanácsadóként használja az AI-t, hogy megértse az okot; egy ismerős feature-nél páros programozóként, soronkénti irányítással dolgozik vele; egy jól körülhatárolt, mechanikus feladatnál pedig felügyelt agentként enged neki teret, amely önállóan végigviszi a munkát. A lényeg nem az, hogy végleg eldöntsük, melyik a helyes mód, hanem hogy tudatosan válasszunk a feladat ismeretében."
+    },
+    {
+      "type": "paragraph",
+      "text": "Három működő mód van, és nem versengenek, hanem feladatonként váltakoznak: az AI mint tanácsadó (chat), mint páros programozó (copilot) és mint felügyelt agent. A DORA „erősítő”-tapasztalata itt is irányadó: a haszon nem magától jön, hanem a szervezet érettségétől függ. Willison észrevétele szerint létezik „AI-kompatibilis kódbázis”: gyors tesztkör, világos struktúra és a kontextusfájlok (CLAUDE.md, AGENTS.md), amelyek ténylegesen segítik az agentet. Két határt azonban érdemes tiszteletben tartani: a túl széles agent-jogosultság veszélyes, a kontextusmérnökség pedig nem helyettesíti a review-t, csak előkészíti. És ha ma már ennyit bízhatunk az agentre, mi jön ezután?"
+    },
+    {
+      "type": "heading",
+      "text": "9. Mi jön ezután?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A 2026-os irány a hosszabb autonóm munkamenetek, a háttérben futó és párhuzamos agentek, a több agent koordinációja, az issue-to-PR pipeline és az automatikus review felé mutat - a fejlesztő egyre inkább „agent manager”. A termékek (Cursor 3 párhuzamos build, Antigravity 2.0, Devin Desktop, Codex desktop) már ezt a munkamódot építik. Közben a frontvonalbeli modellek képessége közel ért egymáshoz, így a verseny egyre inkább a harness és a scaffold szintjére tolódik. Hogy ennek mi a helyes formája, még vitatott: az Anthropic multi-agent kutatórendszere mellett a Cognition kifejezetten amellett érvel, hogy a legtöbb esetben ne építsünk multi-agentet."
+    },
+    {
+      "type": "paragraph",
+      "text": "A konvergencia gyakorlati következménye, hogy a választásban egyre kevésbé a „melyik modell a legjobb” kérdés számít, és egyre inkább az, hogy melyik eszköz illeszkedik a csapat munkafolyamatához és kódbázisához. A multi-agent vitában sincs kész válasz: a több párhuzamos agent növelheti az átbocsátóképességet, de a koordináció és a review terhét is, így sok esetben az egyszerűbb, egyetlen agentre építő megoldás a robusztusabb."
+    },
+    {
+      "type": "paragraph",
+      "text": "Érdemes ugyanakkor reálisan látni a korlátokat is. A hosszabb, többlépéses munkamenetekben az agentek még mindig eltévednek, félreértik a szándékot, vagy magabiztosan rossz irányba indulnak; a felügyelet nélküli, végpontig autonóm fejlesztés egyelőre inkább ígéret, mint mindennapi valóság. Így a következő évek igazi tétje nem az, hogy eltűnik-e az ember a folyamatból, hanem hogy hol húzódik a kötelező emberi ellenőrzés határa - és ki felel azért, amit az agent végül beír a kódbázisba."
+    },
+    {
+      "type": "paragraph",
+      "text": "A megbízható, hosszú távú autonómia továbbra is korlátozott, és a felelősség az emberé marad. Így a záró gondolat nem az, hogy a programozás eltűnik, hanem hogy áthelyeződik: a chatablaktól a pull requestig az ember szerepe a közvetlen implementációtól a feladat jó meghatározása, a rendszer megértése, az ellenőrzés és a felelősségvállalás felé mozdult. A programozás nem azért változik, mert nem kell technikai tudás, hanem mert ezt a tudást most máshol kell alkalmazni."
+    }
+  ],
+  "nem-a-chatgpt-volt-a-kezdet": [
+    {
+      "type": "paragraph",
+      "text": "2025 végén egy alig négymilliárd paraméteres modell került fel a Hugging Face-re az ELTE Informatikai Karának műhelyéből. A Racka-4B-t úgy mutatták be: az első magyar érvelő (reasoning) nyelvi modell. A bejelentés joggal keltett figyelmet - de aki csak a címszót olvassa, könnyen azt hiheti, hogy a magyar nyelvtechnológia története néhány éves. Pedig nem az. Az első magyar számítógépes nyelvészeti eredmények bő hat évtizeddel korábbról, egy debreceni szótárból és egy Budapesten épült, szovjet tervekből másolt számítógépből származnak."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ez a cikk azt a hét évtizedet járja végig, amely a korai gépi fordítási kísérletektől a mai magyar nagy nyelvi modellekig vezetett. A történet két dologról szól egyszerre: egy meglepően mély és folytonos szakmai hagyományról, és egy éles törésről, amely épp a jelen LLM-korszakban következett be. Mert miközben a magyar nyelvtechnológia tudása és adatvagyona évtizedeken át halmozódott, a mai csúcsmodellek többsége már nem hazai fejlesztésű alaprendszer, hanem nyílt globális modellek - a Qwen és a Llama - magyar adaptációja. A kérdés, amelyre a végén visszatérünk: új korszak ez, vagy egy régi hagyomány új technológiai rétege?"
+    },
+    {
+      "type": "heading",
+      "text": "„Malaja”, de nem magyar"
+    },
+    {
+      "type": "paragraph",
+      "text": "A hazai gépi nyelvfeldolgozás története nem egy nyelvészeti ötlettel, hanem egy vasdarabbal kezdődik. 1959. január 21-én adták át az M-3-at, az első hazai elektronikus, Neumann-elvű számítógépet, amelyet az MTA Kibernetikai Kutató Csoportja épített Varga Sándor vezetésével, szovjet dokumentáció alapján - a fejlesztők között ott volt a fiatal Dömölki Bálint is. A gép nevében szereplő „M” egyébként nem a „magyar” szóra utal, hanem az orosz „malaja” (kicsi) rövidítése; a dátum ma a magyar informatika napja. Néhány évvel korábban Kozma László a BME-n már megépítette a MESZ-1-et, egy telefonközponti relékből álló, „nulladik generációs” számológépet, amely még nem volt Neumann-elvű. A számítógép tehát megvolt - a kérdés az volt, mire használják."
+    },
+    {
+      "type": "paragraph",
+      "text": "A nyelvészet hamar jelentkezett. 1962-ben indult az MTA Számítóközpontjában a Computational Linguistics című folyóirat, az első hazai számítógépes nyelvészeti szakperiodika, 1964-ben pedig megjelent „A matematikai nyelvészet és a gépi fordítás kérdései” című programadó kötet Kalmár László és Telegdi Zsigmond szerkesztésében. A szerzők és előadók között a kor magyar nyelvészetének és matematikájának színe-java megfordult, Hell Györgytől és Kónyi Sándortól Szépe Györgyön át Kiefer Ferencig. A kötet és a folyóirat a hidegháború tudományos lendületét tükrözte: a gépi fordítás akkoriban nemzetközi nagyprojekt volt, és Magyarország idejekorán beszállt."
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt érdemes az első óvatos pontosítást megtenni, mert a későbbi „elsőség”-állítások végigkísérik majd a történetet. Hell György orosz-magyar gépi fordítási kutatásai valós, de elméleti és részrendszer-szintű munkák voltak - tőmorfémák gépi tárolásáról, elemzési részfeladatokról szóltak -, dokumentált, teljes, működő fordítórendszer azonban nem maradt utánuk. Amikor 1966-ban megjelent a hírhedt amerikai ALPAC-jelentés, amely világszerte visszavetette a gépi fordítás finanszírozását, a hatás Magyarországra is megérkezett: a Számítóközpont gépi nyelvészeti csoportja Dokumentációs Nyelvészeti Csoporttá alakult. A korai lendület megtört, mielőtt teljes rendszerré érett volna."
+    },
+    {
+      "type": "heading",
+      "text": "A szótár, amelyet máig használnak"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ha egyetlen nevet kellene a hazai számítógépes nyelvészet megalapozójaként megnevezni, az Papp Ferencé lenne. A debreceni KLTE professzora az 1960-as években - akkori szóhasználattal „matematikai nyelvészetként” - indította el azt a kutatási irányt, amely a magyar nyelvet számítógéppel, adatként kezelte. Fő műve, A magyar nyelv szóvégmutató szótára 1969-ben jelent meg, és nem akármilyen vállalkozás állt mögötte: Papp az Értelmező Szótár 58 ezer szócikkét dolgozta fel gépi adatelemzéssel, és a teljes, több mint 31 ezer szóból álló főnévi anyagot vizsgálta. A szótár a szavakat fordított betűsorrendben rendezte, így a tövek és toldalékok rendszere áttekinthetővé vált - és az így létrejött adatbázist azóta is, egyre újabb adathordozókra konvertálva, használják a magyar számítógépes szótárépítéshez."
+    },
+    {
+      "type": "paragraph",
+      "text": "Erről a műről gyakran elhangzik, hogy a világ egyik első számítógépes nyelvi szótára volt. A pontos megfogalmazás fontos: az amerikai Brown Corpus 1961-ben, tehát korábban készült el, így az „első” jelző csak részleges - a magyar nyelvre, illetve a nem angol nyelvek között úttörő - értelemben állja meg a helyét. Ettől azonban Papp teljesítménye nem lesz kisebb. Egy agglutináló nyelv morfológiáját évtizedekkel a számítási kapacitás bősége előtt, lyukkártyák korában formalizálni és gépre vinni: ez olyan szemléletet honosított meg, amely a magyar nyelvtechnológia egész további történetét meghatározta."
+    },
+    {
+      "type": "heading",
+      "text": "A morfológia átka és áldása"
+    },
+    {
+      "type": "paragraph",
+      "text": "Hogy miért lett épp a morfológia a magyar NLP tartós központi problémája, az a nyelv szerkezetéből fakad. A magyar a szótőhöz fűzött toldalékokkal fejezi ki a nyelvtani viszonyokat, így egyetlen tőből szóalakok százai keletkezhetnek. Egy angolra szabott rendszer ezzel nem boldogul: ami angolul néhány szó, az magyarul a ragozott alakok beláthatatlan halmaza. A kutatóknak ezért korán rá kellett kényszerülniük a nyelvi szerkezetek pontos, gépi formalizálására - és ez a kényszer egyben a hazai szakértelem motorja is lett."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ennek a szemléletnek a kereskedelmi csúcsa a MorphoLogic volt. A céget 1991-ben alapította Prószéky Gábor, Tihanyi László és társaik, és a következő negyedszázadban a magyar nyelvtechnológia szinte minden gyakorlati terméke innen került ki. A Helyes-e? volt az első széles körben használt magyar helyesírás-ellenőrző, amely a Microsoft Word alá is beépült; a HuMor morfológiai elemző-generátor olyan újrahasználható motor lett, amelyet később emMorph néven nyílt formában is újraírtak. A MoBiMouse, az egérrel előhívható azonnali szótár 1999-ben EU IST Prize-jelölést kapott, a MetaMorpho pedig a cég állítása szerint az első működő magyar gépi fordító rendszer volt. A HuMor leíró formalizmusát egyébként hét másik nyelvre - a lengyeltől a spanyolig -, sőt kis uráli nyelvekre (komi, udmurt, manysi, nyenyec, nganaszan) is alkalmazták, a MorphoLogicból kivált Kilgray pedig a memoQ-val nemzetközi fordítószoftver-sikert ért el."
+    },
+    {
+      "type": "paragraph",
+      "text": "A MorphoLogic 2017-ben megszűnt, és a kereskedelmi mérlegével érdemes óvatosan bánni - de a felhalmozott tudás nem veszett el, hanem az NYTK és a PPKE felé vándorolt. És van egy mélyebb tanulság is. A morfológiai elemzés problémája soha nem tűnt el; csak nevet váltott. Amit a kilencvenes években morfológiának hívtak, az ma a tokenizálás és a fertilitás kérdéseként tér vissza: egy angolra optimalizált tokenizáló a magyar szavakat sok apró töredékre vágja, ami hosszabb, drágább és gyengébb feldolgozást jelent. A mai magyar LLM-ek egyik legfontosabb finomhangolása éppen a tokenizáló magyarra igazítása - vagyis ugyanaz a probléma, amellyel Papp és a MorphoLogic is birkózott, csak más technológiai rétegben."
+    },
+    {
+      "type": "heading",
+      "text": "A láthatatlan évtized: korpuszok"
+    },
+    {
+      "type": "paragraph",
+      "text": "A kétezres évek a magyar NLP „láthatatlan”, de talán legfontosabb korszaka. Ekkor épültek azok a nyelvi erőforrások, amelyek nélkül a mai modellek elképzelhetetlenek lennének - csakhogy egy korpusz építése nem látványos, és nem is gyors. A Szegedi Tudományegyetemen Csendes Dóra, Csirik János, Gyimóthy Tibor és társaik létrehozták a Szeged Korpuszt és a Szeged Treebanket, máig a legnagyobb kézzel annotált magyar nyelvi adatbázist. Az MTA Nyelvtudományi Intézetében Váradi Tamás vezetésével épült a Magyar Nemzeti Szövegtár, a nyelv kiegyensúlyozott referenciakorpusza. A BME Média Oktató és Kutató Központjában Kornai András köréből olyan nyílt eszközök születtek, mint a hunmorph, a Hunglish párhuzamos korpusz és a Magyar Webkorpusz - és innen ered a Hunspell, amelyet ma a világ böngészőinek és irodai programjainak jó része használ helyesírás-ellenőrzésre."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ez a korszak adta a közösséget is. 2003 óta rendezik Szegeden a Magyar Számítógépes Nyelvészeti Konferenciát (MSZNY), amely azóta a hazai szakma éves seregszemléje - és, mint látni fogjuk, a legújabb modellek bemutatkozásának színtere. Az olyan integrált elemzőláncok, mint a magyarlanc, vagy az olyan statisztikai eszközök, mint a HunPos, ekkor tették a magyart géppel jól feldolgozható nyelvvé."
+    },
+    {
+      "type": "paragraph",
+      "text": "Aki ma egy magyar LLM-et tanít, az ezeknek a kézzel annotált adatoknak és nyílt eszközöknek az örököse - akkor is, ha erről a modellkártya nem ejt szót."
+    },
+    {
+      "type": "paragraph",
+      "text": "A szöveg mellett a beszéd is külön ágat hajtott - olyat, amely megérdemelne egy önálló cikket. A BME-n már a hetvenes években elkezdődött a magyar beszédkutatás Gordos Géza vezetésével, később Olaszy Gábor és Németh Géza munkájával; ebből nőtt ki a MultiVox és a ProfiVox beszédszintézis, majd a magyar beszédfelismerés első adatbázisai Vicsi Klára és mások jóvoltából. A beszédtechnológia a maga útján járta be ugyanazt az ívet a szabályalapú megoldásoktól a mély neurális modellekig - a most következő nagy nyelvi modellek története azonban elsősorban a szövegé."
+    },
+    {
+      "type": "heading",
+      "text": "Az első erős magyar agy: a huBERT"
+    },
+    {
+      "type": "paragraph",
+      "text": "A 2010-es évek közepén a magyar NLP is belépett a neurális korszakba: megjelentek a word2vec és fastText szóbeágyazások, amelyek a szavakat sűrű vektorokként ábrázolták, és a nyelvi jelentés egy részét számszerűsíthetővé tették. A valódi fordulópont azonban 2018 után jött, a Google BERT-architektúrájával, amely a szöveget kontextusában értő modelleket hozott. Magyarul ennek az iránynak a kulcsfigurája Nemeskey Dávid Márk lett, aki előbb a magyar nyelvmodellezés benchmark-korpuszait (emLam) és a kilencmilliárd tokenes Webcorpus 2.0-t építette meg, majd 2021-ben bemutatta a huBERT-et."
+    },
+    {
+      "type": "paragraph",
+      "text": "A huBERT az első magyar BERT-modell volt: 110 millió paraméteres, nulláról, magyar szövegen tanított kontextuális encoder, amely a magyar névelem-felismerésben és más megértési feladatokban felülmúlta a soknyelvű mBERT-et. Apró, de jellemző részlet, hogy a tokenizálója megtartotta az ékezeteket - vagyis a magyar nyelv sajátosságait komolyan vette. Fontos azonban tisztában lenni azzal, mit tud egy ilyen modell: a BERT-jellegű encoder megértésre, osztályozásra, kinyerésre való, nem folyékony szöveg írására. A huBERT nem chatelt és nem fogalmazott - de értett, és ez akkoriban önmagában áttörés volt. A generatív robbanás csak ezután következett."
+    },
+    {
+      "type": "heading",
+      "text": "Jönnek a nagyok - és az elsőség csapdái"
+    },
+    {
+      "type": "paragraph",
+      "text": "2023 a magyar generatív modellek éve volt. Az NYTK és a Digitális Örökség Nemzeti Laboratórium műhelyéből, Yang Zijian Győző, Laki László és Ligeti-Nagy Noémi köréből érkezett a PULI-GPT-3SX, amelyet GPT-NeoX architektúrán, nulláról, 32 milliárd kizárólag magyar szón tanítottak, 6,7 milliárd paraméterrel. Ez volt az első olyan magyar nagy nyelvi modell, amely teljes egészében magyar adatból, a semmiből épült. A PULI-GPTrio ezt egészítette ki egy háromnyelvű - magyar-angol-kínai - változattal, a márka neve pedig a magyar pulikutyára utal."
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt válik élessé az „első magyar GPT-3” kérdése, mert több, egymással versengő állítás létezik. A HILANCO-GPTX-et - egy kétnyelvű, szintén 6,7 milliárdos modellt az NYTK és a pécsi egyetem együttműködéséből - úgy jelentették be, mint az első GPT-3 típusú magyar modellt. A PULI-GPT-3SX viszont az első kizárólag magyaron, nulláról tanított GPT-3. Mindkét állítás igaz - a saját, pontosan körülírt értelmében. Ez a nyelvtechnológiai „elsőségek” visszatérő tanulsága: szinte mindig számít, hogy magyar fejlesztésű vagy magyar nyelvű, nulláról tanított vagy továbbtanított, kutatási prototípus vagy nyilvános termék, encoder vagy generatív rendszerről van-e szó."
+    },
+    {
+      "type": "paragraph",
+      "text": "A korszak legnagyobb - és egyben legtanulságosabb - vállalkozása az OTP magyar nyelvi modell programja. A bank 2021 végén, állami támogatással és a SambaNova Systems technológiájával indította el a projektet, dedikált, 7,3 milliárd forintos szuperszámítógéppel, amelyet 2022 elején adtak át. Az ebből született OTP-13B egy 13 milliárd paraméteres, kétnyelvű modell, amelyet a 84 milliárd tokenes Webcorpus3-on és ugyanannyi angol adaton tanítottak. Méretét tekintve ez a legnagyobb magyar fókuszú modell - csakhogy nem nyilvános. Súlyai nem érhetők el, teljesítménye függetlenül nem ellenőrizhető. Van ebben valami sokatmondó: a legnagyobb magyar modell egyben a leginkább láthatatlan is."
+    },
+    {
+      "type": "heading",
+      "text": "A fordulat: a nulláról tanítástól az adaptációig"
+    },
+    {
+      "type": "paragraph",
+      "text": "2024-től a magyar LLM-fejlesztés iránya megváltozott, és ez a cikk egyik központi állítása. A nulláról tanított modellek helyét egyre inkább a nyílt globális alapmodellek magyar adaptációja vette át. Az első jel a PULI LlumiX 32K volt: egy Llama-2-7B-re épülő, magyar szövegen továbbtanított, 32 ezer tokenes kontextusú modell, amely már instrukciókat is követett - vagyis kérdésekre válaszolt, nem csak szöveget folytatott. Hasonló úton járt a SambaNova SambaLingo-Hungarianje (Llama-2 plusz 59 milliárd token magyar adat), majd 2025-ben a PULI-LlumiX-Llama-3.1 és a Qwen 2.5-re épülő PULI Trio Q, az első magyar fókuszú chat-modellek."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ebbe a sorba illeszkedik a Racka-4B is, amellyel a cikket kezdtük. A modell - amelynek neve a „Regionális Adatokon Célzottan Kialakított Alapmodell” kifejezésből ered - a Qwen3-4B érvelő változatára épül, és LoRA-alapú folytatólagos előtanítással, 160 milliárd tokenen készült az ELTE és a DH-LAB közös munkájában. Valódi eredmény: magyar feladatokon nagyjából a kétszer akkora, 8 milliárdos modellek szintjén teljesít, miközben gyorsabb, és az MSZNY 2026 konferencián a legjobb publikációnak választották. De a pontos kép itt is árnyaltabb a címszónál. Az „első magyar érvelő modell” érvelési képessége nagyrészt a Qwen3 alapmodelltől örökölt, a belső gondolatmenet pedig részben angolul zajlik. A Racka tehát nem a semmiből tanult meg gondolkodni - egy meglévő képességet adaptált magyarra, ügyesen."
+    },
+    {
+      "type": "paragraph",
+      "text": "Hogy miért az adaptáció és nem a nulláról tanítás lett a fő irány, azt nagyrészt az infrastruktúra magyarázza. A hazai akadémiai LLM-tanítás gerince a debreceni Komondor szuperszámítógép, amely 2022-2023-ban állt üzembe, és nagyjából 264 darab NVIDIA A100 GPU-val mintegy 6 petaflops teljesítményt nyújt. Ez tekintélyes kapacitás - de a kártyák 40 gigabájtosak, és az összeköttetésük sávszélessége korlátozott, ami épp a legnagyobb modellek nulláról tanítását teszi nehézzé. Nem véletlen, hogy a Racka csapata a LoRA-t és a továbbtanítást választotta a from-scratch megközelítés helyett: a módszert itt a rendelkezésre álló hardver alakította. Sőt, maga a PULI-márka is bejárta ezt az utat - a nulláról tanított GPT-3SX-től a Llama- és Qwen-alapú adaptációkig."
+    },
+    {
+      "type": "heading",
+      "text": "Mit mérünk, amikor magyart mérünk?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Egy modell csak annyit ér, amennyit mérni tudunk belőle - és a magyar nyelvű kiértékelés külön történet. Az NYTK 2022-ben mutatta be a HuLU-t (Hungarian Language Understanding), a nemzetközi GLUE és SuperGLUE mintájára épített magyar nyelvmegértési benchmarkot, olyan altaszkokkal, mint a HuCoPA, a HuSST vagy a HuRTE. A HuLU elsősorban a megértést méri, és a tesztcímkéket szándékosan visszatartják, hogy a modelleket ne lehessen „rátanítani” a mérőszámra."
+    },
+    {
+      "type": "paragraph",
+      "text": "A generatív modellek korában azonban más kérdések merülnek fel, és ezekre az OpenHuEval próbál választ adni - egy 2025-ös, kifejezetten magyar-specifikus LLM-benchmark, amely valós internetes kérdéseken, magyar közmondásokon és kultúraspecifikus feladatokon teszteli a modelleket, jórészt „LLM-as-judge” módszerrel, vagyis egy másik nyelvi modell pontozásával. Ez gyorsabb és skálázhatóbb, de torzíthat is. És itt érdemes józannak maradni: a benchmarkokat fenyegeti a kontamináció (ha a tesztanyag bekerül a tanítóadatba) és az értékelő modell elfogultsága is. A magyar nyelvi kompetencia mérése tehát maga is nyitott kutatási probléma - nem lezárt ügy."
+    },
+    {
+      "type": "heading",
+      "text": "Szuverenitás vagy autarkia?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A magyar LLM-ek körüli közbeszéd egyik visszatérő szava a „szuverenitás”. De mit jelenthet ez egy közepes erőforrású nyelv esetében? Ha teljes hazai önellátást - saját alapmodell, saját tokenizáló, saját infrastruktúra, minden idegen függőség nélkül -, akkor a cél irreális és pazarló. A nagy nyelvi modellek fejlesztése globális vállalkozás; egy magyar méretű nyelvközösségnek minden alapmodellt a semmiből felépíteni nemcsak megfizethetetlen, de értelmetlen is, amikor a nyílt Qwen és Llama adaptálása gyorsabb és jobb eredményt ad. A szuverenitás értelmesebb olvasata nem az autarkia, hanem a hozzáférés, a kompetencia és az ellenőrizhetőség: hogy legyen saját, ellenőrzött korpuszunk, tokenizálónk, benchmarkunk és infrastruktúránk, és hogy értsük, mit és hogyan építünk."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ebből a szempontból a magyar nyelvtechnológia helyzete egyszerre erős és törékeny. Erős, mert a Papp Ferenc óta felhalmozott adat- és tudásvagyon valódi - a kézzel annotált korpuszok, a nyílt morfológiai eszközök, a benchmarkok és a működő kutatói közösség nélkül a mai modellek nem léteznének. És itt érdemes eloszlatni egy tévhitet: a nyelvészek nem lettek feleslegesek az LLM-korszakban. Épp ellenkezőleg - a jó tanítóadat, a megbízható benchmark és a magyar nyelvi minőség értékelése felértékelte a szerepüket. Törékeny viszont a helyzet azért, mert a legnagyobb hazai modell zárt, a csúcsmodellek külső alapokra épülnek, és a számítási kapacitás is szűkös."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kapacitás kérdésében van mozgás. A Komondor mellé a KIFÜ a 20 petaflopsos Leventét tervezi, 2026 szeptemberétől pedig nyolc egyetemen indul mesterséges intelligencia mesterszak, részben épp erre az infrastruktúrára építve - vagyis a rendszer az utánpótlásra és a kapacitásra is figyel. A nyitott kérdés az, hogy ez a kapacitás saját, ellenőrizhető nyelvtechnológiát épít-e, vagy elsősorban a globális modellek fogyasztását teszi hatékonyabbá. A kettő nem zárja ki egymást, de nem is ugyanaz."
+    },
+    {
+      "type": "paragraph",
+      "text": "A történet íve mindenesetre világos. A magyar nyelvtechnológia nem a ChatGPT-vel kezdődött, és nem is a PULI-val: egy 1969-es szótárral és egy oroszból másolt számítógéppel indult, és máig tart. A folytonosság azonban nem egy megszakítatlan intézményi vonalban él tovább, hanem a felhalmozott adatban, eszközben és tudásban. Papp Ferenc szóvégmutató szótárát máig használják a magyar szótárépítéshez - hatvan év, néhány paradigmaváltás és egy érvelő modell távolságában. Ez a leghosszabb, és talán a legfontosabb magyar nyelvi adatlánc."
+    }
+  ],
+  "nem-az-ai-okozta-a-valsagot-lathatova-tette": [
+    {
+      "type": "heading",
+      "text": "Executive summary"
+    },
+    {
+      "type": "paragraph",
+      "text": "A következő hét pont a cikk gerincét foglalja össze. Mindegyik mögött ott a részletes kifejtés és a hivatkozott forrás."
+    },
+    {
+      "type": "paragraph",
+      "text": "1. A válságérzet valós, de nem egy okú. A gazdasági lassulás, a globális tech-leépítés, az AI-termelékenységi várakozás, a juniorfeladatok automatizálódása, a címek inflációja és a bérstagnálás együtt hatnak. Az AI a leglátványosabb gyorsító, nem az egyetlen kiváltó ok."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. A juniorpiac mérhetően szűkült. A nagy techcégeknél a pályakezdők aránya az új belépők 7%-ára esett 2024-ben (−25% év/év, a járvány előtti szint fele alatt). Harvard- és Stanford-kutatások a generatív AI-t adoptáló cégeknél éles junior-felvételi visszaesést mérnek, miközben a senior felvételek szintje stabil."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. A senioritás részben bérsávvá és alkucímkévé vált. A „senior” ma sok helyen jövedelemkategória, nem szakmai garancia. A valódi senioritás mérőszáma nem az évek száma, hanem az ownership, a tradeoff-kezelés és a production-felelősség."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Az AI-produktivitásról egymásnak ellentmondó bizonyítékok vannak. A PwC szerint az AI-exponált iparágakban négyszereződött a termelékenységnövekedés és 56%-os bérprémium jár az AI-készségekért. Ugyanakkor a METR randomizált kísérlete szerint tapasztalt fejlesztők érett kódbázison 19%-kal lassultak az AI-tól - miközben 24%-os gyorsulást vártak."
+    },
+    {
+      "type": "paragraph",
+      "text": "5. A fejlesztők használják, de nem bíznak az AI-ban. A Stack Overflow 2025-ös felmérésében a fejlesztők 84%-a használ AI-t, de 46%-uk nem bízik a kimenet pontosságában (egy éve 31%), és 66%-uk több időt tölt a „majdnem jó” kód javításával."
+    },
+    {
+      "type": "paragraph",
+      "text": "6. Az ingyenes AI marad, a komoly AI viszont mért erőforrás lesz. A GitHub Copilot 2026 júniusától token-alapú, usage-based elszámolásra vált; a fejlett modellek 5-20× szorzóval fogyasztanak. Az inferencia ára közben drámaian esett (280× GPT-3.5-szinten), de a nehéz, ágens jellegű terhelés ott válik költségessé, ahol a valódi leverage van."
+    },
+    {
+      "type": "paragraph",
+      "text": "7. A magyar piac különösen érzékeny. Sok munka költségoptimalizált delivery- és service-center-logikában érkezett ide. Erős forint, választási év, lassuló reálbérek (2025-ben minden negyedik magyar dolgozó reálbére csökkent) - a globális trendek gyorsan begyűrűznek egy kis piacra."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nem az AI okozta a válságot. Láthatóvá tette. Piaci körkép a magyar IT-szakma jelenlegi állapotáról - abból a fajtából, amelyik nem panaszokat számol össze, hanem mintázatot keres."
+    },
+    {
+      "type": "paragraph",
+      "text": "Bevezető: szétszórt panaszok vagy piaci mintázat?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ha az ember mostanában végigolvas néhány magyar IT-s beszélgetést - Reddit-threadeket, fórumposztokat, szakmai csoportokat -, ugyanazok a motívumok térnek vissza újra és újra. Nehéz a junior belépés. Nyomás van az AI miatt. A senior cím egyre kevesebbet mond. A LinkedIn és a recruiter-megkeresések zajosak és hiteltelenek. A bérek stagnálnak vagy az infláció alatt nőnek. Az interjúfolyamatok többkörösek és kiszámíthatatlanok. A transzparencia gyenge. És sokakból árad egy nehezen megfogható morálromlás: a munka öröme és a szakmai státusz egyszerre sérült."
+    },
+    {
+      "type": "paragraph",
+      "text": "Az egyik kommentelő egyetlen mondatban összefoglalta a hangulatot: mintha az egész szakma kapott volna egy pofont. Elsőre ezek szétszórt, egyéni panaszoknak tűnhetnek. Együtt olvasva azonban valami mást adnak ki: egy piaci mintázatot, amelyben több, egymástól független erő találkozik ugyanabban az időablakban."
+    },
+    {
+      "type": "label",
+      "text": "MÓDSZERTANI MEGJEGYZÉS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ez a cikk nem reprezentatív kutatásként kezeli ezeket a beszélgetéseket, hanem kvalitatív piaci hőmérőként. A threadek hangulatot, ismétlődő narratívákat, félelmeket és percepciókat mutatnak - nem statisztikát. A cél az, hogy ezeket nemzetközi adatokkal és kutatásokkal összeolvasva adjunk piaci körképet. A szövegben végig megkülönböztetem, mit támaszt alá adat, mit látunk a piaci beszélgetésekből, és mi pusztán elemzői hipotézis."
+    },
+    {
+      "type": "paragraph",
+      "text": "A fő tézis egyszerű: a magyar IT-szakma válságérzete nem magyarázható egyetlen tényezővel. Az AI csak az egyik - igaz, nagyon látványos - gyorsító. Egyszerre hat a gazdasági lassulás, a globális tech-hiring lehűlése, az AI okozta termelékenységi várakozás, a juniorfeladatok automatizálódása, a senioritási címek inflációja, a service-center-modell sérülékenysége, a bérstagnálás, a gyenge recruitment-transzparencia és a tudásmunka mérésének régóta megoldatlan bizonytalansága. A cikk nem AI-ellenes és nem is technooptimista. Az AI valóban gyorsít bizonyos munkákat; a fejlesztők egy része tényleg produktívabb lesz tőle; a belépőszintű és rutinfeladatok viszont sérülékenyebbé válnak; a rossz szervezetekben pedig az AI nem megoldja, hanem felnagyítja a meglévő problémákat."
+    },
+    {
+      "type": "heading",
+      "text": "1. A lehűlés és az aranykor vége"
+    },
+    {
+      "type": "paragraph",
+      "text": "A mostani hangulat csak az előző évtized fényében érthető. A 2010-es évek és a Covid utáni időszak a tech-hiring túlfűtött korszaka volt: digitalizációs hullám, sorra nyíló service centerek, outsourcing, távmunka, és egy olyan munkaerőpiac, ahol a fejlesztői láthatóság szinte garantálta a kereslet figyelmét. Ez az időszak a 2022 utáni kamatkörnyezettel ért véget. Megdrágult a tőke, a befektetők megtérülést kezdtek várni, és a tech-szektor a növekedés helyett a költségfegyelem nyelvét tanulta meg."
+    },
+    {
+      "type": "paragraph",
+      "text": "A számok ezt alátámasztják. A Challenger, Gray & Christmas adatai szerint az Egyesült Államokban 2025-ben több mint 806 ezer bejelentett leépítés volt - a legmagasabb érték 2020 óta -, és a tech-szektort érintette a legkeményebben, önmagában több mint 89 ezer leépítéssel. Ez nem egyetlen rossz negyedév, hanem egy több éve tartó újrakalibrálás. Fontos azonban a számokat kontextusban olvasni: ezeknek a leépítéseknek csak egy része köthető közvetlenül az AI-hoz, nagyobb hányaduk a kamatkörnyezet, a túlzott pandémiás felvétel korrekciója és az általános költségfegyelem következménye."
+    },
+    {
+      "type": "paragraph",
+      "text": "Magyarország ebben a rendszerben sajátos szerepet töltött be: költségoptimalizált, de jó minőségű delivery-helyszín volt. A nyugati piacokhoz képest olcsóbb, de elég képzett munkaerő ideális célponttá tette a globális cégek számára. Ez a modell pontosan addig működik jól, amíg a nyugati „drága core” és a kelet-európai „olcsóbb delivery” közti különbség elég nagy. Ha ez a rés szűkül - erős forint, lassuló reálbérek, vagy épp egy olyan technológia, amellyel kevesebb emberrel is elvégezhető ugyanaz a munka -, a modell sebezhetővé válik."
+    },
+    {
+      "type": "paragraph",
+      "text": "A magyar makrokép ezt árnyalja. A KSH szerint 2025-ben a fogyasztói árak átlagosan 4,4%-kal nőttek, miközben 2026 elejére az infláció már 2% közelébe süllyedt egy választási évben. Az ipari termelés viszont 3,2%-kal elmaradt az előző évitől - a feldolgozóipar 13 alága közül mindössze kettőben nőtt a kibocsátás, és a leglátványosabban épp a számítógép-, elektronikai és optikai termékek gyártásában (+14,5%). A kép tehát nem egyöntetűen sötét: vannak technológiai szigetek, ahol erős a húzóerő. De a tágabb munkaerőpiaci hangulat borús."
+    },
+    {
+      "type": "label",
+      "text": "ADAT"
+    },
+    {
+      "type": "paragraph",
+      "text": "Hays Hungary Salary Guide 2026: a hazai munkaerőpiaci szereplők több mint 70%-a borúlátó a következő 2-5 évvel kapcsolatban, és csak minden tizedik optimista. A bérek 2025-ben érezhetően lassabban nőttek: a leggyakoribb emelés 6-10% volt, de sokan csak 2,5-5%-ot kaptak, és a 10% feletti emelések aránya drasztikusan visszaesett."
+    },
+    {
+      "type": "paragraph",
+      "text": "Érdemes feltenni a kérdést, amelyet a piac maga is feszeget: válság van, vagy csak normalizálódik egy korábbi, természetellenesen túlfűtött időszak? A becsületes válasz: részben mindkettő. A 2021-es tempóhoz képest ez kétségtelenül lehűlés. Egy hosszabb történelmi átlaghoz mérve viszont inkább visszatérés a földre. A probléma az, hogy a lehűlés és az AI okozta strukturális átrendeződés egyszerre érkezett - és a kettő együtt sokkal nyugtalanítóbb, mint külön-külön lenne."
+    },
+    {
+      "type": "heading",
+      "text": "2. Az AI mint gyorsító, nem egyetlen ok"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az AI szerepét akkor értjük félre a leginkább, ha vagy mindenért őt okoljuk, vagy mindentől megváltjuk. A pontosabb olvasat: az AI önmagában nem okozza a válságérzetet, hanem felgyorsít minden korábbi nyomást. Ahol már eddig is feszült volt a juniorpiac, ott most láthatóbban feszül. Ahol már eddig sem tudták mérni a fejlesztői munkát, ott most még gyorsabban mérik rosszul."
+    },
+    {
+      "type": "paragraph",
+      "text": "A háttér valós és nagy léptékű. A Stanford 2025-ös AI Indexe szerint a vállalati AI-beruházások globálisan elérték a 252 milliárd dollárt, a szervezeti adoptáció pedig 78%-ra ugrott egyetlen év alatt (a korábbi 55%-ról). A vállalatok tehát nemcsak kíváncsiak az AI-ra, hanem termelékenységi nyereséget is várnak tőle - és ez a várakozás önmagában is átírja a felvételi és bérdöntéseket."
+    },
+    {
+      "type": "paragraph",
+      "text": "A munkavállalói tapasztalat azonban kettős. A Stack Overflow 2025-ös fejlesztői felmérésében a válaszadók 84%-a használ vagy tervez használni AI-eszközöket (egy éve 76%) - vagyis az adoptáció vitathatatlan. Ugyanakkor a bizalom ezzel együtt zuhant: a fejlesztők 46%-a nem bízik az AI-kimenet pontosságában (egy éve csak 31% volt ennyire szkeptikus), és mindössze 3% mondja, hogy „erősen megbízik” benne. A legtapasztaltabb fejlesztők a legóvatosabbak. A leggyakoribb frusztráció (a válaszadók 45%-ánál) a „majdnem jó, de mégsem” megoldás, amely a hibakeresést időigényesebbé teszi; a fejlesztők 66%-a több időt tölt a majdnem jó AI-kód javításával. Tízből heten továbbra is inkább embertől kérnének segítséget, ha nem bíznak az AI válaszában."
+    },
+    {
+      "type": "label",
+      "text": "EGYMÁSNAK ELLENTMONDÓ BIZONYÍTÉKOK"
+    },
+    {
+      "type": "paragraph",
+      "text": "Optimista oldal - PwC 2025 Global AI Jobs Barometer: az AI-nak leginkább kitett iparágakban (pénzügy, szoftverkiadás) a termelékenységnövekedés közel megnégyszereződött 2022 óta, és az AI-készségekért átlagosan 56%-os bérprémium jár (egy éve még 25% volt)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Szkeptikus oldal - METR randomizált kontrollált kísérlet (2025): 16 tapasztalt open-source fejlesztő, 246 feladat, érett kódbázisokon. A fejlesztők 24%-os gyorsulást vártak az AI-tól, utólag is 20%-ot becsültek - valójában 19%-kal lassultak vele. Okok: alacsony megbízhatóság (a javaslatok kevesebb mint 44%-át fogadták el), validációs teher, kontextusváltási költség."
+    },
+    {
+      "type": "paragraph",
+      "text": "Egyik adat sem hamis, és nem is állnak feltétlenül ellentmondásban. A PwC iparági szintű, mintegy egymilliárd álláshirdetésen alapuló elemzés; a METR pedig szűk, mély, mérnöki kísérlet érett kódbázisokon. A METR korlátait maguk a szerzők is hangsúlyozzák: kis minta, a fejlesztők nagyon jól ismerték a saját projektjüket, és a 2025 eleji eszközöket tesztelték - azóta sokat fejlődtek a kódoló ágensek. A két eredmény mégis ugyanarra figyelmeztet: az AI nem egyenletesen gyorsít. Új, jól körülhatárolt feladaton, boilerplate-en, prototípuson nagy a nyereség; érett, összetett, magas validációs igényű rendszerben viszont a haszon eltűnhet, sőt negatívvá válhat."
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt kerül a középpontba egy fontos megkülönböztetés, amely a piaci beszélgetésekben is kikristályosodott: az AI-literate engineer és a vibe coder különbsége. Az előbbi tudja, mit akar, eszközként használja az AI-t, reviewzik, validál, és felelősséget vállal a kódjáért. Az utóbbi elfogadja, amit az AI generál, anélkül, hogy értené. A Stack Overflow felmérésében a fejlesztők 72%-a nem nevezi vibe codingnak a munkáját - vagyis a szakma nagy része máris ösztönösen védi ezt a határt. A menedzsment azonban gyakran nem látja a különbséget a hasznos AI-asszisztencia és a kontrollálatlan slopgyártás között. És itt van a kulcs: a rossz szervezetekben az AI nem megoldja, hanem felerősíti a meglévő bajokat - a jó szervezetekben viszont valódi mérnöki leverage."
+    },
+    {
+      "type": "heading",
+      "text": "3. A juniorpálya beszűkülése és a belépőszint „seniorizálódása”"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ha van pont, ahol a piaci hangulat és a kemény adat a leginkább egybecseng, az a juniorpiac. A belépőszintű pozíciók megritkultak, és pont azokat a feladatokat - a régi „droidmunkát”, az egyszerű ticketeket, a CRUD-ot, a tesztírást, a dokumentációt - automatizálja vagy gyorsítja az AI, amelyeken a juniorok korábban tanultak."
+    },
+    {
+      "type": "paragraph",
+      "text": "A SignalFire elemzése szerint a nagy techcégeknél a friss diplomások aránya az új belépők mindössze 7%-ára esett 2024-ben: ez 25%-os visszaesés egyetlen év alatt, és több mint 50%-os csökkenés a járvány előtti, 2019-es szinthez képest. A startupoknál a pályakezdők aránya 30%-ról (2019) 6% alá zuhant. Egy harvardi kutatás 62 millió LinkedIn-profil és 200 millió álláshirdetés alapján „senioritás-torzított” változást mutat ki: a generatív AI-t adoptáló cégeknél a junior felvételek élesen visszaesnek, miközben a senior felvételek szintje stabil marad - és ezt elsősorban a lassuló felvétel okozza, nem a kirúgások. Egy stanfordi munkapaper a 22-25 évesek 13%-os relatív foglalkoztatási visszaesését dokumentálja az AI-exponált foglalkozásokban."
+    },
+    {
+      "type": "label",
+      "text": "SZÁMOK KONTEXTUSBAN - ÓVATOSAN!"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az amerikai BLS-adatok szerint a „programozó” (programmer) foglalkozásban 27,5%-os foglalkoztatási visszaesés volt 2023 és 2025 között - a „szoftverfejlesztő” (software developer) kategóriában viszont mindössze 0,3%. A két szám nem mond ellent egymásnak: különböző foglalkozási kategóriákról van szó. Ez jó emlékeztető arra, hogy egyetlen drámai számra ne építsünk teljes narratívát; a kategóriahatárok és a definíciók sokat számítanak."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ehhez a strukturális paradoxonhoz vezet: a piac seniorokat akar, miközben lebontja azt a gyakorlóterepet, amelyből seniorok lesznek. Ha senki nem vesz fel juniort, honnan lesznek öt év múlva seniorok? Rövid távon a cégeknek mégis csábítóbb a kevesebb, de tapasztaltabb ember plusz AI-asszisztens. Ez nem kizárólag magyar probléma - az indiai IT-szolgáltatók 20-25%-kal csökkentették a belépőszintű szerepeket -, de Magyarországon különösen fájhat, épp a költségoptimalizált delivery-örökség miatt."
+    },
+    {
+      "type": "paragraph",
+      "text": "A piaci beszélgetések egy mélyebb réteget is megvilágítanak, amely a puszta foglalkoztatási adatból nem látszik: a tanulás és a delivery szétválik. Azok a juniorok és mediorok, akik bent vannak, sem feltétlenül fejlődnek egészségesen, mert a munkahelyi környezet nem azt mondja, hogy „értsd meg, építs szakmai intuíciót”, hanem azt, hogy „legyen kész, AI-val, gyorsan”. A régi modellben a junior unalmas, de tanulságos feladatokon keresztül tanulta meg a rendszert. Ha pont ezeket automatizáljuk, marad a gyors szállítás - és elmarad a mély értés. Ez nem egyszerűen az, hogy „a junior nem kap állást”; ez egy szakmai utánpótlási válság."
+    },
+    {
+      "type": "paragraph",
+      "text": "Az elvárások emellett strukturálisan átrendeződnek. A PwC szerint az AI-exponált foglalkozásokban a keresett készségek 66%-kal gyorsabban változnak, mint korábban, és a formális diploma iránti igény is csorbul (az AI által kiegészített munkáknál 66%-ról 59%-ra esett a diplomát igénylők aránya). A WEF Future of Jobs 2025 szerint a kulcskészségek 39%-a átalakul 2030-ig. A régi karrierlétra - junior, medior, senior - nem eltűnik, hanem összenyomódik: a belépőszinten egyre több önállóságot, kommunikációt és ítélőképességet várnak el. Magyarul: a junior szereptől ma részben azt kérik, amit régen a mediortól."
+    },
+    {
+      "type": "heading",
+      "text": "4. Senioritás-infláció és a címek értékvesztése"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ha a belépőszint felfelé csúszik, a hierarchia teteje sem marad érintetlen. A piaci beszélgetésekben visszatérő felismerés, hogy a „senior” cím sok helyen már nem szakmai garancia, hanem bérsáv és alkucímke. Egy cég azért nevez valakit seniornak, mert egy bizonyos fizetési kategóriába sorolja - nem feltétlenül azért, mert az illető production-szinten felelős rendszerekért."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ennek két iránya van, és érdemes mindkettőt komolyan venni. Egyrészt valódi címinfláció zajlik: a régi senior ma sok helyen staff, principal vagy architect, mert a „senior” devalválódott. Másrészt vannak fiatal seniorok, akik részben tényleg gyorsabb tanulási pályán mozognak - az AI, a jobb tananyagok és a sűrűbb visszacsatolás mellett három-négy év alatt összeszedhető olyan tudás, amihez korábban több kellett. A két jelenség keveredik, és pont ezért nehéz a címből bármit kiolvasni."
+    },
+    {
+      "type": "label",
+      "text": "MAGYAR BÉRSÁVOK 2026 (HAVI BRUTTÓ, TÁJÉKOZTATÓ BENCHMARK)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Junior fejlesztő: kb. 700 000-1 000 000 Ft · Senior fejlesztő: 1 750 000-2 100 000 Ft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Senior Data Scientist / Data Engineer: kb. 2 000 000 Ft · Senior ML Engineer: kb. 2 100 000 Ft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Lead / Architect: kb. 2 300 000-2 500 000 Ft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Forrás: Hays Salary Guide 2026 és Fizetesek.com 2026-os benchmark. Összevetésül: a KSH szerint 2025 decemberében a teljes munkaidős bruttó mediánkereset 607 700 Ft volt; az IKT a kiemelkedő keresetű ágazatok közé tartozik."
+    },
+    {
+      "type": "paragraph",
+      "text": "A bérsávok közti nagy ugrások önmagukban is ösztönzik a címinflációt: a junior és a senior sáv közötti több mint kétszeres különbség mellett bőven van tér arra, hogy a cégek a címmel manőverezzenek a bér helyett - vagy fordítva. Ez azonban nem oldja meg az alapproblémát: az évek száma rossz mérőszám. A valódi senioritás nem azonos a ledolgozott idővel. Ownership, tradeoff-érzék, production-felelősség, stakeholder-kezelés, mentorálás, mély rendszerismeret - ezek a tényleges jelek. Az a senior, aki nem ír kódot, hanem megakadályozza, hogy rossz rendszer épüljön, gyakran többet ér, mint az, aki sokat commitol. A bajt nem maga az infláció okozza, hanem hogy a piacnak nincs jó nyelve a valódi senioritás kifejezésére - és ezt a hiányt az AI csak felerősíti, mert a puszta kódírás értéke csökken, a döntésé pedig nő."
+    },
+    {
+      "type": "heading",
+      "text": "5. Recruitment-zaj, LinkedIn és információs aszimmetria"
+    },
+    {
+      "type": "paragraph",
+      "text": "A munkaerőpiac nemcsak szűkebb lett, hanem zajosabb is. A piaci beszélgetések egyik legindulatosabb vonulata épp az álláskeresési infrastruktúra széteséséről szól. Juniornak tagelt hirdetések, amelyek közepén derül ki, hogy seniort keresnek. Bérsáv nélküli megkeresések. Kulcsszó-alapú recruiter-outreach, amely nem a jelöltet szolgálja, hanem a reach-et. A LinkedIn-szűrő junior beállítással is 10+ éves director- és architect-pozíciókat dob fel."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ez egy rejtett költséget ró a jelöltre: a kevés valódi belépő pozíció mellett előbb ki kell bányásznia, melyik hirdetés nem hazudik neki. A keresési költség nő, a jelölt alkupozíció-érzete pedig romlik - különösen, mert sok megkeresésben ott lebeg a háttérfenyegetés, hogy ha te nem vállalod, jön az olcsóbb offshore vagy az AI-alternatíva. A piaci beszélgetésekben ez a hangnem gyakran sztereotip és indulatos, de a mögöttes gazdasági érzés világos: a magyar IT-s egyre kevésbé érzi magát erős tárgyalási helyzetben."
+    },
+    {
+      "type": "paragraph",
+      "text": "Itt a paradoxon: a szakma lenézi a láthatósági játékot, miközben a munkaerőpiac egyre inkább láthatósági játékká válik. A LinkedInt sokan cringe-nek, vállalati önfényezésnek tartják - és nincs is teljesen igazuk. De a piac állapotát nézve valamilyen minimális jelenlét megkerülhetetlen. A piaci beszélgetésekben felbukkan egy egészségesebb kompromisszum is, és ez egybecseng a transzparencia tágabb trendjével: nem napi üres posztolás, hanem saját, bizonyító erejű szakmai nyom - egy technikai esettanulmány, egy blog- vagy Substack-cikk -, amit aztán röviden megoszt az ember. Nem influencernek kell lenni, hanem nyomot hagyni."
+    },
+    {
+      "type": "label",
+      "text": "PIACI JELZÉS + ADAT"
+    },
+    {
+      "type": "paragraph",
+      "text": "A Hays Hungary szerint a hazai bértranszparencia még gyerekcipőben jár: a munkavállalók 61%-a szerint nem történt érdemi előrelépés. Ez azonban hamarosan változik: az EU bértranszparenciás irányelve nyomán 2026 nyarán kötelező bértranszparencia lép életbe Magyarországon, ami átírhatja a fizetési sávokra, a karrierutakra és a hirdetésekre vonatkozó elvárásokat. A jelöltek tehát épp most kapnak több strukturális alkuerőt - miközben a piac egyébként a hátrányukra billent."
+    },
+    {
+      "type": "heading",
+      "text": "6. Produktivitásmérés az AI-korszakban"
+    },
+    {
+      "type": "paragraph",
+      "text": "Van egy kényelmetlen igazság, amelyet érdemes kimondani: a fejlesztői munkát már az AI előtt sem tudtuk jól mérni. A ledolgozott óra, a story point, a ticket-szám, a kódsorok száma (lines of code) és a meetingjelenlét mind problematikus mutató - mert a tudásmunka értéke ritkán látszik közvetlenül az aktivitásban. Az AI ebbe a már eleve bizonytalan mérési környezetbe robbant be."
+    },
+    {
+      "type": "paragraph",
+      "text": "Most jönnek az új, csábítóan számszerűsíthető, de félrevezető metrikák: token usage, AI-generált PR-ok száma, ágenssel párhuzamosan vitt ticketek, generált kódmennyiség, „mennyit zártál le”. Ezek könnyen productivity theatre-t hoznak létre: a mérőszám nő, miközben a valódi érték nem feltétlenül. A minőségi munka ráadásul sokszor láthatatlan - a jó design, a kevesebb kód, az elkerült hiba, a pontos specifikáció, a jó teszt, a végiggondolt review, a jókor feltett kérdés mind nehezen számszerűsíthető."
+    },
+    {
+      "type": "label",
+      "text": "AMIT KÜLÖN KELL TARTANI"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aktivitás (mennyit csinálsz) → output (mennyi készül) → outcome (mit ér el) → üzleti érték → megbízhatóság. Az AI az aktivitást és az outputot teszi olcsóvá és láthatóvá - vagyis pont azt, ami a legkevésbé jó mérőszám."
+    },
+    {
+      "type": "paragraph",
+      "text": "A METR-kísérlet tanulsága itt is kísért: a fejlesztők rosszul mérték fel a saját termelékenységüket - gyorsabbnak hitték magukat, miközben lassultak. Ha egy szervezet korábban sem értette a különbséget aktivitás és értékteremtés között, az AI csak gyorsabbá teszi a félremérést. A szakmában léteznek átgondoltabb keretek - a DORA- és a SPACE-metrikák épp a több dimenzió (átfutási idő, megbízhatóság, elégedettség, kognitív teher) együttes nézésére bátorítanak -, de ezek lassan terjednek, mert kényelmetlenebbek, mint egy egyszerű ticket-szám."
+    },
+    {
+      "type": "paragraph",
+      "text": "A piaci beszélgetések egy szürreális kísérőjelenséget is felszínre hoznak: maga a „munkaidő” fogalma is széthullik. Sokan napi nulla és négy-öt óra közötti tényleges fókuszidőről beszélnek, és gyorsan átcsap a vita abba, hogy mit is nevezünk munkának - a meetinget, a kávé melletti tervezést, az ágensre várást, a korábban felszedett tudást? Ez nem lustaság, hanem a tudásmunka természetének tünete. És pontosan ez teszi olyan veszélyessé, ha valaki token-fogyasztásban vagy generált kódmennyiségben próbálja mérni az értéket."
+    },
+    {
+      "type": "heading",
+      "text": "7. Bérmorál, infláció és ki kapja az AI-nyereséget?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A morálromlás egyik legkonkrétabb forrása a bér. A piaci beszélgetésekben visszatérő a kép: infláció alatti emelések, a bónusz és az alapbér közti játék, és az az érzés, hogy a hub értéket termel, miközben a dolgozó 1-3%-os emelést kap. A reakciók megoszlanak - sokan azt mondják, „ilyen a piac, menj máshová” -, de a frusztráció valódi."
+    },
+    {
+      "type": "paragraph",
+      "text": "A magyar makroadatok megmagyarázzák, miért épp most éleződik ez ki. A KSH szerint 2024-ben a nettó reálkeresetek átlagosan 9%-kal nőttek - a rendszerváltás óta kiemelkedően nagy ütemben. 2025-ben viszont fordult a kocka: minden negyedik magyar dolgozó (a munkavállalók 28%-a) azt tapasztalta, hogy a fizetése kevesebbet ér a boltban, mint egy évvel korábban. A KSH kommentárja szerint emögött főleg a törzsbéren kívüli juttatások - pótlékok, jutalmak - csökkenése áll. Magyarul: a cégek nem feltétlenül a bértáblát vágták, hanem a bónuszt és az extrákat - ami pontosan az a tapasztalat, amely a beszélgetésekből is árad. A 0-5%-os emelési sávba esők aránya 16%-ról 28%-ra nőtt."
+    },
+    {
+      "type": "label",
+      "text": "PIACI JELZÉS"
+    },
+    {
+      "type": "paragraph",
+      "text": "A 2024-es kiemelkedő reálbér-növekedés utáni 2025-ös visszaesés pszichológiailag élesebb, mint egy folyamatos stagnálás lett volna: az emberek hozzászoktak a javuláshoz, majd hirtelen szembesültek annak megszűnésével. Ez a kontraszt önmagában is morálromboló - még akkor is, ha az infláció közben mérséklődött."
+    },
+    {
+      "type": "paragraph",
+      "text": "És itt találkozik a bérkérdés az AI-jal. A PwC szerint az AI-készségekért 56%-os bérprémium jár - ez azonban globális átlag, nem magyar garancia, és azokat jutalmazza, akik AI-készséget visznek a piacra, nem mindenkit. A nyersebb veszély a következő: az AI-tól nő az elvárt output, de nem biztos, hogy nő a bér. Ha a dolgozó csak gyorsabb tempót, több kontextusváltást és stagnáló fizetést érez, akkor az AI nem felszabadító eszköz, hanem morálromboló nyomás."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kulcskérdést tehát nem lehet megkerülni, de magabiztosan megválaszolni sem: ki nyeri meg az AI termelékenységi nyereségét - a dolgozó, a cég, az ügyfél vagy a részvényes? Ez elosztási kérdés, nem technológiai. A PwC adatai azt sugallják, hogy az AI-készséggel rendelkező munkavállalók egy része valóban realizál bérprémiumot. De az is látszik a McKinsey adataiból, hogy a vállalatok többsége egyelőre nem fordítja vállalati szintű nyereséggé az AI-t (erről a 8. fejezetben), így a megosztható „nyeremény” sok helyen még inkább ígéret, mint realitás. Bárki, aki azt állítja, hogy biztosan tudja a választ, túlbecsüli a jelenlegi bizonyítékokat."
+    },
+    {
+      "type": "heading",
+      "text": "8. AI-árazás és a „free AI” korszak vége"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az AI munkaerőpiaci hatásának van egy alábecsült dimenziója: az árazás. A jelenlegi közhangulat azt feltételezi, hogy az AI lényegében ingyenes és korlátlan. Ez rövid távon részben igaz - az ingyenes hozzáférés valószínűleg marad -, de a professzionális, intenzív AI-használat egyre inkább usage-based, kvótás vagy enterprise-kontrollált lesz."
+    },
+    {
+      "type": "paragraph",
+      "text": "A legbeszédesebb jelzés a GitHub Copilot árazási modellje. A prémium kérések elszámolása 2025 júniusában indult, és 2026. június 1-jétől minden Copilot-csomag token-alapú, usage-based elszámolásra vált: a „prémiumkérés-egységeket” GitHub AI Credit váltja fel, a fogyasztást a be- és kimeneti tokenek alapján számolják, a korlát feletti kérés pedig külön költséget jelent (a korábbi modellben 0,04 dollár/kérés). A lényeg a modellszorzókban van: a fejlett, érvelő modellek 5×, 20×, egyes gyors üzemmódú csúcsmodellek akár 30× sebességgel fogyaszthatják a keretet. A korábbi „fallback” - amikor a kvóta kimerülése után automatikusan olcsóbb modellre váltottál - megszűnik; helyette a keret és az adminisztrátori költségvetés szabja meg a határt."
+    },
+    {
+      "type": "label",
+      "text": "A KETTŐS MOZGÁS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Az inferencia ára zuhan: a Stanford AI Index szerint egy GPT-3.5 szintű rendszer futtatása 280-szorosára olcsóbbodott 2022 vége és 2024 vége között (kb. 20 dollárról 0,07 dollárra millió tokenenként). A csúcsmodellek tanítása viszont drágul: a legújabb rendszerek tanítása néha több mint 100 millió dollár - ezt csak a tech-óriások engedhetik meg. A commodity-inferencia tehát olcsó és egyre olcsóbb; a nehéz, hosszú session-ös, nagy kontextusú, ágens jellegű terhelés viszont ott válik költségessé, ahol a valódi mérnöki leverage van."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ennek a munkaerőpiaci következménye fontos és némileg meglepő: ha a komoly AI-leverage pénzbe kerül, akkor nem vált ki mindenkit - inkább a jó szakemberek hatékonyságát növeli. Az olcsó, korlátlan AI világában könnyű elképzelni, hogy „mindenki helyettesíthető”. A mért, költséges AI világában viszont az számít, ki tudja a drága erőforrást a legnagyobb üzleti értékkel használni: ki tud jó promptot, jó architektúrát, jó evalt és jó költségkontrollt csinálni. Ez felértékeli a mérnöki ítélőképességet, nem leértékeli."
+    },
+    {
+      "type": "paragraph",
+      "text": "A stratégiai következtetés egyéni és céges szinten is ugyanaz: LLM-agnosztikus rendszerek, model routing (a feladathoz illő, nem mindig a legdrágább modell), eval, költségkontroll és governance. Aki ezt érti, az nemcsak a saját produktivitását növeli, hanem épp azt a réteget építi, amelyet az AI nem commoditizál."
+    },
+    {
+      "type": "heading",
+      "text": "9. Magyar sajátosságok"
+    },
+    {
+      "type": "paragraph",
+      "text": "A globális trendek minden piacot érintenek, de Magyarországon van néhány tényező, amely felerősíti vagy más színben tünteti fel a hatásukat. A legfontosabb a már említett service-center- és nearshore-örökség. Sok munka azért érkezett ide, mert a magyar munkaerő olcsóbb volt, mint a londoni, zürichi vagy német, de elég jó minőségű. Ez a cost-arbitrage modell strukturálisan sebezhető: pontosan addig működik, amíg a költségkülönbség nagy."
+    },
+    {
+      "type": "paragraph",
+      "text": "Erre jön rá az erős forint. A makroadatok és a piaci hangulat egyaránt azt mutatják, hogy a forint erősödése a külföldi cégek számára relatíve drágábbá teszi a magyar munkaerőt euróban számolva - épp akkor, amikor a globális költségfegyelem amúgy is szigorúbb. (A piaci beszélgetésekben konkrét, 20-25%-os drágulásról is szó esik; ezt érdemes kvalitatív piaci olvasatként, nem pontos mérőszámként kezelni.) Ha a magyar delivery már nem feltűnően olcsóbb, akkor nem elég „jó kódolónak” lenni; valami nehezebben helyettesíthető többlet kell: domain, bizalom, ownership, compliance, helyi és európai kontextus, end-to-end felelősség."
+    },
+    {
+      "type": "paragraph",
+      "text": "A kereslet oldalán egy másik magyar feszültség is ott van. A piaci beszélgetések visszatérő felismerése, hogy nem az a baj, hogy nincs mit digitalizálni - technikai szükséglet bőven van. A baj az, hogy a fizetőképes, döntésképes kereslet kevés. A KKV-k és intézmények kivárnak, alkudoznak, AI-ra hivatkozva olcsóbban akarnak fejlesztést, vagy belsőleg próbálnak barkácsolni. Hozzá kell tenni: erre nincs erős, publikus magyar adatsor, így ezt elemzői hipotézisként, nem bizonyított tényként fogalmazom meg - de a kép konzisztens azzal, amit a gazdasági lassulásról és a beruházási óvatosságról tudunk."
+    },
+    {
+      "type": "label",
+      "text": "ELEMZŐI HIPOTÉZIS"
+    },
+    {
+      "type": "paragraph",
+      "text": "A magyar piac kis méretéből adódóan a globális tech- és AI-trendek gyorsabban és élesebben gyűrűznek be, mint nagyobb, diverzifikáltabb gazdaságokban. Egy szűk piacon kevesebb a párna: ha néhány nagy hub vagy néhány domináns ügyfél megváltoztatja a felvételi vagy árazási logikáját, az azonnal érezhető a teljes szakmán. Ez gyorsabb fájdalmat, de potenciálisan gyorsabb alkalmazkodást is jelent."
+    },
+    {
+      "type": "paragraph",
+      "text": "Végül ott van az állami és nagyvállalati rendszerek lassúsága, a remote/hybrid átrendeződés és a kontraktorpiac bizonytalansága. A magyar kontraktorok és body shopok különösen kitettek: a belső senior plusz AI csapatok visszavehetik a korábban kiszervezett munkát. Összegezve: Magyarországnak nem „vége” - de a sima delivery-modellből felfelé kell lépni a domain-, production- és döntésérték irányába, és erre a kis piac kevesebb haladékot ad."
+    },
+    {
+      "type": "heading",
+      "text": "10. Ki lehet nyertes ebben a piacon?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A kép kemény, de nem reménytelen - és semmiképp sem apokaliptikus. Az átrendeződés nem azt jelenti, hogy a szakmának vége; azt jelenti, hogy eltolódik az, hogy mi számít értéknek. A puszta kódírás veszít az értékéből; a specifikáció, az architektúra, a product-ítélőképesség, a domain-tudás és a production-felelősség viszont nyer. A nyertes profilok ezt a tengelyt követik."
+    },
+    {
+      "type": "paragraph",
+      "text": "1. AI-literate, de nem AI-függő szakember. Eszközként használja az AI-t, reviewzik és validál, de nem ad át neki ítéletet olyan területen, amihez nem ért."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Domain-erős mérnök vagy data-szakember. Aki nemcsak modellt tanít vagy notebookot ír, hanem érti az üzleti problémát, amelyhez a rendszert építi."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Production-minded fejlesztő. Aki nem a prototípusnál áll meg, hanem érti a deploymentet, a megbízhatóságot, a monitoringot és a felelősséget."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Cloud, DevOps, security és infra felé nyitott szakember. Az AI tud segíteni, de a production rendszereket érteni kell - ezt a réteget nehéz automatizálni."
+    },
+    {
+      "type": "paragraph",
+      "text": "5. Product- és üzleti ítélőképességgel bíró technikai ember. Aki a „hogyan fejlesszük” helyett a „mit fejlesszünk” kérdést is fel tudja tenni."
+    },
+    {
+      "type": "paragraph",
+      "text": "6. A junior, aki gondolkodást dokumentál, nem tutorial-projektet. Az AI-korszakban a portfólió nem output-galéria, hanem gondolkodási bizonyíték: milyen problémát old meg, milyen döntéseket hoztál, mit mérsz, mit csinálnál másként."
+    },
+    {
+      "type": "paragraph",
+      "text": "7. A senior, aki rendszert, folyamatot és döntést ért, nem csak kódot ír. Az a senioritás, amely ownershipet, tradeoffokat és stakeholder-kezelést jelent, felértékelődik."
+    },
+    {
+      "type": "paragraph",
+      "text": "8. A data scientist / AI engineer, aki evalt, deploymentet, költséget és üzleti értéket is ért. Aki az AI-rendszert nem demónak, hanem productionben működő, validált, monitorozott, döntést támogató eszköznek tekinti."
+    },
+    {
+      "type": "label",
+      "text": "A KÖZÖS SZÁL"
+    },
+    {
+      "type": "paragraph",
+      "text": "A nyertes nem a klasszikus „kódoló”, hanem az, aki tanulni tud, az AI-t kontrolláltan használja, üzleti problémát ért, rendszert épít, validál, kommunikál - és látható szakmai nyomot hagy maga után. Ez a réteg az, amelyet az AI nem commoditizál, hanem felerősít."
+    },
+    {
+      "type": "paragraph",
+      "text": "A magyar IT-szakma „pofonja” tehát valós tapasztalat, de félrevezető lenne pusztán az AI számlájára írni. Inkább egy munkaerőpiaci rezsimváltás közepén vagyunk, ahol a régi társadalmi szerződés - „tanulj meg programozni, kezdj juniorként, a piac felszív” - átíródik. Az új szerződés keményebb és kevésbé kiszámítható, de nem zárt: azoknak nyílik meg, akik az értéklánc azon pontjaira mozdulnak, ahol a döntés, a felelősség és a domain számít. A következő részekben ezeket a pontokat járom körül egyesével."
+    }
+  ]
+}
