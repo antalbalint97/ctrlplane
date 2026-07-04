@@ -1,134 +1,147 @@
 import {
-  Hero,
-  SectionHeader,
   ArticleCard,
-  NewsletterSignup,
   Card,
+  Hero,
+  NewsletterSignup,
+  SectionHeader,
+  ServiceCard,
 } from "@meniva/design-system";
+import { articles } from "@/data/articles";
 
-const issues = [
+const topics = [
   {
-    title: "Backpressure is a product decision, not a config flag",
-    href: "/issues/backpressure-is-a-product-decision",
-    excerpt:
-      "Every queue you add is a promise about latency you may not be able to keep. A field guide to designing for overload.",
-    category: "Systems",
-    date: "Jun 18, 2026",
-    readingTime: "9 min",
+    number: "01",
+    title: "AI és adat",
+    description:
+      "AI-rendszerek, retrieval, modellek és a mögöttük lévő adatok és döntések.",
   },
   {
-    title: "The quiet cost of a vector database",
-    href: "/issues/the-quiet-cost-of-a-vector-database",
-    excerpt:
-      "Retrieval looks cheap in the demo and expensive in the invoice. Where the money actually goes, and how to bound it.",
-    category: "Teardown",
-    date: "Jun 11, 2026",
-    readingTime: "12 min",
+    number: "02",
+    title: "Adatmunka",
+    description:
+      "Adatcsapatok, pipeline-ok, minőség és a felelősség gyakorlati kérdései.",
   },
   {
-    title: "Your eval set is your roadmap",
-    href: "/issues/your-eval-set-is-your-roadmap",
-    excerpt:
-      "If you can't name what 'better' means, you can't ship it. Treating evaluation as the primary engineering artifact.",
-    category: "AI",
-    date: "Jun 4, 2026",
-    readingTime: "7 min",
+    number: "03",
+    title: "Tech szervezetek",
+    description:
+      "Technológiai csapatok működése, képességei és változó felelősségi határai.",
   },
   {
-    title: "Idempotency keys, and other apologies to your future self",
-    href: "/issues/idempotency-keys",
-    excerpt:
-      "Retries are inevitable; duplicates are optional. A short, opinionated tour of making writes safe to repeat.",
-    category: "Systems",
-    date: "May 28, 2026",
-    readingTime: "8 min",
+    number: "04",
+    title: "Intézményi intelligencia",
+    description:
+      "Szervezeti tudás, döntéshozatal és a működés lassú infrastruktúrája.",
   },
   {
-    title: "Dashboards lie; traces don't",
-    href: "/issues/dashboards-lie-traces-dont",
-    excerpt:
-      "Aggregates hide the request that ruined someone's afternoon. Why distributed tracing earns its keep.",
-    category: "Observability",
-    date: "May 21, 2026",
-    readingTime: "10 min",
+    number: "05",
+    title: "Munkaerőpiac",
+    description:
+      "Szerepek, képességek és jelek egy átalakuló technológiai gazdaságban.",
   },
   {
-    title: "Schema changes at 3x scale",
-    href: "/issues/schema-changes-at-scale",
-    excerpt:
-      "The migration that worked in staging and melted in prod. Patterns for evolving tables without downtime.",
-    category: "Data",
-    date: "May 14, 2026",
-    readingTime: "11 min",
+    number: "06",
+    title: "Módszertan",
+    description:
+      "Mérés, kísérletezés, forráskritika és kontroll a gyakorlatban.",
   },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <div className="ds-container ds-container--wide cp-section">
-        <Hero
-          variant="display"
-          align="left"
-          overline="The control plane for data & AI teams"
-          title={
-            <>
-              Signal over noise.
-              <br />A weekly editorial briefing.
-            </>
-          }
-          description="CtrlPlane is a newsletter for engineers and operators building data and AI systems — sharp essays, field notes, and the occasional teardown. No hype, no hot takes, just the load-bearing ideas."
-          primaryAction={{ label: "Subscribe", href: "#subscribe" }}
-          secondaryAction={{ label: "Read latest", href: "#issues" }}
-        />
+      <div className="cp-hero-band">
+        <div className="ds-container ds-container--wide cp-hero-wrap">
+          <Hero
+            variant="display"
+            align="left"
+            overline="CtrlPlane"
+            title="AI, adatmunka és szervezeti intelligencia"
+            description="Elemző blog és hírlevél arról, hogyan alakul át a tudásmunka infrastruktúrája. Írások AI-rendszerekről, adatcsapatokról, munkaerőpiaci jelekről, intézményi működésről és technológiai döntésekről."
+            primaryAction={{ label: "Feliratkozás", href: "#feliratkozas" }}
+            secondaryAction={{ label: "Legutóbbi írások", href: "#irasok" }}
+          >
+            <p className="cp-hero-note">
+              Nem hype. Nem napi zaj. Rendszerek, döntések, következmények.
+            </p>
+          </Hero>
+        </div>
       </div>
 
-      {/* Issues */}
-      <section id="issues" className="ds-container ds-container--wide cp-section">
+      <section id="temak" className="ds-container ds-container--wide cp-section">
         <SectionHeader
-          overline="Latest issues"
-          title="Recent briefings"
-          description="A new issue most weeks. Read a few below, then subscribe to get the next one."
-          className="mb-8"
+          overline="Témák"
+          title="Amiről írok"
+          description="A CtrlPlane nem egy eszközről vagy trendről szól. Azt vizsgálja, milyen rendszerek épülnek köréjük, és milyen döntések, ösztönzők, korlátok és következmények jelennek meg a háttérben."
         />
-        <div className="cp-grid">
-          {issues.map((issue) => (
-            <ArticleCard
-              key={issue.href}
-              title={issue.title}
-              href={issue.href}
-              excerpt={issue.excerpt}
-              category={issue.category}
-              date={issue.date}
-              readingTime={issue.readingTime}
-              cta="Read issue"
+        <div className="ds-grid ds-grid--3 cp-section-grid">
+          {topics.map((topic) => (
+            <ServiceCard
+              key={topic.number}
+              className="cp-topic-card"
+              icon={<span className="cp-topic-number">{topic.number}</span>}
+              title={topic.title}
+              description={topic.description}
+              action={{ label: "Írások a témában", href: "#irasok" }}
             />
           ))}
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="ds-container ds-container--wide cp-section--tight">
-        <div style={{ maxWidth: "var(--container-prose)" }}>
-          <SectionHeader
-            overline="About"
-            title="Built for people who run things in production"
-            description="CtrlPlane is part of the Meniva ecosystem — the same design language as our consulting and education work, pointed at the operators keeping data and AI systems alive. It's written for engineers, by engineers, and it assumes you've been paged before."
-          />
+      <section id="irasok" className="ds-container ds-container--wide cp-section cp-articles">
+        <SectionHeader
+          overline="Legutóbbi írások"
+          title="Friss elemzések"
+          description="Hosszabb elemzések és szakmai körképek AI-ról, adatokról, technológiai szervezetekről és a változás intézményi következményeiről."
+        />
+        <div className="ds-grid ds-grid--3 cp-section-grid">
+          {articles.map((article) => (
+            <ArticleCard
+              key={article.slug}
+              className="cp-article-card"
+              title={article.title}
+              href={article.href}
+              excerpt={article.excerpt}
+              category={`${article.category} · ${article.type}`}
+              date={article.date}
+              readingTime={article.readingTime}
+              cta="PDF megnyitása"
+            />
+          ))}
         </div>
       </section>
 
-      {/* Subscribe */}
-      <section id="subscribe" className="ds-container ds-container--wide cp-section">
-        <Card padding="lg">
+      <section id="rolam" className="cp-about">
+        <div className="ds-container ds-container--wide cp-about-inner">
+          <SectionHeader
+            overline="Rólam"
+            title="A CtrlPlane a Meniva ökoszisztéma szakmai gondolkodási felülete"
+            description="AI-ról, adatokról, szervezeti működésről és technológiai átmenetekről szól, magyar kontextusban."
+          />
+          <div className="cp-about-copy">
+            <p>
+              A fókusz nem az, hogy mi az aktuális eszköz vagy trend, hanem hogy
+              milyen rendszerek épülnek köréjük: milyen döntések, ösztönzők,
+              korlátok és következmények jelennek meg a háttérben.
+            </p>
+            <p>
+              A CtrlPlane nem csak mérnököknek szól. Azoknak is, akik AI-ról,
+              adatról, technológiai szervezetekről, munkaerőpiacról és az
+              intézmények modernizációjáról gondolkodnak.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="feliratkozas" className="ds-container ds-container--wide cp-section">
+        <Card padding="lg" className="cp-newsletter-card">
           <NewsletterSignup
-            title="Get the next issue"
-            description="One editorial briefing, most weeks. Unsubscribe in one click — no funnels, no drip sequences."
-            buttonLabel="Subscribe"
-            placeholder="you@company.com"
-            note="We send the newsletter and nothing else. Your address stays private."
-            successMessage="You're in — check your inbox to confirm your subscription."
+            title="Kapj értesítést az új írásokról"
+            description="Rövid, elemző írások AI-ról, adatokról, szervezetekről és a technológiai átmenet gyakorlati következményeiről."
+            buttonLabel="Feliratkozás"
+            placeholder="email@example.com"
+            note="Csak a hírlevelet küldjük. Egy kattintással leiratkozhatsz."
+            successMessage="Kész. Nézd meg a postafiókodat a megerősítéshez."
           />
         </Card>
       </section>
