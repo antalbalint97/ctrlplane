@@ -10,7 +10,10 @@ export type Article = {
     | "Módszertan";
   type: string;
   tags: string[];
+  featured?: boolean;
+  author: string;
   date: string;
+  datePublished: string;
   readingTime: string;
   subtitle: string;
   excerpt: string;
@@ -26,7 +29,10 @@ export const articles: Article[] = [
     category: "AI és adat",
     type: "Technikai bontás",
     tags: ["AI és adat", "Tech szervezetek", "Agentic coding", "Szoftverfejlesztés"],
+    featured: true,
+    author: "Antal Bálint",
     date: "2026. jún. 27.",
+    datePublished: "2026-06-27",
     readingTime: "12 perc",
     subtitle:
       "Hogyan tanult meg dolgozni velünk az AI, és miért nem ugyanaz a gyorsabb kód, mint a jobb szoftver?",
@@ -42,7 +48,9 @@ export const articles: Article[] = [
     category: "AI és adat",
     type: "Tudástérkép",
     tags: ["AI és adat", "Nyelvtechnológia", "Magyar AI", "Tudástörténet"],
+    author: "Antal Bálint",
     date: "2026. jún. 27.",
+    datePublished: "2026-06-27",
     readingTime: "12 perc",
     subtitle:
       "A magyar nyelvtechnológia hét évtizede a relés számológéptől az első magyar érvelő modellig.",
@@ -58,7 +66,9 @@ export const articles: Article[] = [
     category: "Tech szervezetek",
     type: "Elemzés",
     tags: ["Tech szervezetek", "Intézményi intelligencia", "Adatmunka", "Vállalati AI", "AI enablement"],
+    author: "Antal Bálint",
     date: "2026. jún. 22.",
+    datePublished: "2026-06-22",
     readingTime: "11 perc",
     subtitle:
       "Hogyan jut el egy vállalat a szétszórt chatbot-használattól a mérhető, biztonságos és skálázható AI-működésig?",
@@ -74,7 +84,9 @@ export const articles: Article[] = [
     category: "Tech szervezetek",
     type: "Stratégiai elemzés",
     tags: ["Tech szervezetek", "Munkaerőpiac", "Agentic coding", "Engineering"],
+    author: "Antal Bálint",
     date: "2026. jún. 21.",
+    datePublished: "2026-06-21",
     readingTime: "9 perc",
     subtitle:
       "Mit mutat az agentic coding magyar IT-vitája a fejlesztés valódi szűk keresztmetszeteiről?",
@@ -90,7 +102,9 @@ export const articles: Article[] = [
     category: "Intézményi intelligencia",
     type: "Vitaindító",
     tags: ["Intézményi intelligencia", "AI és adat", "Európa", "Stratégia"],
+    author: "Antal Bálint",
     date: "2026. jún. 20.",
+    datePublished: "2026-06-20",
     readingTime: "8 perc",
     subtitle:
       "Mit tanít az AI 2027 és a Europe 2031 Kelet-Közép-Európának?",
@@ -106,7 +120,9 @@ export const articles: Article[] = [
     category: "Munkaerőpiac",
     type: "Körkép",
     tags: ["Munkaerőpiac", "Tech szervezetek", "Magyar IT", "Módszertan"],
+    author: "Antal Bálint",
     date: "2026. jún. 19.",
+    datePublished: "2026-06-19",
     readingTime: "21 perc",
     subtitle:
       "A magyar IT-szakma helyzete az AI, a juniorválság, a senioritás-infláció és a bérmorál metszetében.",
