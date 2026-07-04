@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Button } from "@meniva/design-system";
 import articleBodies from "@/data/article-bodies.json";
+import { articleEnhancements } from "@/data/article-enhancements";
 import { articles, getArticleBySlug } from "@/data/articles";
 
 type ArticleBlock = {
@@ -47,6 +48,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const headings = blocks
     .map((block, index) => ({ ...block, index }))
     .filter((block) => block.type === "heading");
+  const enhancements = articleEnhancements[slug] ?? [];
 
   return (
     <article>
@@ -66,15 +68,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
           <h1>{article.title}</h1>
           <p className="cp-article-subtitle">{article.subtitle}</p>
-          <Button
-            href={article.pdfHref}
-            variant="outline"
-            size="sm"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Eredeti PDF megnyitása
-          </Button>
         </div>
       </header>
 
@@ -95,10 +88,27 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="cp-article-body">
           {blocks.map((block, index) => {
             if (block.type === "heading") {
+              const enhancement = enhancements.find(
+                (item) => item.afterHeading === block.text,
+              );
+
               return (
-                <h2 id={`szakasz-${index}`} key={index}>
-                  {block.text}
-                </h2>
+                <div className="cp-article-section" key={index}>
+                  <h2 id={`szakasz-${index}`}>{block.text}</h2>
+                  {enhancement ? (
+                    <aside className="cp-editorial-callout">
+                      <div className="cp-editorial-callout__label">{enhancement.label}</div>
+                      {enhancement.text ? <p>{enhancement.text}</p> : null}
+                      {enhancement.items ? (
+                        <ol>
+                          {enhancement.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ol>
+                      ) : null}
+                    </aside>
+                  ) : null}
+                </div>
               );
             }
 
@@ -110,11 +120,18 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               );
             }
 
-            return (
-              <p className={index === 0 ? "cp-article-lead" : undefined} key={index}>
-                {block.text}
-              </p>
-            );
+            const numberedPoint = block.text.match(/^(\d{1,2})\.\s+(.+)/);
+
+            if (numberedPoint) {
+              return (
+                <div className="cp-numbered-point" key={index}>
+                  <span>{numberedPoint[1].padStart(2, "0")}</span>
+                  <p>{numberedPoint[2]}</p>
+                </div>
+              );
+            }
+
+            return <p className={index === 0 ? "cp-article-lead" : undefined} key={index}>{block.text}</p>;
           })}
 
           <div className="cp-article-end">

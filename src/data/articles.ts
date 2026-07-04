@@ -9,6 +9,7 @@ export type Article = {
     | "Munkaerőpiac"
     | "Módszertan";
   type: string;
+  tags: string[];
   date: string;
   readingTime: string;
   subtitle: string;
@@ -24,6 +25,7 @@ export const articles: Article[] = [
     slug: "a-chatablaktol-a-pull-requestig",
     category: "AI és adat",
     type: "Technikai bontás",
+    tags: ["AI és adat", "Tech szervezetek", "Agentic coding", "Szoftverfejlesztés"],
     date: "2026. jún. 27.",
     readingTime: "12 perc",
     subtitle:
@@ -39,6 +41,7 @@ export const articles: Article[] = [
     slug: "nem-a-chatgpt-volt-a-kezdet",
     category: "AI és adat",
     type: "Tudástérkép",
+    tags: ["AI és adat", "Nyelvtechnológia", "Magyar AI", "Tudástörténet"],
     date: "2026. jún. 27.",
     readingTime: "12 perc",
     subtitle:
@@ -54,6 +57,7 @@ export const articles: Article[] = [
     slug: "nem-ai-t-kell-bevezetni-mukodest-kell-attervezni",
     category: "Tech szervezetek",
     type: "Elemzés",
+    tags: ["Tech szervezetek", "Intézményi intelligencia", "Adatmunka", "Vállalati AI", "AI enablement"],
     date: "2026. jún. 22.",
     readingTime: "11 perc",
     subtitle:
@@ -69,6 +73,7 @@ export const articles: Article[] = [
     slug: "ai-val-gyorsabban-termelunk-kodot-de-ki-fogja-atnezni",
     category: "Tech szervezetek",
     type: "Stratégiai elemzés",
+    tags: ["Tech szervezetek", "Munkaerőpiac", "Agentic coding", "Engineering"],
     date: "2026. jún. 21.",
     readingTime: "9 perc",
     subtitle:
@@ -84,6 +89,7 @@ export const articles: Article[] = [
     slug: "nem-az-elso-hullamot-kell-megnyernunk",
     category: "Intézményi intelligencia",
     type: "Vitaindító",
+    tags: ["Intézményi intelligencia", "AI és adat", "Európa", "Stratégia"],
     date: "2026. jún. 20.",
     readingTime: "8 perc",
     subtitle:
@@ -99,6 +105,7 @@ export const articles: Article[] = [
     slug: "nem-az-ai-okozta-a-valsagot-lathatova-tette",
     category: "Munkaerőpiac",
     type: "Körkép",
+    tags: ["Munkaerőpiac", "Tech szervezetek", "Magyar IT", "Módszertan"],
     date: "2026. jún. 19.",
     readingTime: "21 perc",
     subtitle:
