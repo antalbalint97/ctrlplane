@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import { trackAnalyticsEvent } from "@/components/Analytics";
 
-export default function ArticleAnalytics({ contentId }: { contentId: string }) {
+export default function ArticleAnalytics({ contentId, contentTitle }: { contentId: string; contentTitle: string }) {
   useEffect(() => {
-    const viewed = () => trackAnalyticsEvent("article_view", { content_id: contentId });
+    const viewed = () => trackAnalyticsEvent("article_view", { content_id: contentId, content_title: contentTitle });
     viewed();
     window.addEventListener("analytics-consent-change", viewed);
 
@@ -15,21 +15,19 @@ export default function ArticleAnalytics({ contentId }: { contentId: string }) {
       if (!body) return;
       const bodyTop = body.getBoundingClientRect().top + window.scrollY;
       const progress = Math.max(0, Math.min(100, ((window.scrollY + window.innerHeight - bodyTop) / body.offsetHeight) * 100));
-      [25, 50, 75, 90].forEach((threshold) => {
+      [25, 50, 75, 100].forEach((threshold) => {
         if (progress >= threshold && !fired.has(threshold)) {
           fired.add(threshold);
-          trackAnalyticsEvent(`article_read_${threshold}`, { content_id: contentId, percent_scrolled: threshold });
+          trackAnalyticsEvent(`article_read_${threshold}`, { content_id: contentId, content_title: contentTitle, percent_scrolled: threshold });
         }
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
     return () => {
       window.removeEventListener("analytics-consent-change", viewed);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [contentId]);
+  }, [contentId, contentTitle]);
 
   return null;
 }
-

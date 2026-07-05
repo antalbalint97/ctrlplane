@@ -26,10 +26,10 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
 
 ## GTM container configuration
 
-The following is a dashboard task; source code cannot publish the GTM container.
+**MANUAL_ACTION_FOR_BALINT:** The following is a dashboard task; source code cannot publish the GTM container.
 
 1. In GTM, enable the built-in consent overview and consent variables.
-2. Create Data Layer Variables (Version 2) for: `brand_id`, `page_type`, `page_path`, `content_id`, `cta_id`, `placement`, `destination_brand`, `destination_host`, `form_id`, `method`, `asset_id`, `percent_scrolled`, and `testimonial_index`.
+2. Create Data Layer Variables (Version 2) for: `brand`, `brand_id`, `page_type`, `page_title`, `page_path`, `canonical_url`, `content_id`, `content_title`, `cta_id`, `cta_text`, `cta_location`, `source_brand`, `destination_brand`, `destination_url`, `link_domain`, `file_name`, `form_id`, `method`, `asset_id`, `percent_scrolled`, and `testimonial_index`.
 3. Create a Google Tag:
    - Tag ID: `G-6SMJB8N0RF`
    - Configuration parameter: `send_page_view` = `false`
@@ -37,7 +37,7 @@ The following is a dashboard task; source code cannot publish the GTM container.
    - Consent requirement: `analytics_storage`
 4. Create a Custom Event trigger named `CE - Approved analytics events`, using:
    ```text
-   ^(page_view|cta_click|cross_brand_click|email_click|outbound_social_click|file_download|external_link_click|form_start|form_submit|form_error|newsletter_form_start|newsletter_signup|generate_lead|article_view|article_read_(25|50|75|90)|meniva_contact_(start|submit|success|error)|meniva_canvas_(view|form_start|submit|success|error|download)|metis_mentor_(interest|form_start|form_submit)|metis_testimonial_expand|metis_role_view|sign_up|nullfal_(signup_click|signup_success|login|start_learning|module_open|practice_start|roadmap_step_open|tutor_open))$
+   ^(page_view|cta_click|cross_brand_click|outbound_social_click|external_link_click|contact_click|email_click|file_download|form_start|form_submit|form_error|newsletter_form_start|newsletter_signup|generate_lead|article_view|article_read_(25|50|75|100)|article_cta_click|article_share_click|article_crosslink_click|canvas_cta_click|canvas_download|consultation_click|meniva_contact_click|service_card_click|case_study_click|mentoring_cta_click|testimonial_expand|free_resource_click|metis_contact_click|youtube_click|tutor_cta_click|roadmap_click|waitlist_click|practice_module_click|meniva_contact_(start|submit|success|error)|meniva_canvas_(view|form_start|submit|success|error|download)|metis_mentor_(interest|form_start|form_submit)|metis_role_view|sign_up|nullfal_(signup_click|signup_success|login|start_learning|module_open|practice_start|roadmap_step_open|tutor_open))$
    ```
 5. Create one GA4 Event tag:
    - Google Tag: `G-6SMJB8N0RF`
@@ -50,14 +50,14 @@ The following is a dashboard task; source code cannot publish the GTM container.
 
 ## GA4 Admin configuration
 
-These are manual dashboard tasks and are not claimed as completed.
+**MANUAL_ACTION_FOR_BALINT:** These are manual dashboard tasks and are not claimed as completed.
 
 1. Confirm the web stream uses `G-6SMJB8N0RF`.
 2. Disable Enhanced Measurement’s browser-history page changes; the apps emit explicit initial and SPA page views.
 3. Under Configure your domains, add all four canonical hosts.
 4. Add canonical hosts to unwanted referrals only if testing reveals self-referrals.
-5. Register custom dimensions: `brand_id`, `page_type`, `content_id`, `cta_id`, `placement`, `destination_brand`, `form_id`, and `asset_id`.
-6. Recommended key events: `generate_lead`, `newsletter_signup` after provider integration, `sign_up`, `nullfal_signup_success`, and `metis_mentor_form_submit` after a real form exists.
+5. Register custom dimensions: `brand`, `page_type`, `content_id`, `content_title`, `cta_id`, `cta_location`, `source_brand`, `destination_brand`, `form_id`, and `method`.
+6. After each event first arrives, mark the agreed key events: `newsletter_signup`, `article_read_75`, `canvas_download`, `contact_click`, `consultation_click`, `cross_brand_click`, `outbound_social_click`, `mentoring_cta_click`, and `sign_up`/`nullfal_signup_success`.
 7. Create audiences only after enough consented traffic exists.
 
 ## Event and privacy rules
