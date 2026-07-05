@@ -22,9 +22,8 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
-  description:
-    "Elemző blog és hírlevél AI-rendszerekről, adatcsapatokról, munkaerőpiaci jelekről és technológiai döntésekről.",
+  title: "CtrlPlane | AI, adatok, technológia",
+  description: "Elemzések AI-ról, adatokról és technológiai szervezetekről.",
   applicationName: "CtrlPlane",
   authors: [{ name: "Antal Bálint", url: MENIVA_URL }],
   creator: "Antal Bálint",
@@ -49,17 +48,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "hu_HU",
     siteName: "CtrlPlane",
-    title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
-    description:
-      "Antal Bálint szakmai blogja AI-rendszerekről, adatcsapatokról és technológiai döntésekről, a Meniva ökoszisztéma részeként.",
+    title: "CtrlPlane | AI, adatok, technológia",
+    description: "Elemzések AI-ról, adatokról és technológiai szervezetekről.",
     url: "/",
     images: [{ url: `${SITE_URL}/brand/og-default.png`, width: 1200, height: 630, alt: "CtrlPlane" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
-    description:
-      "Magyar elemzések AI-rendszerekről, adatcsapatokról és technológiai döntésekről.",
+    title: "CtrlPlane | AI, adatok, technológia",
+    description: "Elemzések AI-ról, adatokról és technológiai szervezetekről.",
     images: [`${SITE_URL}/brand/og-default.png`],
   },
 };
@@ -106,7 +103,7 @@ export default function RootLayout({
         <Navbar
           sticky
           container="wide"
-          logo={<a href="/#top" aria-label="CtrlPlane"><img src="/brand/logo-horizontal.svg" alt="CtrlPlane" style={{ width: 176, height: "auto" }} /></a>}
+          logo={<a href="/#top" aria-label="CtrlPlane"><img src="/brand/logo-horizontal.svg" alt="CtrlPlane" style={{ height: 32, width: "auto" }} /></a>}
           items={[
             { label: "Írások", href: "/#irasok" },
             { label: "Rólam", href: "/#rolam" },
@@ -122,7 +119,7 @@ export default function RootLayout({
         <Footer
           container="wide"
           className="cp-footer"
-          logo={<a href="/#top" aria-label="CtrlPlane"><img src="/brand/logo-horizontal.svg" alt="CtrlPlane" style={{ width: 150, height: "auto" }} /></a>}
+          logo={<a href="/#top" aria-label="CtrlPlane"><img src="/brand/logo-horizontal.svg" alt="CtrlPlane" style={{ height: 30, width: "auto" }} /></a>}
           tagline="AI, adatmunka és szervezeti intelligencia. A Meniva ökoszisztéma szakmai gondolkodási felülete."
           columns={[
             {
