@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
         destination: "https://ctrplane.com/:path*",
         permanent: true,
       },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.ctrplane.com" }],
+        destination: "https://ctrplane.com/:path*",
+        permanent: true,
+      },
     ];
   },
   async headers() {
