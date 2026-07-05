@@ -43,7 +43,7 @@ export default function HomePage() {
           <div className="cp-meniva-brand">
             <span className="ds-overline">A háttérben</span>
             <a href={MENIVA_URL} aria-label="Meniva">
-              <img src={`${MENIVA_URL}/brand/logo-horizontal.png`} alt="Meniva" style={{ width: 210, height: "auto" }} />
+              <img src="/brand/meniva-logo-horizontal.png" alt="Meniva" style={{ width: 210, height: "auto" }} />
             </a>
           </div>
           <div className="cp-meniva-copy">
