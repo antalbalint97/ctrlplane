@@ -5,6 +5,7 @@ import articleBodies from "@/data/article-bodies.json";
 import { articleEnhancements } from "@/data/article-enhancements";
 import { articles, getArticleBySlug } from "@/data/articles";
 import { MENIVA_URL, SITE_URL } from "@/lib/site";
+import ArticleAnalytics from "@/components/ArticleAnalytics";
 
 type ArticleBlock = {
   type: "heading" | "label" | "paragraph";
@@ -102,6 +103,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <article>
+      <ArticleAnalytics contentId={article.slug} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}

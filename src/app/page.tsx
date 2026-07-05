@@ -3,12 +3,12 @@ import {
   Card,
   Hero,
   LogoLockup,
-  NewsletterSignup,
   SectionHeader,
 } from "@meniva/design-system";
 import { ArticleExplorer } from "@/components/ArticleExplorer";
 import { articles } from "@/data/articles";
 import { MENIVA_URL } from "@/lib/site";
+import NewsletterPlaceholder from "@/components/NewsletterPlaceholder";
 
 const featuredArticle = articles.find((article) => article.featured) ?? articles[0];
 
@@ -87,14 +87,7 @@ export default function HomePage() {
 
       <section id="feliratkozas" className="ds-container ds-container--wide cp-section">
         <Card padding="lg" className="cp-newsletter-card">
-          <NewsletterSignup
-            title="Kapj értesítést az új írásokról"
-            description="Rövid, elemző írások AI-ról, adatokról, szervezetekről és a technológiai átmenet gyakorlati következményeiről."
-            buttonLabel="Feliratkozás"
-            placeholder="email@example.com"
-            note="Csak a hírlevelet küldjük. Egy kattintással leiratkozhatsz."
-            successMessage="Kész. Nézd meg a postafiókodat a megerősítéshez."
-          />
+          <NewsletterPlaceholder />
         </Card>
       </section>
     </>

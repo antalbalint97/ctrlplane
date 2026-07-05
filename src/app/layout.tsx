@@ -5,6 +5,7 @@ import "@meniva/design-system/styles/components.css";
 import "./globals.css";
 import { Footer, LogoLockup, Navbar } from "@meniva/design-system";
 import { MENIVA_URL, SITE_URL } from "@/lib/site";
+import Analytics from "@/components/Analytics";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -87,6 +88,7 @@ export default function RootLayout({
       className={`${inter.variable} ${interTight.variable}`}
     >
       <body className="ds-base">
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
