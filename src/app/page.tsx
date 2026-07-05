@@ -2,7 +2,6 @@ import {
   Button,
   Card,
   Hero,
-  LogoLockup,
   SectionHeader,
 } from "@meniva/design-system";
 import { ArticleExplorer } from "@/components/ArticleExplorer";
@@ -43,12 +42,9 @@ export default function HomePage() {
         <Card padding="lg" className="cp-meniva-card">
           <div className="cp-meniva-brand">
             <span className="ds-overline">A háttérben</span>
-            <LogoLockup
-              brand="meniva"
-              href={MENIVA_URL}
-              size="lg"
-              tagline="Data · BI · AI · Automation"
-            />
+            <a href={MENIVA_URL} aria-label="Meniva">
+              <img src={`${MENIVA_URL}/brand/logo-horizontal.png`} alt="Meniva" style={{ width: 210, height: "auto" }} />
+            </a>
           </div>
           <div className="cp-meniva-copy">
             <h2>A CtrlPlane a Meniva szakmai műhelyének része</h2>

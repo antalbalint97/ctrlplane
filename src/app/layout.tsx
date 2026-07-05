@@ -3,7 +3,7 @@ import { Inter, Inter_Tight } from "next/font/google";
 import "@meniva/design-system/styles/tokens.css";
 import "@meniva/design-system/styles/components.css";
 import "./globals.css";
-import { Footer, LogoLockup, Navbar } from "@meniva/design-system";
+import { Footer, Navbar } from "@meniva/design-system";
 import { MENIVA_URL, SITE_URL } from "@/lib/site";
 import Analytics from "@/components/Analytics";
 
@@ -37,6 +37,14 @@ export const metadata: Metadata = {
     "Meniva",
   ],
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/brand/icon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/brand/icon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/brand/favicon.ico",
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "hu_HU",
@@ -45,14 +53,14 @@ export const metadata: Metadata = {
     description:
       "Antal Bálint szakmai blogja AI-rendszerekről, adatcsapatokról és technológiai döntésekről, a Meniva ökoszisztéma részeként.",
     url: "/",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "CtrlPlane" }],
+    images: [{ url: `${SITE_URL}/brand/og-default.png`, width: 1200, height: 630, alt: "CtrlPlane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
     description:
       "Magyar elemzések AI-rendszerekről, adatcsapatokról és technológiai döntésekről.",
-    images: ["/opengraph-image"],
+    images: [`${SITE_URL}/brand/og-default.png`],
   },
 };
 
@@ -70,9 +78,11 @@ const blogJsonLd = {
   },
   publisher: {
     "@type": "Organization",
-    name: "Meniva",
-    url: MENIVA_URL,
+    name: "CtrlPlane",
+    url: SITE_URL,
+    logo: `${SITE_URL}/brand/logo-horizontal.png`,
   },
+  image: `${SITE_URL}/brand/og-default.png`,
   url: SITE_URL,
 };
 
@@ -96,7 +106,7 @@ export default function RootLayout({
         <Navbar
           sticky
           container="wide"
-          logo={<LogoLockup brand="ctrlplane" href="/#top" />}
+          logo={<a href="/#top" aria-label="CtrlPlane"><img src="/brand/logo-horizontal.svg" alt="CtrlPlane" style={{ width: 176, height: "auto" }} /></a>}
           items={[
             { label: "Írások", href: "/#irasok" },
             { label: "Rólam", href: "/#rolam" },
@@ -112,7 +122,7 @@ export default function RootLayout({
         <Footer
           container="wide"
           className="cp-footer"
-          logo={<LogoLockup brand="ctrlplane" href="/#top" size="sm" />}
+          logo={<a href="/#top" aria-label="CtrlPlane"><img src="/brand/logo-horizontal.svg" alt="CtrlPlane" style={{ width: 150, height: "auto" }} /></a>}
           tagline="AI, adatmunka és szervezeti intelligencia. A Meniva ökoszisztéma szakmai gondolkodási felülete."
           columns={[
             {

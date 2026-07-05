@@ -20,6 +20,8 @@ export type Article = {
   sourcePdfPath: string;
   pdfHref: string;
   href: string;
+  /** Optional public social image path or absolute URL. */
+  ogImage?: string;
 };
 
 export const articles: Article[] = [
