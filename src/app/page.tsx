@@ -19,7 +19,7 @@ export default function HomePage() {
           <Hero
             variant="display"
             align="left"
-            overline="CtrlPlane · Kiemelt írás"
+            overline="CtrlPlane · AI, adatok és technológiai szervezetek · Kiemelt írás"
             title={featuredArticle.title}
             description={featuredArticle.excerpt}
             primaryAction={{ label: "Elolvasom", href: featuredArticle.href }}

@@ -38,10 +38,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   icons: {
     icon: [
+      { url: "/brand/icon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/brand/icon-48.png", sizes: "48x48", type: "image/png" },
       { url: "/brand/icon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/brand/icon-32.png", sizes: "32x32", type: "image/png" },
     ],
-    shortcut: "/brand/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
@@ -65,6 +67,7 @@ const blogJsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "CtrlPlane",
+  alternateName: "CtrlPlane AI & Data Review",
   description:
     "Antal Bálint szakmai blogja AI-rendszerekről, adatcsapatokról és technológiai döntésekről.",
   inLanguage: "hu-HU",
@@ -77,10 +80,29 @@ const blogJsonLd = {
     "@type": "Organization",
     name: "CtrlPlane",
     url: SITE_URL,
-    logo: `${SITE_URL}/brand/logo-horizontal.png`,
+    logo: `${SITE_URL}/brand/logo-avatar.png`,
   },
+  about: ["Artificial intelligence", "Data work", "Technology organizations"],
   image: `${SITE_URL}/brand/og-default.png`,
   url: SITE_URL,
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: "CtrlPlane",
+  alternateName: "CtrlPlane AI & Data Review",
+  url: SITE_URL,
+  description: "Elemzések AI-ról, adatokról és technológiai szervezetekről.",
+  inLanguage: "hu-HU",
+  image: `${SITE_URL}/brand/og-default.png`,
+  publisher: {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#antal-balint`,
+    name: "Antal Bálint",
+    url: MENIVA_URL,
+  },
 };
 
 export default function RootLayout({
@@ -98,7 +120,7 @@ export default function RootLayout({
         <Analytics />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([websiteJsonLd, blogJsonLd]) }}
         />
         <Navbar
           sticky

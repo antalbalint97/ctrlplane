@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       "@type": "Organization",
       name: "CtrlPlane",
       url: SITE_URL,
-      logo: `${SITE_URL}/brand/logo-horizontal.png`,
+      logo: `${SITE_URL}/brand/logo-avatar.png`,
     },
     image: article.ogImage
       ? new URL(article.ogImage, SITE_URL).toString()
