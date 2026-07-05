@@ -4,6 +4,7 @@ import "@meniva/design-system/styles/tokens.css";
 import "@meniva/design-system/styles/components.css";
 import "./globals.css";
 import { Footer, LogoLockup, Navbar } from "@meniva/design-system";
+import { MENIVA_URL, SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -19,11 +20,12 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
   description:
     "Elemző blog és hírlevél AI-rendszerekről, adatcsapatokról, munkaerőpiaci jelekről és technológiai döntésekről.",
   applicationName: "CtrlPlane",
-  authors: [{ name: "Antal Bálint", url: "https://meniva.net" }],
+  authors: [{ name: "Antal Bálint", url: MENIVA_URL }],
   creator: "Antal Bálint",
   publisher: "Meniva",
   keywords: [
@@ -33,6 +35,7 @@ export const metadata: Metadata = {
     "magyar IT",
     "Meniva",
   ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "hu_HU",
@@ -40,6 +43,15 @@ export const metadata: Metadata = {
     title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
     description:
       "Antal Bálint szakmai blogja AI-rendszerekről, adatcsapatokról és technológiai döntésekről, a Meniva ökoszisztéma részeként.",
+    url: "/",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "CtrlPlane" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CtrlPlane | AI, adatmunka és szervezeti intelligencia",
+    description:
+      "Magyar elemzések AI-rendszerekről, adatcsapatokról és technológiai döntésekről.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -53,13 +65,14 @@ const blogJsonLd = {
   author: {
     "@type": "Person",
     name: "Antal Bálint",
-    url: "https://meniva.net",
+    url: MENIVA_URL,
   },
   publisher: {
     "@type": "Organization",
     name: "Meniva",
-    url: "https://meniva.net",
+    url: MENIVA_URL,
   },
+  url: SITE_URL,
 };
 
 export default function RootLayout({
@@ -85,7 +98,7 @@ export default function RootLayout({
           items={[
             { label: "Írások", href: "/#irasok" },
             { label: "Rólam", href: "/#rolam" },
-            { label: "Meniva", href: "https://meniva.net" },
+            { label: "Meniva", href: MENIVA_URL },
           ]}
           action={{ label: "Feliratkozás", href: "/#feliratkozas" }}
         />
@@ -110,7 +123,7 @@ export default function RootLayout({
             },
             {
               title: "Ökoszisztéma",
-              links: [{ label: "Meniva", href: "https://meniva.net" }],
+              links: [{ label: "Meniva", href: MENIVA_URL }],
             },
           ]}
           copyright={`© ${new Date().getFullYear()} CtrlPlane`}

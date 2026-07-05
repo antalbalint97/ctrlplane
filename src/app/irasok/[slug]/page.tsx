@@ -4,6 +4,7 @@ import { Button } from "@meniva/design-system";
 import articleBodies from "@/data/article-bodies.json";
 import { articleEnhancements } from "@/data/article-enhancements";
 import { articles, getArticleBySlug } from "@/data/articles";
+import { MENIVA_URL, SITE_URL } from "@/lib/site";
 
 type ArticleBlock = {
   type: "heading" | "label" | "paragraph";
@@ -33,11 +34,12 @@ export async function generateMetadata({
   return {
     title: `${article.title} | CtrlPlane`,
     description: article.excerpt,
-    authors: [{ name: article.author, url: "https://meniva.net" }],
+    authors: [{ name: article.author, url: MENIVA_URL }],
     creator: article.author,
     publisher: "Meniva",
     category: article.category,
     keywords: article.tags,
+    alternates: { canonical: `/irasok/${article.slug}` },
     openGraph: {
       type: "article",
       locale: "hu_HU",
@@ -47,6 +49,14 @@ export async function generateMetadata({
       publishedTime: article.datePublished,
       authors: [article.author],
       tags: article.tags,
+      url: `/irasok/${article.slug}`,
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      images: ["/opengraph-image"],
     },
   };
 }
@@ -70,17 +80,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     headline: article.title,
     description: article.excerpt,
     datePublished: article.datePublished,
+    mainEntityOfPage: `${SITE_URL}/irasok/${article.slug}`,
+    url: `${SITE_URL}/irasok/${article.slug}`,
     inLanguage: "hu-HU",
     keywords: article.tags.join(", "),
     author: {
       "@type": "Person",
       name: article.author,
-      url: "https://meniva.net",
+      url: MENIVA_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "Meniva",
-      url: "https://meniva.net",
+      url: MENIVA_URL,
     },
     isPartOf: {
       "@type": "Blog",

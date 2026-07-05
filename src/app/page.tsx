@@ -8,6 +8,7 @@ import {
 } from "@meniva/design-system";
 import { ArticleExplorer } from "@/components/ArticleExplorer";
 import { articles } from "@/data/articles";
+import { MENIVA_URL } from "@/lib/site";
 
 const featuredArticle = articles.find((article) => article.featured) ?? articles[0];
 
@@ -44,7 +45,7 @@ export default function HomePage() {
             <span className="ds-overline">A háttérben</span>
             <LogoLockup
               brand="meniva"
-              href="https://meniva.net"
+              href={MENIVA_URL}
               size="lg"
               tagline="Data · BI · AI · Automation"
             />
@@ -56,7 +57,7 @@ export default function HomePage() {
               A Menivánál ugyanezekből a kérdésekből működő adat- és AI-rendszerek
               születnek.
             </p>
-            <Button href="https://meniva.net" variant="link" size="sm">
+            <Button href={MENIVA_URL} variant="link" size="sm">
               Meniva megismerése →
             </Button>
           </div>
