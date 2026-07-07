@@ -168,7 +168,7 @@ a {
   background: var(--color-surface-muted);
   color: var(--color-text-subtle);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--text-xs);
   line-height: var(--leading-normal);
 }
 
@@ -350,7 +350,7 @@ a {
   margin-bottom: var(--space-6);
   color: var(--color-text-muted);
   font-size: var(--text-lg);
-  line-height: 1.82;
+  line-height: var(--leading-relaxed);
 }
 
 .cp-article-body .cp-article-lead {
