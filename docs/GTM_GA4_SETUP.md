@@ -29,7 +29,7 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
 **MANUAL_ACTION_FOR_BALINT:** The following is a dashboard task; source code cannot publish the GTM container.
 
 1. In GTM, enable the built-in consent overview and consent variables.
-2. Create Data Layer Variables (Version 2) for: `brand`, `brand_id`, `page_type`, `page_title`, `page_path`, `canonical_url`, `content_id`, `content_title`, `cta_id`, `cta_text`, `cta_location`, `source_brand`, `destination_brand`, `destination_url`, `link_domain`, `file_name`, `form_id`, `method`, `asset_id`, `percent_scrolled`, and `testimonial_index`.
+2. Create Data Layer Variables (Version 2) for: `brand`, `brand_id`, `site_id`, `site_section`, `page_type`, `page_title`, `page_path`, `page_location`, `page_referrer`, `canonical_url`, `content_id`, `content_title`, `cta_id`, `cta_text`, `cta_location`, `source_brand`, `destination_brand`, `destination_url`, `link_domain`, `file_name`, `form_id`, `method`, `asset_id`, `placement`, `file_url`, `destination`, `percent_scrolled`, and `testimonial_index`.
 3. Create a Google Tag:
    - Tag ID: `G-6SMJB8N0RF`
    - Configuration parameter: `send_page_view` = `false`
@@ -37,7 +37,7 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
    - Consent requirement: `analytics_storage`
 4. Create a Custom Event trigger named `CE - Approved analytics events`, using:
    ```text
-   ^(page_view|cta_click|cross_brand_click|outbound_social_click|external_link_click|contact_click|email_click|file_download|form_start|form_submit|form_error|newsletter_form_start|newsletter_signup|generate_lead|article_view|article_read_(25|50|75|100)|article_cta_click|article_share_click|article_crosslink_click|canvas_cta_click|canvas_download|consultation_click|meniva_contact_click|service_card_click|case_study_click|mentoring_cta_click|testimonial_expand|free_resource_click|metis_contact_click|youtube_click|tutor_cta_click|roadmap_click|waitlist_click|practice_module_click|meniva_contact_(start|submit|success|error)|meniva_canvas_(view|form_start|submit|success|error|download)|metis_mentor_(interest|form_start|form_submit)|metis_role_view|sign_up|nullfal_(signup_click|signup_success|login|start_learning|module_open|practice_start|roadmap_step_open|tutor_open))$
+   ^(page_view|cta_click|cross_brand_click|outbound_social_click|external_link_click|contact_click|email_click|file_download|form_start|form_submit|form_error|newsletter_form_start|newsletter_signup|generate_lead|article_view|article_read_(25|50|75|100)|article_cta_click|article_share_click|article_crosslink_click|canvas_cta_click|canvas_download|consultation_click|meniva_contact_click|service_card_click|case_study_click|mentoring_cta_click|testimonial_expand|free_resource_click|metis_contact_click|youtube_click|tutor_cta_click|roadmap_click|waitlist_click|practice_module_click|lead_magnet_(view|dismiss|download|book_session)|meniva_contact_(start|submit|success|error)|meniva_canvas_(view|form_start|submit|success|error|download)|metis_mentor_(interest|form_start|form_submit)|metis_(testimonial_expand|role_view)|sign_up|nullfal_(signup_click|signup_success|login|start_learning|module_open|practice_start|roadmap_step_open|tutor_open))$
    ```
 5. Create one GA4 Event tag:
    - Google Tag: `G-6SMJB8N0RF`
@@ -45,15 +45,16 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
    - Add all data-layer variables above as event parameters with unprefixed names.
    - Trigger: `CE - Approved analytics events`
    - Consent requirement: `analytics_storage`
-6. Do not trigger on `page_context`. It updates the GTM data model immediately before a consented `page_view`.
-7. Publish only after Preview mode confirms no tag before consent, one page view after acceptance, and one more per client-side route change.
+6. Do not trigger on `page_context`. It only updates the GTM data model immediately before a consented `page_view`.
+7. Do not attach the GA4 pageview tag to History Change. History Change may remain visible as a routing diagnostic, but `page_view` must be triggered only by the custom `page_view` event.
+8. Publish only after Preview mode confirms no tag before consent, one page view after acceptance, and one more per client-side route change.
 
 ## GA4 Admin configuration
 
 **MANUAL_ACTION_FOR_BALINT:** These are manual dashboard tasks and are not claimed as completed.
 
 1. Confirm the web stream uses `G-6SMJB8N0RF`.
-2. Disable Enhanced Measurement’s browser-history page changes; the apps emit explicit initial and SPA page views.
+2. Disable Enhanced Measurement's browser-history page changes; the apps emit explicit initial and SPA page views.
 3. Under Configure your domains, add all four canonical hosts.
 4. Add canonical hosts to unwanted referrals only if testing reveals self-referrals.
 5. Register custom dimensions: `brand`, `page_type`, `content_id`, `content_title`, `cta_id`, `cta_location`, `source_brand`, `destination_brand`, `form_id`, and `method`.
@@ -73,10 +74,12 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
 ## Verification checklist
 
 1. Clear storage and cookies.
-2. Before consent, verify denied consent and `page_context` in `dataLayer`, with no GTM/GA/Clarity requests.
+2. Before consent, verify denied consent commands in `dataLayer`, with no `page_context`, `page_view`, GTM, GA, or Clarity requests.
 3. Reject, reload, and confirm no analytics requests or cookies.
 4. Accept and verify GTM loads, analytics is granted, ads remain denied, and exactly one initial page view reaches DebugView/Realtime.
 5. Navigate client-side and verify one new page context plus one page view.
 6. Exercise controlled events without exposing personal data.
 7. Revoke through Cookie settings; active-tag sessions reload after updating consent to denied.
 8. Verify aliases redirect and previews never load GTM.
+
+The authoritative event contract is documented in `docs/ANALYTICS_TRACKING.md`. Audit findings and code-level test results are in `docs/ANALYTICS_AUDIT_REPORT.md`.
