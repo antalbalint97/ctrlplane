@@ -73,7 +73,7 @@ CALLOUT_LABELS = {
 
 
 def clean_text(value: str) -> str:
-    value = value.replace("\u00ad", "").replace("–", "-").replace("—", "-")
+    value = value.replace("\u00ad", "").replace("-", "-").replace("—", "-")
     # Preserve a spaced editorial dash that happens to land at a line break,
     # while keeping real compounds such as "AI-\nhasználat" joined.
     value = re.sub(r"\s+-\s*\n\s*", " - ", value)

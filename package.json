@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@meniva/design-system": "file:./vendor/meniva-design-system-0.4.0.tgz",
+    "@meniva/design-system": "file:./vendor/meniva-design-system-0.4.1.tgz",
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
