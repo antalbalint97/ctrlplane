@@ -33,7 +33,7 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
 3. Create a Google Tag:
    - Tag ID: `G-6SMJB8N0RF`
    - Configuration parameter: `send_page_view` = `false`
-   - Trigger: Initialization – All Pages
+   - Trigger: Initialization - All Pages
    - Consent requirement: `analytics_storage`
 4. Create a Custom Event trigger named `CE - Approved analytics events`, using:
    ```text
