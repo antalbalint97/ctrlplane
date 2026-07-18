@@ -1,88 +1,130 @@
-# Shared GTM + GA4 implementation guide
+# Shared GTM and GA4 implementation guide
 
 ## Scope and identifiers
 
-- GTM container: `GTM-P97RB9PD`
-- GA4 measurement ID: `G-6SMJB8N0RF`
-- Canonical hosts: `www.meniva.net`, `ctrplane.com`, `metis.name`, `nullfal.com`
-- Brand IDs: `meniva`, `ctrlplane`, `metis`, `nullfal`
-- Meniva Clarity: `ta4edlltm9` (loaded in Meniva code only, after consent)
-- Retired Meniva GA4 ID: `G-FE1M458W4C`
+- GTM container: GTM-P97RB9PD
+- GA4 measurement ID: G-6SMJB8N0RF
+- Canonical hosts: www.meniva.net, ctrplane.com, metis.name, nullfal.com
+- Brand IDs: meniva, ctrlplane, metis, nullfal
+- Strategy: GTM only, with Google Tag send_page_view=false
 
-The applications default all four Consent Mode v2 storage keys to denied. They do not load GTM until analytics consent is granted. GTM is also gated to each canonical production hostname, so previews, aliases, and localhost do not send analytics.
+GTM is loaded by the applications only after analytics consent and only on the canonical production host.
 
-## Environment variables
+## Google Tag
 
-Next.js sites support:
+Create or retain one Google Tag:
 
-```dotenv
-NEXT_PUBLIC_GTM_ID=GTM-P97RB9PD
-NEXT_PUBLIC_ENABLE_ANALYTICS=true
-NEXT_PUBLIC_BRAND_ID=meniva
-NEXT_PUBLIC_SITE_URL=https://www.meniva.net
-```
+- Tag ID: G-6SMJB8N0RF
+- Configuration parameter: send_page_view = false
+- Trigger: Initialization - All Pages
+- Consent requirement: analytics_storage
 
-Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the supplied public GTM identifier work before platform variables are added. Set brand and site URL independently in every Vercel project.
+Disable GA4 Enhanced Measurement browser-history page changes. The applications own initial and SPA pageviews.
 
-## GTM container configuration
+## Data Layer Variables
 
-**MANUAL_ACTION_FOR_BALINT:** The following is a dashboard task; source code cannot publish the GTM container.
+Create Version 2 Data Layer Variables for:
 
-1. In GTM, enable the built-in consent overview and consent variables.
-2. Create Data Layer Variables (Version 2) for: `brand`, `brand_id`, `site_id`, `site_section`, `page_type`, `page_title`, `page_path`, `page_location`, `page_referrer`, `canonical_url`, `content_id`, `content_title`, `cta_id`, `cta_text`, `cta_location`, `source_brand`, `destination_brand`, `destination_url`, `link_domain`, `file_name`, `form_id`, `method`, `asset_id`, `placement`, `file_url`, `destination`, `percent_scrolled`, and `testimonial_index`.
-3. Create a Google Tag:
-   - Tag ID: `G-6SMJB8N0RF`
-   - Configuration parameter: `send_page_view` = `false`
-   - Trigger: Initialization - All Pages
-   - Consent requirement: `analytics_storage`
-4. Create a Custom Event trigger named `CE - Approved analytics events`, using:
-   ```text
-   ^(page_view|cta_click|cross_brand_click|outbound_social_click|external_link_click|contact_click|email_click|file_download|form_start|form_submit|form_error|newsletter_form_start|newsletter_signup|generate_lead|article_view|article_read_(25|50|75|100)|article_cta_click|article_share_click|article_crosslink_click|canvas_cta_click|canvas_download|consultation_click|meniva_contact_click|service_card_click|case_study_click|mentoring_cta_click|testimonial_expand|free_resource_click|metis_contact_click|youtube_click|tutor_cta_click|roadmap_click|waitlist_click|practice_module_click|lead_magnet_(view|dismiss|download|book_session)|meniva_contact_(start|submit|success|error)|meniva_canvas_(view|form_start|submit|success|error|download)|metis_mentor_(interest|form_start|form_submit)|metis_(testimonial_expand|role_view)|sign_up|nullfal_(signup_click|signup_success|login|start_learning|module_open|practice_start|roadmap_step_open|tutor_open))$
-   ```
-5. Create one GA4 Event tag:
-   - Google Tag: `G-6SMJB8N0RF`
-   - Event name: `{{Event}}`
-   - Add all data-layer variables above as event parameters with unprefixed names.
-   - Trigger: `CE - Approved analytics events`
-   - Consent requirement: `analytics_storage`
-   - Do not configure optional event parameters with literal fallback text such as `undefined` or `null`. A missing Data Layer Variable must remain absent from the outgoing request.
-6. Do not trigger on `page_context`. It only updates the GTM data model immediately before a consented `page_view`.
-7. Do not attach the GA4 pageview tag to History Change. History Change may remain visible as a routing diagnostic, but `page_view` must be triggered only by the custom `page_view` event.
-8. Publish only after Preview mode confirms no tag before consent, one page view after acceptance, and one more per client-side route change.
+~~~text
+brand, brand_id, site_id, site_section, page_type, page_title, page_path,
+page_location, page_referrer, canonical_url, content_id, content_title,
+content_type, content_category, cta_id, cta_text, cta_location,
+source_brand, destination_brand, destination_url, link_domain, method,
+file_name, file_url, form_id, asset_id, asset_name, asset_type, asset_category,
+asset_brand, offer_id, placement, campaign_id, campaign_name, campaign_type,
+landing_page_id, experiment_id, variant_id, variant_name, creative_id,
+copy_variant, audience_segment, max_scroll_percent, active_time_seconds,
+estimated_reading_time_minutes, percent_scrolled
+~~~
 
-## GA4 Admin configuration
+Do not create variables for arbitrary query parameters or personal form values.
 
-**MANUAL_ACTION_FOR_BALINT:** These are manual dashboard tasks and are not claimed as completed.
+## Event tags and triggers
 
-1. Confirm the web stream uses `G-6SMJB8N0RF`.
-2. Disable Enhanced Measurement's browser-history page changes; the apps emit explicit initial and SPA page views.
-3. Under Configure your domains, add all four canonical hosts.
-4. Add canonical hosts to unwanted referrals only if testing reveals self-referrals.
-5. Register custom dimensions: `brand`, `page_type`, `content_id`, `content_title`, `cta_id`, `cta_location`, `source_brand`, `destination_brand`, `form_id`, and `method`.
-6. After each event first arrives, mark the agreed key events: `newsletter_signup`, `article_read_75`, `canvas_download`, `contact_click`, `consultation_click`, `cross_brand_click`, `outbound_social_click`, `mentoring_cta_click`, and `sign_up`/`nullfal_signup_success`.
-7. Create audiences only after enough consented traffic exists.
+Create one Custom Event trigger and one or more shape-specific GA4 Event tags per group. Every tag uses:
 
-## Event and privacy rules
+- Google Tag: G-6SMJB8N0RF
+- Event name: {{Event}}
+- Consent requirement: analytics_storage
+- Event parameters: common context plus only the group-owned parameters below
 
-- Never send names, emails, usernames, passwords, source code, message bodies, search text, or query strings.
-- Success events fire only after a successful backend response.
-- CtrlPlane newsletter success stays dormant until a provider confirms it.
-- Metis mentor form success stays dormant because no application form currently exists.
-- Meniva canvas download stays dormant until a real delivery/download action exists.
-- No paid-media pixels are installed.
-- Clarity is Meniva-only and consent-gated.
+Do not attach any GA4 Event tag to page_context, History Change, or arbitrary Custom Events.
 
-## Verification checklist
+### Stateful Data Layer guard
 
-1. Clear storage and cookies.
-2. Before consent, verify denied consent commands in `dataLayer`, with no `page_context`, `page_view`, GTM, GA, or Clarity requests.
-3. Reject, reload, and confirm no analytics requests or cookies.
-4. Accept and verify GTM loads, analytics is granted, ads remain denied, and exactly one initial page view reaches DebugView/Realtime.
-5. Navigate client-side and verify one new page context plus one page view.
-   - Confirm `page_referrer` on the new route equals the previous tracked `page_location`.
-6. Exercise controlled events without exposing personal data.
-   - Inspect the raw object pushed by the application, not only GTM's processed event model. GTM may add `gtm.uniqueEventId` after the push.
-7. Revoke through Cookie settings; active-tag sessions reload after updating consent to denied.
-8. Verify aliases redirect and previews never load GTM.
+GTM Data Layer Variables read the current model, which can retain a value from an earlier event. Do not add every available DLV to every tag. Use event-name filters or separate tags when the payload shape differs:
 
-The authoritative event contract is documented in `docs/ANALYTICS_TRACKING.md`. Audit findings and code-level test results are in `docs/ANALYTICS_AUDIT_REPORT.md`.
+- Asset View: asset fields only, no file fields.
+- Asset Download: asset fields plus file_url and file_name.
+- Generic File Download: file_url and file_name only, no asset or offer fields.
+- Article View: content identity only.
+- Article Threshold: percent_scrolled and content identity.
+- Article Engaged: engagement metrics and content identity.
+
+The raw application push must remain null-free. Do not clear the GTM model with undefined or null values. Conditional tag mapping is the data quality control.
+
+### GA4 Event - Page View
+
+- Trigger: ^page_view$
+- Send: common page context and campaign context
+- Do not send: CTA, asset, form, article threshold, or experiment-only fields
+
+### GA4 Event - CTA Events
+
+- Trigger: ^(cta_click|consultation_click|article_cta_click|canvas_cta_click|service_card_click|case_study_click|mentoring_cta_click|free_resource_click|tutor_cta_click|roadmap_click|waitlist_click|practice_module_click|nullfal_signup_click|lead_magnet_book_session|lead_magnet_dismiss)$
+- Send: cta_id, cta_text, cta_location, destination_url when present, plus common context
+- Do not send: asset file fields, form status, or article scroll metrics
+
+### GA4 Event - Asset Events
+
+- Trigger: ^(asset_view|asset_download|file_download)$
+- Send for asset_view: asset_id, asset_name, asset_type, asset_category, asset_brand, offer_id, placement, plus common context
+- Send for asset_download: the asset fields above plus file_url and file_name
+- Send for generic file_download: file_name and file_url only when available
+- Do not send: CTA or form fields
+- file_download is not emitted for the Meniva canvas action when asset_download has already been sent
+
+### GA4 Event - Form Events
+
+- Trigger: ^(form_(start|submit|error)|newsletter_form_start|newsletter_signup|generate_lead|meniva_contact_(start|submit|success|error|click)|meniva_canvas_(form_start|submit|success|error)|metis_contact_click|metis_mentor_(interest|form_start|form_submit)|sign_up|nullfal_(signup_success|login))$
+- Send: form_id, form status, method, success metadata, plus common context and campaign context for the enrichment events
+- Do not send: asset file fields or article scroll metrics
+
+### GA4 Event - Content Engagement Events
+
+- Trigger: ^(article_view|article_read_(25|50|75|100)|article_engaged|article_share_click|article_crosslink_click|testimonial_expand|metis_(testimonial_expand|role_view)|nullfal_(start_learning|module_open|practice_start|roadmap_step_open|tutor_open))$
+- Send for article_view: content_id, content_title, content_type, and content_category plus common context
+- Send for article_read thresholds: content identity, percent_scrolled, and only metrics present for that event
+- Send for article_engaged: content identity, content_type, content_category, max_scroll_percent, active_time_seconds, and estimated_reading_time_minutes
+- Send campaign context on article_engaged and article_read_75
+- Do not send: CTA, form, or asset file fields
+
+### GA4 Event - Cross-brand and Link Events
+
+- Trigger: ^(cross_brand_click|email_click|outbound_social_click|external_link_click|contact_click|youtube_click)$
+- Send: source_brand, destination_brand, destination_url, link_domain, method, plus common context
+- Do not send: form status, asset fields, or article scroll metrics
+
+### CE - Experiment Events and GA4 Event - Experiment Events
+
+Create a separate Custom Event trigger and tag:
+
+- Trigger: ^(experiment_exposure|offer_view)$
+- Send: experiment_id, variant_id, variant_name, campaign_id, offer_id, landing_page_id, placement, plus common context
+- Do not send: CTA text, form values, or article scroll metrics
+
+The source helper fires experiment_exposure only after the variant is actually shown. Dedupe is experiment_id + variant_id + page_path per session.
+
+## Manual GTM GUI checklist
+
+1. Keep send_page_view=false on the Google Tag.
+2. Confirm consent checks require analytics_storage for the Google Tag and every GA4 Event tag.
+3. Create or verify all Data Layer Variables listed above.
+4. Create the seven Custom Event triggers with the exact regexes above.
+5. Create the seven GA4 Event tags with {{Event}} as the event name.
+6. Remove or pause the old universal GA4 Event tag that mapped every Data Layer Variable to every event.
+7. Remove deprecated asset names from triggers: lead_magnet_view, meniva_canvas_view, lead_magnet_download, meniva_canvas_download, canvas_download.
+8. Confirm page_context and History Change do not fire GA4 Event tags.
+9. Preview each canonical domain before publishing.
+10. In GA4 DebugView, confirm one asset_download per Meniva canvas download and no PII or raw query strings.
+11. Mark article_read_75 and article_engaged as key event candidates only after business approval.

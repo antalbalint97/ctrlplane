@@ -1,91 +1,53 @@
-# Analytics audit report
+# Analytics v2 audit report
 
 ## Scope
 
-Audited applications:
-
-- Meniva, Next.js App Router
-- Metis, Next.js App Router
-- CtrlPlane, Next.js App Router
-- Nullfal, React Router with React Strict Mode
-
-Reviewed all source occurrences of `dataLayer`, `gtag`, `page_context`, `page_view`, `cta_click`, `consultation_click`, consent initialization, GTM loading, router hooks, history listeners, and direct Google Analytics identifiers.
+Audited the analytics helpers and event sources for Meniva, Metis, CtrlPlane, and Nullfal. The implementation remains GTM-only with container GTM-P97RB9PD and GA4 measurement ID G-6SMJB8N0RF.
 
 ## Findings fixed
 
-1. `page_context` was pushed directly from the React component and included its own `event` field. The same object content was then passed to `page_view`.
-2. The route effect depended on both pathname and consent. The `null` to saved-consent transition produced repeated context events.
-3. Payload cleaning removed `undefined` but retained `null` and `gtm.*` fields.
-4. No explicit pageview dedupe protected Strict Mode, hydration, or duplicate route callbacks.
-5. CTA payloads did not consistently include text, location, or both supported data-attribute naming variants.
-6. Tracking configuration and payload construction lived inside UI components.
+1. Meniva's canvas action emitted multiple overlapping download and view events. The source now emits one asset_view and one asset_download with the required asset metadata.
+2. Generic PDF detection is suppressed for the Meniva canvas link, so file_download cannot duplicate the business asset download.
+3. The deprecated asset event names are removed from the helper allowlists and no longer emitted by the popup.
+4. All four helpers now parse an allowlisted campaign context and persist it in session storage.
+5. Campaign context is added only to the approved page, asset, CTA, form, article, signup, and offer enrichment events.
+6. Query strings and hashes are stripped from page location, canonical URL, and referrer values.
+7. All four helpers expose trackExperimentExposure() with session dedupe on experiment_id + variant_id + page_path.
+8. CtrlPlane article tracking now measures focused, visible active time and emits article_engaged only after 50% scroll and 60 seconds active time.
+9. The GTM design is split into page, CTA, asset, form, content, cross-brand/link, and experiment event groups. The old universal parameter-mapping tag is no longer part of the recommended setup.
 
-## Resulting implementation
+## Contract verification
 
-Each app now has a central `lib/analytics` module with:
+The source contract now requires every application event to contain:
 
-- `TRACKING_CONFIG`
-- `ensureDataLayer()`
-- `cleanAnalyticsPayload()`
-- `pushDataLayerEvent()`
-- `getPageContext()`
-- `trackPageView()`
-- `trackAnalyticsEvent()`
-- consent default, update, and persistence helpers
+~~~text
+brand, brand_id, site_id, site_section, page_type, page_title,
+page_path, page_location, canonical_url
+~~~
 
-React components now own only lifecycle, consent UI, production-host GTM loading, and delegated click detection.
+page_referrer is present only when it has a value. The raw payload cleaner removes undefined, null, gtm, tagTypeBlacklist, and gtm.* keys.
 
-The follow-up Tag Assistant review showed repeated same-route lifecycle calls could still pass after the original 1500 ms dedupe window. Source search found one Analytics component and one official `trackPageView()` call path per app, so there was no second intended pageview source. The remaining duplicate risk came from lifecycle re-entry after the bounded window. Dedupe now rejects an identical consecutive route key until another route is tracked. Both `page_context` and `page_view` remain inside that single guarded transaction.
+## Required manual checks
 
-The common context is now fully connected in every helper:
+The following still require Tag Assistant and GA4 DebugView because the GTM container cannot be published from the application repositories:
 
-- `site_id` comes from each app's `TRACKING_CONFIG`.
-- `site_section` comes from a centralized brand-specific route resolver.
-- `page_location` prefers a valid canonical URL for the active route and otherwise uses the current browser URL.
-- `page_referrer` uses `document.referrer` initially and the previous tracked location during SPA navigation; empty values are omitted.
+- Verify the seven GTM event groups use the exact regexes in GTM_GA4_SETUP.md.
+- Pause the old universal GA4 Event tag.
+- Verify one Meniva asset download produces only asset_download as the business download event.
+- Verify article_engaged appears only after focused, visible 50% scroll plus 60 seconds active time.
+- Verify an experiment variant produces one exposure per session and page path.
+- Verify campaign context persists across a route change and appears on downstream enrichment events.
+- Verify no email, name, phone, message body, arbitrary query value, or query string reaches GA4.
 
-There is no direct GA4 script or direct GA4 pageview call in any of the four source trees. GTM remains consent-gated, and Meniva Clarity remains consent-gated.
+## Build and lint status
 
-## Code-level verification
+Run the repository-specific commands after source changes:
 
-Completed:
+~~~text
+Meniva: npm run typecheck, targeted ESLint, npm run build
+Metis: npm run typecheck, targeted ESLint, npm run build
+CtrlPlane: npm run typecheck, npm run build
+Nullfal: npm run build, targeted ESLint when an ESLint 9 config is present
+~~~
 
-- TypeScript checks passed for Meniva, Metis, and CtrlPlane.
-- Nullfal production build passed under React Strict Mode.
-- Source search confirms object page events exist only in the central helpers.
-- Source search confirms no direct `gtag('config')`, direct GA4 `page_view`, or parallel `gtag.js` loader.
-- `page_context` and `page_view` are built by two separate helper calls.
-- Context contains no `event` field.
-- Payload cleaning removes nullish values, `gtm`, `gtm.*`, and `tagTypeBlacklist` without mutating the input.
-- Consecutive route dedupe uses `brand_id|site_id|page_path|page_location|page_title` in all four apps.
-- Runtime helper assertions passed for nullish and `gtm.*` cleaning, input immutability, fresh page event references, event order, and duplicate suppression.
-
-## Follow-up verification
-
-- Meniva: TypeScript check, targeted analytics ESLint, production build, runtime helper assertions, and local HTTP preview on port 3001 passed.
-- Metis: TypeScript check, targeted analytics ESLint, production build, runtime helper assertions, and local HTTP preview on port 3002 passed.
-- CtrlPlane: TypeScript check, production build, runtime helper assertions, and local HTTP preview on port 3003 passed. This repository does not currently provide an ESLint dependency or script.
-- Nullfal: production build, runtime helper assertions, and local HTTP preview on port 3004 passed. Targeted ESLint could not run because ESLint 9 is installed without an `eslint.config.js`, `eslint.config.mjs`, or `eslint.config.cjs` configuration file.
-
-The runtime assertions covered raw payload cleaning, input immutability, fresh page event object references, required cross-brand fields, omitted empty referrer and optional content fields, exact `page_context` then `page_view` ordering, same-route suppression, SPA referrer propagation, and valid `A -> B -> A` navigation.
-
-Manual production verification still required in GTM Preview, GA4 DebugView, and the browser Network panel:
-
-- distinct GTM timeline rows and unique event IDs
-- exactly one initial pageview after consent
-- exactly one pageview after each client-side route change
-- no GA4 event tag on `page_context` or History Change
-- `en=page_view`, `en=cta_click`, and intentional `en=consultation_click` collect requests
-- no request before consent
-
-## Required GTM GUI changes
-
-1. Keep Google Tag `send_page_view=false`.
-2. Add Data Layer Variables for `site_id`, `site_section`, `page_location`, and `page_referrer` if they do not exist.
-3. Ensure the GA4 Event tag uses the approved Custom Event trigger regex from `GTM_GA4_SETUP.md`.
-4. Exclude `page_context` from every GA4 Event trigger.
-5. Remove History Change from every GA4 pageview trigger.
-6. Require `analytics_storage` consent on the Google Tag and GA4 Event tag.
-7. Mark `consultation_click` as a key event only if it remains the agreed consultation conversion.
-8. Disable Enhanced Measurement browser-history page changes in the GA4 web stream.
-9. Preview each canonical domain before publishing the container.
+The CtrlPlane repository currently has no ESLint dependency/script. Nullfal's targeted ESLint command remains blocked by the installed ESLint 9 package without an eslint.config.* file; this is a tooling configuration gap, not a helper finding.
