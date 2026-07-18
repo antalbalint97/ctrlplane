@@ -110,7 +110,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <article>
-      <ArticleAnalytics contentId={article.slug} contentTitle={article.title} />
+      <ArticleAnalytics
+        contentId={article.slug}
+        contentTitle={article.title}
+        contentCategory={article.category}
+        estimatedReadingTimeMinutes={Number.parseInt(article.readingTime, 10) || 0}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
