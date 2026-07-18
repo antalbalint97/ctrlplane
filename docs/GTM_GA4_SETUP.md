@@ -45,6 +45,7 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
    - Add all data-layer variables above as event parameters with unprefixed names.
    - Trigger: `CE - Approved analytics events`
    - Consent requirement: `analytics_storage`
+   - Do not configure optional event parameters with literal fallback text such as `undefined` or `null`. A missing Data Layer Variable must remain absent from the outgoing request.
 6. Do not trigger on `page_context`. It only updates the GTM data model immediately before a consented `page_view`.
 7. Do not attach the GA4 pageview tag to History Change. History Change may remain visible as a routing diagnostic, but `page_view` must be triggered only by the custom `page_view` event.
 8. Publish only after Preview mode confirms no tag before consent, one page view after acceptance, and one more per client-side route change.
@@ -78,7 +79,9 @@ Nullfal supports equivalent `REACT_APP_*` names. Committed defaults make the sup
 3. Reject, reload, and confirm no analytics requests or cookies.
 4. Accept and verify GTM loads, analytics is granted, ads remain denied, and exactly one initial page view reaches DebugView/Realtime.
 5. Navigate client-side and verify one new page context plus one page view.
+   - Confirm `page_referrer` on the new route equals the previous tracked `page_location`.
 6. Exercise controlled events without exposing personal data.
+   - Inspect the raw object pushed by the application, not only GTM's processed event model. GTM may add `gtm.uniqueEventId` after the push.
 7. Revoke through Cookie settings; active-tag sessions reload after updating consent to denied.
 8. Verify aliases redirect and previews never load GTM.
 

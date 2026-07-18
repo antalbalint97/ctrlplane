@@ -35,6 +35,15 @@ Each app now has a central `lib/analytics` module with:
 
 React components now own only lifecycle, consent UI, production-host GTM loading, and delegated click detection.
 
+The follow-up Tag Assistant review showed repeated same-route lifecycle calls could still pass after the original 1500 ms dedupe window. Source search found one Analytics component and one official `trackPageView()` call path per app, so there was no second intended pageview source. The remaining duplicate risk came from lifecycle re-entry after the bounded window. Dedupe now rejects an identical consecutive route key until another route is tracked. Both `page_context` and `page_view` remain inside that single guarded transaction.
+
+The common context is now fully connected in every helper:
+
+- `site_id` comes from each app's `TRACKING_CONFIG`.
+- `site_section` comes from a centralized brand-specific route resolver.
+- `page_location` prefers a valid canonical URL for the active route and otherwise uses the current browser URL.
+- `page_referrer` uses `document.referrer` initially and the previous tracked location during SPA navigation; empty values are omitted.
+
 There is no direct GA4 script or direct GA4 pageview call in any of the four source trees. GTM remains consent-gated, and Meniva Clarity remains consent-gated.
 
 ## Code-level verification
@@ -47,9 +56,18 @@ Completed:
 - Source search confirms no direct `gtag('config')`, direct GA4 `page_view`, or parallel `gtag.js` loader.
 - `page_context` and `page_view` are built by two separate helper calls.
 - Context contains no `event` field.
-- Payload cleaning removes nullish values and `gtm.*` keys without mutating the input.
-- The 1500 ms key-based dedupe is enabled in all four apps.
+- Payload cleaning removes nullish values, `gtm`, `gtm.*`, and `tagTypeBlacklist` without mutating the input.
+- Consecutive route dedupe uses `brand_id|site_id|page_path|page_location|page_title` in all four apps.
 - Runtime helper assertions passed for nullish and `gtm.*` cleaning, input immutability, fresh page event references, event order, and duplicate suppression.
+
+## Follow-up verification
+
+- Meniva: TypeScript check, targeted analytics ESLint, production build, runtime helper assertions, and local HTTP preview on port 3001 passed.
+- Metis: TypeScript check, targeted analytics ESLint, production build, runtime helper assertions, and local HTTP preview on port 3002 passed.
+- CtrlPlane: TypeScript check, production build, runtime helper assertions, and local HTTP preview on port 3003 passed. This repository does not currently provide an ESLint dependency or script.
+- Nullfal: production build, runtime helper assertions, and local HTTP preview on port 3004 passed. Targeted ESLint could not run because ESLint 9 is installed without an `eslint.config.js`, `eslint.config.mjs`, or `eslint.config.cjs` configuration file.
+
+The runtime assertions covered raw payload cleaning, input immutability, fresh page event object references, required cross-brand fields, omitted empty referrer and optional content fields, exact `page_context` then `page_view` ordering, same-route suppression, SPA referrer propagation, and valid `A -> B -> A` navigation.
 
 Manual production verification still required in GTM Preview, GA4 DebugView, and the browser Network panel:
 

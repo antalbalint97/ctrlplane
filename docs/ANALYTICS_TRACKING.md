@@ -18,7 +18,7 @@ Every object event is created by `pushDataLayerEvent(eventName, params)`.
 
 - Each push receives a new object reference.
 - Pushed objects are never reused or mutated by application code.
-- `undefined`, `null`, and keys beginning with `gtm.` are removed.
+- `undefined`, `null`, `gtm`, `tagTypeBlacklist`, and keys beginning with `gtm.` are removed.
 - String values are limited to 120 characters.
 - `event` is assigned by the helper, not by page context.
 
@@ -50,6 +50,10 @@ ctrlplane  site_id=ctrlplane_web
 nullfal    site_id=nullfal_web
 ```
 
+`site_section` is resolved centrally. Meniva and Metis use `main`. CtrlPlane distinguishes `home`, `blog`, `article`, and `main`. Nullfal distinguishes `main`, `learning`, `practice`, and `admin`.
+
+`page_location` uses the canonical URL when the canonical pathname matches the active route. It falls back to `window.location.href` when the canonical is absent, invalid, or stale during a client-side transition. The initial `page_referrer` comes from `document.referrer` when present. After an SPA route change, it uses the previously tracked `page_location`. Empty referrers are omitted from the raw payload.
+
 ## Pageview strategy
 
 `trackPageView()` is the only official pageview source. It runs after consent on initial load and after framework route changes.
@@ -66,10 +70,10 @@ page_view
 The dedupe key is:
 
 ```text
-brand_id|page_path|page_title
+brand_id|site_id|page_path|page_location|page_title
 ```
 
-The same key is suppressed for 1500 ms. This protects against React Strict Mode, duplicate hydration effects, and repeated router callbacks. A changed path produces a new pageview.
+The same consecutive key is suppressed until a different page is successfully tracked. This protects against React Strict Mode, hydration, delayed remounts, consent lifecycle callbacks, and repeated router callbacks. A changed path or location produces a new pageview, and navigating `A -> B -> A` produces three valid pageviews.
 
 History Change is not an analytics trigger. The React router hooks are the route-change source, and they call `trackPageView()`.
 
@@ -121,8 +125,16 @@ window.dataLayer
     i,
     event: x.event,
     uniqueEventId: x["gtm.uniqueEventId"],
+    brand: x.brand,
+    brand_id: x.brand_id,
+    site_id: x.site_id,
+    site_section: x.site_section,
+    page_type: x.page_type,
     page_path: x.page_path,
-    page_title: x.page_title
+    page_location: x.page_location,
+    page_referrer: x.page_referrer,
+    content_id: x.content_id,
+    content_title: x.content_title
   }));
 ```
 
