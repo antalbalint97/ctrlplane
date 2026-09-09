@@ -16,23 +16,21 @@ The Node driver reuses one pool per warm process (maximum 5 application connecti
 Set server environment variables in the existing CtrlPlane Vercel project's Production environment; use a separate test database for Preview. Redeploy after setting them.
 
 ```dotenv
-MONGODB_URI=<Atlas URI from Railway's Nullfal MONGO_URL>
+MONGODB_URI=<tested CtrlPlane Atlas URI from local .env.local>
 MONGODB_DB_NAME=ctrlplane
-PRIVACY_CONTROLLER_NAME=<verified controller name>
-PRIVACY_CONTACT_EMAIL=<verified public privacy/contact mailbox>
 
 # Optional: enable only when BOTH are configured
 RESEND_API_KEY=<Resend API key with contact management access>
 RESEND_SEGMENT_ID=<dedicated CtrlPlane Newsletter segment UUID>
 ```
 
-1. Railway → Nullfal backend → Variables: copy the deployed `MONGO_URL` privately to CtrlPlane's `MONGODB_URI`. Keep `MONGODB_DB_NAME=ctrlplane`; do not copy Nullfal's `DB_NAME`. Verify that the existing user can access `ctrlplane` and that Atlas Network Access permits CtrlPlane's actual egress. Keep TLS/certificate verification enabled. A separately scoped user can be introduced on the same cluster later.
+1. Copy the now-tested `MONGODB_URI` from local `.env.local` privately to the CtrlPlane Vercel project's Production environment. Keep `MONGODB_DB_NAME=ctrlplane`; do not copy Nullfal's `DB_NAME`. Atlas Network Access must permit Vercel's actual egress. Keep TLS/certificate verification enabled. Vercel runs the Next.js API route directly; a Railway backend is not needed. See [Vercel setup](VERCEL_SETUP.md).
 2. Set `MONGODB_URI` privately in deployment secrets (or ignored `.env.local` locally). The first signup initializes the collection and **unique** `newsletter_email_unique` index on `{email_normalized: 1}` before writing. An index creation error fails the signup closed. If migrating existing data, resolve collisions deliberately; do not drop the unique constraint.
 3. The operator created **CtrlPlane Newsletter** and supplied working `RESEND_API_KEY` / `RESEND_SEGMENT_ID` values in `.env.local`. Deploy these same values privately to CtrlPlane. Live testing confirmed the local production form creates a Mongo subscriber, synchronizes its Resend contact into this Segment and records `synced`; duplicate signup keeps one document and the same contact ID. The synthetic contact and Mongo record were removed with cleanup verified. Never use a Nullfal segment or send a broadcast to all account contacts.
-4. Confirm controller identity/contact, retention schedule (including suppressed addresses and backups), actual processors/hosting locations, transfer safeguards where applicable and rights/complaint instructions; complete the public privacy notice before collecting real subscribers. Set the two privacy env values at build time (the privacy page is statically rendered). No company/address/tax data has been invented.
+4. The controller details supplied by the operator are now in the public privacy page: Antal Bálint egyéni vállalkozó, 2112 Veresegyház, Viczián u. 14., `info@meniva.net`. No privacy env variables are required. Keep actual retention practices/provider settings consistent with the notice and process unsubscribe/privacy requests at this mailbox.
 5. Deploy and complete the real environment smoke check below. Secrets must never use `NEXT_PUBLIC_` names.
 
-**Privacy TODO (operator):** the repo names Antal Bálint as author but does not establish the controller's identity or public privacy mailbox. These and the retention/processor details above still require confirmation. The UI has no development placeholder, but removing that placeholder alone does not make the notice complete.
+The privacy notice explains newsletter consent, unsubscribe/suppression retention, hosting, consent-based analytics/browser storage, service providers/transfer terms, data rights and NAIH complaints. Provider-configured log/analytics retention is described by criteria without inventing numeric periods. The notice is accessible from the signup form and footer; its settings button opens the existing consent controls.
 
 ## Data and signup behavior
 

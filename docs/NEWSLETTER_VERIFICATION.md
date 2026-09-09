@@ -1,6 +1,6 @@
 # Newsletter verification — 2026-09-09
 
-Implementation is local in `ctrlplane`; no deployment was performed. The private newsletter automation repository and Nullfal were read-only context.
+Validation below distinguishes local production-build checks, real provider smoke tests and public deployment checks. The private newsletter automation repository and Nullfal were read-only context.
 
 | Check | Result |
 | --- | --- |
@@ -16,7 +16,7 @@ Implementation is local in `ctrlplane`; no deployment was performed. The private
 | Mobile | 375×812 article→signup, UTM preserved, successful submit, no horizontal overflow |
 | Client boundary | Built client chunks contain no `MONGODB_URI`, `RESEND_API_KEY`, Mongo driver or server-only imports |
 | Public source UI | No `REQUIRED_USER_INPUT` placeholder |
-| Production read-only check | Homepage and privacy return 200; `/api/subscribe` returns 404; live privacy still has old placeholder |
+| Public deployment check after PR #13 | `/api/subscribe` is deployed: an invalid-address request returns HTTP 422 `invalid_email` without a database write. This does not establish that production provider env values have been configured |
 | Resend configuration | New operator-supplied API key authenticates; configured Segment resolves to **CtrlPlane Newsletter** |
 | Atlas database creation | `ctrlplane.newsletter_subscribers` verified in the shared Nullfall free cluster; unique `newsletter_email_unique` index exists on `email_normalized` |
 | Updated Atlas URI | Connection, ping, index creation, insert, read and targeted test-record deletion pass with the operator's replacement user |
@@ -37,7 +37,8 @@ Browser tests found and fixed (1) origin comparison against Next's internal host
 Actual remaining blockers:
 
 1. Install the verified `MONGODB_URI`, `MONGODB_DB_NAME=ctrlplane`, `RESEND_API_KEY` and `RESEND_SEGMENT_ID` in the public CtrlPlane deployment. Atlas writes and live Resend Segment synchronization are now verified through the local production app.
-2. Confirm controller/contact and outstanding privacy retention/processor details; finish the notice.
-3. Deploy this implementation and complete an operator-owned-mailbox browser→Atlas smoke test on the real environment, including duplicate/mobile checks and deployed analytics configuration inspection.
+2. Deploy the completed privacy notice and complete an operator-owned-mailbox browser→Atlas smoke test on the public environment, including duplicate/mobile checks and deployed analytics configuration inspection.
+
+Privacy follow-up (2026-09-10): operator confirmed controller name, address and `info@meniva.net` contact; these are now public page content with no privacy env dependency. The notice covers newsletter/hosting/analytics, retention criteria, service providers/international transfers, requests and complaints. Operational request handling and retention remain manual/provider-configured as documented in VERCEL_SETUP.md.
 
 Optional Resend configuration does not block saving newsletter subscriptions. Live contact sync and domain verification pass; actual sender/delivery and unsubscribe behavior must still be tested before newsletter delivery is enabled. See [operations handoff](NEWSLETTER_OPERATIONS.md).

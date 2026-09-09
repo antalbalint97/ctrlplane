@@ -120,4 +120,10 @@ test("privacy is reachable from form and contains no development placeholders", 
   await page.locator('#newsletter-privacy a').click();
   await expect(page.getByRole("heading", { name: "CtrlPlane hírlevél" })).toBeVisible();
   await expect(page.locator("body")).not.toContainText("REQUIRED_USER_INPUT");
+  await expect(page.locator('[aria-labelledby="privacy-controller"]')).toContainText("Antal Bálint egyéni vállalkozó");
+  await expect(page.locator('a[href="mailto:info@meniva.net"]')).toBeVisible();
+  await page.getByRole("button", { name: "Süti beállítások megnyitása" }).click();
+  await expect(page.getByRole("dialog", { name: "Analitikai sütik" })).toBeVisible();
+  await page.getByRole("button", { name: "Elutasítom", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Analitikai sütik" })).toBeHidden();
 });
