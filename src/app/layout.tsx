@@ -151,6 +151,7 @@ export default function RootLayout({
                 { label: "Írások", href: "/#irasok" },
                 { label: "Rólam", href: "/#rolam" },
                 { label: "Feliratkozás", href: "/#feliratkozas" },
+                { label: "Adatvédelem", href: "/privacy" },
               ],
             },
             {
