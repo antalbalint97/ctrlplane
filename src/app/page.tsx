@@ -7,7 +7,7 @@ import {
 import { ArticleExplorer } from "@/components/ArticleExplorer";
 import { articles } from "@/data/articles";
 import { MENIVA_URL } from "@/lib/site";
-import NewsletterPlaceholder from "@/components/NewsletterPlaceholder";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const featuredArticle = articles.find((article) => article.featured) ?? articles[0];
 
@@ -83,7 +83,7 @@ export default function HomePage() {
 
       <section id="feliratkozas" className="ds-container ds-container--wide cp-section">
         <Card padding="lg" className="cp-newsletter-card">
-          <NewsletterPlaceholder />
+          <NewsletterSignup />
         </Card>
       </section>
     </>

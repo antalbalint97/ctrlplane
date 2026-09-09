@@ -43,3 +43,7 @@ content/raw/
 # Optional local notes
 .local/
 notes/
+
+# Browser verification artifacts
+/test-results/
+/playwright-report/
