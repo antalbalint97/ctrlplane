@@ -6,6 +6,7 @@ import "./globals.css";
 import { Footer, Navbar } from "@meniva/design-system";
 import { MENIVA_URL, SITE_URL } from "@/lib/site";
 import Analytics from "@/components/Analytics";
+import NewsletterAttribution from "@/components/NewsletterAttribution";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -160,6 +161,7 @@ export default function RootLayout({
           copyright={`© ${new Date().getFullYear()} CtrlPlane`}
           bottomNote="A Meniva ökoszisztéma része"
         />
+        <NewsletterAttribution />
       </body>
     </html>
   );

@@ -75,6 +75,11 @@ export function ensureDataLayer(): unknown[] {
   return window.dataLayer;
 }
 
+function pushAnalyticsItem(item: unknown): boolean {
+  try { ensureDataLayer().push(item); return true; }
+  catch { return false; }
+}
+
 export function cleanAnalyticsPayload(payload: AnalyticsParams): CleanAnalyticsPayload {
   return Object.fromEntries(
     Object.entries(payload)
@@ -84,6 +89,8 @@ export function cleanAnalyticsPayload(payload: AnalyticsParams): CleanAnalyticsP
         && key !== "gtm"
         && key !== "tagTypeBlacklist"
         && !key.startsWith("gtm.")
+        && !/email|e_mail|user_data/i.test(key)
+        && !(typeof value === "string" && /@|%40/i.test(value))
       ))
       .map(([key, value]) => [key, typeof value === "string" ? value.slice(0, 120) : value]),
   ) as CleanAnalyticsPayload;
@@ -92,20 +99,19 @@ export function cleanAnalyticsPayload(payload: AnalyticsParams): CleanAnalyticsP
 export function pushDataLayerEvent(eventName: string, params: AnalyticsParams = {}) {
   if (typeof window === "undefined") return null;
   const payload = cleanAnalyticsPayload({ ...params, event: eventName });
-  ensureDataLayer().push(payload);
-  return payload;
+  return pushAnalyticsItem(payload) ? payload : null;
 }
 
 export function pushGtmBootstrap() {
   if (gtmBootstrapPushed) return;
   gtmBootstrapPushed = true;
-  ensureDataLayer().push({ "gtm.start": Date.now(), event: "gtm.js" });
+  pushAnalyticsItem({ "gtm.start": Date.now(), event: "gtm.js" });
 }
 
 export function pushConsentDefault() {
   if (typeof window === "undefined" || consentDefaultPushed) return;
   consentDefaultPushed = true;
-  ensureDataLayer().push(["consent", "default", {
+  pushAnalyticsItem(["consent", "default", {
     analytics_storage: "denied",
     ad_storage: "denied",
     ad_user_data: "denied",
@@ -124,10 +130,10 @@ export function getStoredAnalyticsConsent(): AnalyticsConsent | null {
 }
 
 export function updateAnalyticsConsent(value: AnalyticsConsent) {
-  localStorage.setItem(CONSENT_KEY, value);
+  try { localStorage.setItem(CONSENT_KEY, value); } catch { return; }
   if (lastConsentUpdate === value) return;
   lastConsentUpdate = value;
-  ensureDataLayer().push(["consent", "update", {
+  pushAnalyticsItem(["consent", "update", {
     analytics_storage: value,
     ad_storage: "denied",
     ad_user_data: "denied",

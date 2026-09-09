@@ -5,18 +5,27 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "newsletter:test": "node --conditions=react-server --import tsx --test tests/newsletter.test.ts",
+    "newsletter:test:e2e": "playwright test",
+    "newsletter:sync": "node --conditions=react-server --import tsx scripts/newsletter-sync.ts"
   },
   "dependencies": {
     "@meniva/design-system": "file:./vendor/meniva-design-system-0.4.1.tgz",
+    "@next/env": "16.1.4",
+    "mongodb": "^7.6.0",
     "next": "16.1.4",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "mongodb-memory-server": "^11.2.0",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }
