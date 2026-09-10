@@ -53,7 +53,7 @@ export default function NewsletterSignup() {
   return (
     <div>
       <h2>Kevesebb AI-hírfolyam, több összefüggés</h2>
-      <p>Kéthetente egy nyugodtabb, szerkesztett összefoglaló AI-ról, adatokról és technológiai döntésekről. A CtrlPlane összegyűjti, amit érdemes közelebbről megnézni.</p>
+      <p>Egy nyugodtabb, szerkesztett összefoglaló AI-ról, adatokról és technológiai döntésekről. A CtrlPlane összegyűjti, amit érdemes közelebbről megnézni.</p>
       <form method="post" action="/api/subscribe" noValidate onSubmit={submit} onFocusCapture={start} className="cp-newsletter-form" aria-busy={state === "submitting"}>
         <label htmlFor="newsletter-email">E-mail-cím</label>
         <input id="newsletter-email" name="email" type="email" required maxLength={254} autoComplete="email" inputMode="email" placeholder="email@example.com" disabled={state === "submitting"} aria-invalid={state === "invalid_email"} aria-describedby="newsletter-feedback newsletter-privacy" />

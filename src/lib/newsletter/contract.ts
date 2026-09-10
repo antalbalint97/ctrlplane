@@ -1,5 +1,5 @@
 export const NEWSLETTER_SOURCE = "ctrlplane_web";
-export const CONSENT_VERSION = "newsletter-2026-09-09";
+export const CONSENT_VERSION = "newsletter-2026-09-10";
 
 export const signupMessages = {
   success: "Köszönjük, feliratkoztál. A következő CtrlPlane összefoglalót e-mailben küldjük.",
@@ -13,7 +13,7 @@ export const signupMessages = {
 
 export type SignupStatus = keyof typeof signupMessages;
 export type SignupResult = { status: SignupStatus };
-export type Attribution = { utm_source: string | null; utm_medium: string | null; utm_campaign: string | null };
+export type Attribution = { utm_source: string | null; utm_medium: string | null; utm_campaign: string | null; utm_content: string | null };
 export type SignupInput = Attribution & { email: string };
 
 export function normalizeEmail(value: unknown): string | null {
@@ -40,5 +40,6 @@ export function attributionFrom(values: Record<string, unknown>): Attribution {
     utm_source: campaignValue(values.utm_source),
     utm_medium: campaignValue(values.utm_medium),
     utm_campaign: campaignValue(values.utm_campaign),
+    utm_content: campaignValue(values.utm_content),
   };
 }

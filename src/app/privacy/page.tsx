@@ -22,9 +22,9 @@ export default function PrivacyPage() {
       </section>
 
       <h2>CtrlPlane hírlevél</h2>
-      <p>A feliratkozáskor megadott e-mail-címedet a CtrlPlane hírlevelének és az új írásokról szóló értesítéseknek a küldéséhez kezeljük. A hírlevél várhatóan kéthetente, szerkesztői kontroll mellett készül.</p>
+      <p>A feliratkozáskor megadott e-mail-címedet a CtrlPlane hírlevelének és az új írásokról szóló értesítéseknek a küldéséhez kezeljük. A hírlevél szerkesztői kontroll mellett, az új elemzésekhez és fontosabb témákhoz igazodva készül.</p>
       <p>Az adatkezelés jogalapja a hozzájárulásod, a GDPR 6. cikk (1) bekezdés a) pontja alapján. A kifejezetten hírlevél-feliratkozásra szolgáló gomb megnyomásával adsz hozzájárulást ehhez a célhoz; az analitikai mérésről külön dönthetsz. A feliratkozás önkéntes, az oldal írásait nélküle is elolvashatod. E-mail-cím nélkül a hírlevél kézbesítése nem lehetséges.</p>
-      <p>Az e-mail-cím mellett a feliratkozás időpontját, forrását, állapotát és a hozzájárulási szöveg verzióját tároljuk. Ha a hivatkozás tartalmaz kampányazonosítókat, a forrást, médiumot és kampányt is rögzítjük. Ezekből látható például, hogy egy LinkedIn-bejegyzésről érkeztél.</p>
+      <p>Az e-mail-cím mellett a feliratkozás időpontját, forrását, állapotát és a hozzájárulási szöveg verzióját tároljuk. Ha a hivatkozás tartalmaz kampányazonosítókat, a forrást, médiumot, kampányt és a bejegyzés vagy kreatív változat azonosítóját (utm_content) is rögzítjük. Ezekből látható például, hogy melyik LinkedIn-bejegyzésről érkeztél.</p>
       <p>A nyilvántartás tartalmazza a levelezőszolgáltatónál létrejött kontakt azonosítóját és a szinkronizáció állapotát, időpontját is. A feliratkozási rekordhoz IP-címet nem mentünk, és a feliratkozáskor megadott e-mail-címet nem küldjük a Google Analytics vagy a Google Tag Manager mérési eseményeibe.</p>
 
       <h2>Leiratkozás és adatmegőrzés</h2>

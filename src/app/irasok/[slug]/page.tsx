@@ -205,7 +205,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           })}
 
           <aside className="cp-editorial-callout" aria-label="CtrlPlane hírlevél">
-            <h2>Egy nyugodtabb összefoglaló, kéthetente</h2>
+            <h2>Egy nyugodtabb összefoglaló</h2>
             <p>AI, adatok és technológiai döntések: a CtrlPlane összegyűjti a fontosabb fejleményeket, és megkeresi mögöttük az összefüggéseket.</p>
             <a className="ds-btn ds-btn--primary" href="/#feliratkozas" data-analytics-event="article_cta_click" data-cta-id="article_newsletter" data-analytics-placement="article_end">Feliratkozom a hírlevélre</a>
           </aside>

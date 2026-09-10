@@ -1,5 +1,7 @@
 # Meniva portfolio implementation backlog
 
+> Historical Meniva portfolio audit backlog, with verification notes dated 2026-07-06. Archived from the CtrlPlane root `implementation_backlog.md` on 2026-09-10; this is not an active CtrlPlane backlog. The original tasks and evidence are preserved below. Relative paths and line references retain their original audit context and are not relative to this archive directory. For current CtrlPlane scope, see [PROJECT_STATE.md](../../PROJECT_STATE.md).
+
 ## P0 — Must fix before public/client use
 
 ### P0.1 Replace false production framing
