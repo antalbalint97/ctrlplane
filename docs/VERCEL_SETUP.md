@@ -10,6 +10,7 @@ In **Vercel → CtrlPlane project → Settings → Environment Variables**, sele
 | `MONGODB_DB_NAME` | `ctrlplane` |
 | `RESEND_API_KEY` | Copy the tested Resend key privately |
 | `RESEND_SEGMENT_ID` | Copy the tested CtrlPlane Newsletter Segment ID |
+| `RESEND_FROM_EMAIL` | Optional plain sender mailbox on a verified Resend domain; enables one welcome email for new signups after successful contact sync |
 
 Keep existing public analytics configuration. MongoDB/Resend secrets must not use `NEXT_PUBLIC_` prefixes. The code reads `MONGODB_URI` exactly; `MONGO_URI` and `MONGO_URL` are not its configuration keys. Public controller details are maintained directly in the privacy page; no `PRIVACY_*` environment variables are needed.
 
@@ -18,6 +19,8 @@ The local `.env.local` is ignored by Git. Pushing code does not copy these value
 For Preview, use a separate test database and test Segment if signup testing is needed. Do not expose real subscriber credentials to untrusted preview builds. Atlas Network Access must permit Vercel's actual outgoing connections; existing local/Railway access does not prove Vercel access. Verify this with the deployed signup before changing access rules.
 
 After deployment, test production signup with an operator-owned mailbox, inspect MongoDB directly, verify Segment membership and duplicate behavior. Keep editorial approval and manual delivery unchanged.
+
+Welcome delivery also requires sending permission on the existing `RESEND_API_KEY`. No new secret/key is introduced. Leaving `RESEND_FROM_EMAIL` blank disables welcome delivery while contact sync remains available. Replies and manual unsubscribe requests go to the existing `info@meniva.net` mailbox. Use separate credentials/test recipients in Preview. Do not configure Resend Segment-entry automations alongside the app's welcome send. Check `welcome_email_status`, provider message ID and actual inbox delivery after deployment; `sent` means API acceptance, not proven delivery. See [email templates and welcome delivery](EMAIL_TEMPLATES.md).
 
 ## Privacy completion
 

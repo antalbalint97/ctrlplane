@@ -2,8 +2,8 @@
 
 ## Storage and infrastructure audit
 
-`POST /api/subscribe` → MongoDB Atlas `ctrlplane.newsletter_subscribers` → HTTP 201 → optional Resend contact sync using Next.js `after()`.
-MongoDB is canonical. No mail is sent by signup or the retry command. Editorial work and newsletter sending are manual. This main application has no dependency on the separate newsletter automation project.
+`POST /api/subscribe` → MongoDB Atlas `ctrlplane.newsletter_subscribers` → HTTP 201 → Next.js `after()` contact sync → optional one-time welcome email for the new subscriber.
+MongoDB is canonical. Welcome failure never changes a committed signup response. Editorial work and newsletter issue sending are manual; the contact retry command sends no mail. This main application owns canonical email presentation in `src/emails/` and has no dependency on the separate newsletter automation project. See [templates and welcome delivery](EMAIL_TEMPLATES.md).
 
 Nullfal uses a process-level Python Motor client, `MONGO_URL`, validated `DB_NAME`, TLS certificates and Resend SMTP. The operator has created `ctrlplane.newsletter_subscribers` in the existing **Nullfall** free Atlas cluster (confirmed by their Data Explorer screenshot). No separate cluster is needed. The operator authorized reusing the Atlas URI from Nullfal/Railway; map `MONGO_URL` to CtrlPlane's `MONGODB_URI`, but set `MONGODB_DB_NAME=ctrlplane` independently. The explicit database selection overrides any database name in the URI. Nullfal's runtime code and data remain independent.
 
@@ -22,6 +22,9 @@ MONGODB_DB_NAME=ctrlplane
 # Optional: enable only when BOTH are configured
 RESEND_API_KEY=<Resend API key with contact management access>
 RESEND_SEGMENT_ID=<dedicated CtrlPlane Newsletter segment UUID>
+
+# Optional welcome sending: plain mailbox on a verified Resend domain
+RESEND_FROM_EMAIL=<operator-selected sender mailbox>
 ```
 
 1. Copy the now-tested `MONGODB_URI` from local `.env.local` privately to the CtrlPlane Vercel project's Production environment. Keep `MONGODB_DB_NAME=ctrlplane`; do not copy Nullfal's `DB_NAME`. Atlas Network Access must permit Vercel's actual egress. Keep TLS/certificate verification enabled. Vercel runs the Next.js API route directly; a Railway backend is not needed. See [Vercel setup](VERCEL_SETUP.md).
@@ -44,6 +47,9 @@ The privacy notice explains newsletter consent, unsubscribe/suppression retentio
 | `resend_contact_id` | Nullable provider contact ID |
 | `resend_sync_status` | `pending`, `synced`, `failed`, `suppressed` |
 | `resend_last_sync_at` | Nullable last completed attempt timestamp |
+| `welcome_email_status` | New records: `pending`, then `sending` / `sent` / `failed` / `skipped`; absent on historical records |
+| `welcome_email_attempted_at`, `welcome_email_sent_at` | Nullable BSON dates for attempt and Resend acceptance; not inbox delivery evidence |
+| `welcome_email_resend_id`, `welcome_email_error_code` | Nullable provider message ID and fixed safe reason code; no message body or raw provider errors stored |
 
 The request requires `newsletter_consent: true`, supplied only by the dedicated form submit, whose adjacent text states the newsletter purpose. No extra checkbox was added. This is a product implementation based on an explicit affirmative action, not a legal certification; see [EDPB consent guidance](https://www.edpb.europa.eu/sme/be-compliant/process-personal-data-lawfully_en). Client-supplied status/timestamps/internal state are ignored. No IP address is stored.
 
@@ -69,13 +75,29 @@ https://ctrplane.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign
 
 For an article-led post, put the same query parameters on the article URL and follow its signup CTA. Keep source/medium/campaign consistent and assign a distinct `utm_content` per post. Compare article engagement in GA4 (consented traffic) with new Mongo subscriptions grouped by these four fields; the populations can differ because signup does not require analytics consent.
 
+### First-party campaign short links
+
+Publish `https://ctrplane.com/go/[slug]`, for example `https://ctrplane.com/go/launch`. The typed static registry lives in `src/lib/short-links.ts`; `/go/launch` returns a temporary **307** with `Cache-Control: no-store` to:
+
+```text
+https://ctrplane.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=ctrlplane_launch&utm_content=launch_post_01#feliratkozas
+```
+
+Add an explicit registry entry for each future post, choosing its home/article destination, source, medium, campaign, content and optional anchor. Every LinkedIn content experiment must have a unique `utm_content`. Only `launch` is currently registered. Unknown slugs return 404; request query parameters cannot override destinations or attribution. The relative Location stays on the current origin, including local and preview deployments.
+
+These short links are first-party redirects, not analytics themselves. The redirect runs on the server without rendering a page or emitting events; the existing destination page handles consent, session attribution and signup as before. No subscriber or analytics data model changes are needed.
+
+A crawler that follows the HTTP redirect receives the destination's existing Open Graph metadata; no custom preview page is introduced. LinkedIn's caching and preview behavior still need a deployed check in [Post Inspector](https://www.linkedin.com/post-inspector/). After deployment, inspect `/go/launch` without following redirects (for example `curl -I https://ctrplane.com/go/launch`), verify 307 and the full Location including the fragment, then open it in a browser and confirm all four UTM values and the signup section. Confirm an unknown slug returns 404 and `?url=https://example.com&utm_content=other` cannot change the mapping. For a controlled signup smoke test, verify the four stored fields and one consented signup event; the redirect itself must produce neither a page view nor a signup event.
+
 ## Resend and manual recovery
 
 Live provider verification: `ctrplane.com` is **verified**; TXT `resend._domainkey` and CNAME records `rsend` and `send` are verified, sending enabled, receiving disabled. No Resend automations were configured at test time. No email was sent. Sender selection, approved issue delivery and unsubscribe behavior still require the separate delivery check.
 
 Resend has [migrated Audiences to Segments](https://resend.com/docs/dashboard/segments/migrating-from-audiences-to-segments); this implementation uses `RESEND_SEGMENT_ID`, **not** the deprecated Audience API. Contacts are global within an account; segment membership keeps the CtrlPlane recipient list separate, but global opt-out can affect multiple brands. Use a separate Resend account if independent global contact/opt-out domains are required.
 
-After the Mongo commit/response, [Next.js `after()`](https://nextjs.org/docs/app/api-reference/functions/after) runs a bounded API lookup then contact creation/segment membership. Existing global opt-outs are never explicitly reset; they become `suppressed` locally and are not added to the segment. New contact creation omits `unsubscribed:false`. No welcome mail/broadcast is sent. A provider error leaves the signup successful and marks sync `failed`; interrupted work can remain `pending`. If state recording also fails, fixed log code `newsletter_resend_state_write_failed` signals it. Logs never print raw errors, URIs, request bodies or addresses.
+After the Mongo commit/response, [Next.js `after()`](https://nextjs.org/docs/app/api-reference/functions/after) runs a bounded API lookup then contact creation/segment membership. Existing global opt-outs are never explicitly reset; they become `suppressed` locally and are not added to the segment. New contact creation omits `unsubscribed:false`. After successful sync, the new subscriber may receive the welcome email when `RESEND_FROM_EMAIL` is configured; no Broadcast is sent. A provider error leaves the signup successful and marks sync `failed`; interrupted work can remain `pending`. If state recording also fails, fixed log code `newsletter_resend_state_write_failed` signals it. Logs never print raw errors, URIs, request bodies or addresses.
+
+Welcome delivery uses a durable atomic `pending` → `sending` claim and a subscriber-ID-based Resend idempotency key. Duplicates, legacy records and contact-sync retries do not send welcome mail. Missing configuration skips welcome; suppression skips it; failed sync blocks it. Send failure records `failed` without undoing the subscription. A lost response can still mean Resend accepted the message, so failed/interrupted sends are not automatically retried. Inspect provider logs before any manual recovery; never bulk-reset welcome status. Full state semantics and recovery boundaries are in [EMAIL_TEMPLATES.md](EMAIL_TEMPLATES.md).
 
 After fixing credentials, segment or provider availability, run from a trusted checkout with the intended database env:
 
@@ -122,7 +144,7 @@ Before posting the production signup link:
 
 ## Deliberately manual / deferred
 
-Current manual sending workflow: Mongo active subscribers → reconcile suppressions → dedicated Resend Segment → **editorially reviewed** issue → manually sent Broadcast. The operator writes, reviews and initiates delivery. Do not trigger delivery on signup, segment entry, sync retries or a schedule. No external automation repository or approval system is required.
+Current manual newsletter issue workflow: Mongo active subscribers → reconcile suppressions → dedicated Resend Segment → **editorially reviewed** issue → manually sent Broadcast. The operator writes, reviews and initiates issue delivery. The one-time welcome email is the only new signup-triggered message. Newsletter issues must not be triggered by signup, segment entry, sync retries or a schedule. No external automation repository or approval system is required.
 
 Before real sends, reconcile Mongo with the provider's actual unsubscribe/suppression state. P2: a signature-verified, replay-safe Resend webhook (plus periodic/manual reconciliation for missed events) should set Mongo `status=unsubscribed` and `unsubscribed_at`, scoped to the appropriate brand/topic. Until that exists, manually reconcile opt-outs before each approved issue and honor requests received at the verified privacy mailbox. Never bulk-write `unsubscribed:false` to Resend or infer renewed consent from another brand's membership. Independent per-brand preferences may require Resend Topics. Confirm current webhook event contracts when implementing.
 

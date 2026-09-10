@@ -17,6 +17,7 @@ for (const content of ["launch_post_01", undefined]) {
     const client = await new MongoClient(uri).connect();
     try {
       const collection = client.db("ctrlplane").collection("newsletter_subscribers");
+      await expect.poll(async () => (await collection.findOne({ email_normalized: email }))?.welcome_email_status).toBe("skipped");
       const doc = await collection.findOne({ email_normalized: email });
       expect(doc?.email).toBe(email);
       expect(doc?.source).toBe("ctrlplane_web");

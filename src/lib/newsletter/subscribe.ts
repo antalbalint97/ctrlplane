@@ -16,6 +16,11 @@ export async function persistSubscriber(collection: Collection<Subscriber>, inpu
     resend_contact_id: null,
     resend_sync_status: "pending",
     resend_last_sync_at: null,
+    welcome_email_status: "pending",
+    welcome_email_attempted_at: null,
+    welcome_email_sent_at: null,
+    welcome_email_resend_id: null,
+    welcome_email_error_code: null,
   };
   try {
     await collection.insertOne(subscriber);
