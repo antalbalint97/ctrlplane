@@ -3,11 +3,11 @@
 ## Storage and infrastructure audit
 
 `POST /api/subscribe` → MongoDB Atlas `ctrlplane.newsletter_subscribers` → HTTP 201 → optional Resend contact sync using Next.js `after()`.
-MongoDB is canonical. No mail is sent by signup or the retry command. The private automation repository, collectors, encrypted CSV files and delivery approval gate are unchanged.
+MongoDB is canonical. No mail is sent by signup or the retry command. Editorial work and newsletter sending are manual. This main application has no dependency on the separate newsletter automation project.
 
 Nullfal uses a process-level Python Motor client, `MONGO_URL`, validated `DB_NAME`, TLS certificates and Resend SMTP. The operator has created `ctrlplane.newsletter_subscribers` in the existing **Nullfall** free Atlas cluster (confirmed by their Data Explorer screenshot). No separate cluster is needed. The operator authorized reusing the Atlas URI from Nullfal/Railway; map `MONGO_URL` to CtrlPlane's `MONGODB_URI`, but set `MONGODB_DB_NAME=ctrlplane` independently. The explicit database selection overrides any database name in the URI. Nullfal's runtime code and data remain independent.
 
-The operator supplied an updated Atlas URI for a user with CtrlPlane access in ignored `ctrlplane/.env.local`. Connection, ping, unique index creation and actual subscriber writes now pass. The local production Next build was tested through a mobile browser against this real Atlas database: signup persisted, duplicate signup kept one record, invalid input was rejected, and the synthetic test record was deleted with cleanup verified. Resend sync was disabled during this smoke test. No new cluster or Nullfal data changes were needed. The verified URI/database configuration still needs to be installed in the public CtrlPlane deployment.
+The operator supplied an updated Atlas URI for a user with CtrlPlane access in ignored `ctrlplane/.env.local`. Connection, ping, unique index creation and actual subscriber writes passed in the earlier smoke test. The local production Next build was tested through a mobile browser against this real Atlas database: signup persisted, duplicate signup kept one record, invalid input was rejected, and the synthetic test record was deleted with cleanup verified. Resend sync was disabled during this smoke test. No new cluster or Nullfal data changes were needed. Subscription is now live per the current operating status; the configuration steps below remain setup/recovery instructions, not outstanding launch blockers. New attribution changes still require a deployed smoke check.
 
 The Node driver reuses one pool per warm process (maximum 5 application connections, idle minimum 0); development hot reload shares the cache. Failed connections/index initialization are retryable. Writes use majority acknowledgement; timeouts bound database failures. See [MongoDB connection pools](https://www.mongodb.com/docs/drivers/node/current/connect/connection-options/connection-pools/).
 
@@ -39,8 +39,8 @@ The privacy notice explains newsletter consent, unsubscribe/suppression retentio
 | `_id`, `email`, `email_normalized` | ObjectId; email stored trimmed/lowercase; unique normalized address |
 | `status`, `source` | `active` / `unsubscribed`; server-owned `ctrlplane_web` |
 | `subscribed_at`, `unsubscribed_at` | BSON dates, latter null until unsubscribe |
-| `consent_version` | Server-owned `newsletter-2026-09-09`; timestamp is `subscribed_at` |
-| `utm_source`, `utm_medium`, `utm_campaign` | Nullable campaign identifiers, max 100 ASCII letters/digits/underscore/hyphen |
+| `consent_version` | Server-owned `newsletter-2026-09-10`; timestamp is `subscribed_at` |
+| `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` | Nullable campaign identifiers, max 100 ASCII letters/digits/underscore/hyphen; content identifies a post or creative variant |
 | `resend_contact_id` | Nullable provider contact ID |
 | `resend_sync_status` | `pending`, `synced`, `failed`, `suppressed` |
 | `resend_last_sync_at` | Nullable last completed attempt timestamp |
@@ -52,6 +52,22 @@ New subscriber: 201 `success`. Active duplicate: 200 `already_subscribed`, prese
 Abuse minimum: server validation, 4 KiB streaming body limit, honeypot, JSON-only and same-origin browser checks, database uniqueness. No shared rate limiter/CAPTCHA is introduced; origin and honeypot checks are not protection against determined direct API bots. Add deployment rate rules if abuse is observed.
 
 Navbar and footer already link to `/#feliratkozas`; article-end CTA now does too. Campaign identifiers follow article→signup links without cookies/storage, including without analytics consent. The existing hero remains focused on the featured article. No separate landing page or popup is needed.
+
+### Attribution semantics and LinkedIn campaign
+
+Before this patch, signup persisted source, medium and campaign from the current signup URL. It now also persists `utm_content` through the same shared allowlist: URL → article signup link → form JSON → API validation → Mongo insert. Invalid or absent values become `null`; signup still succeeds. No values are fabricated or inferred from the referrer.
+
+This is first-subscription attribution: persistence uses an insert with a unique normalized-email index, then reads the existing document on a duplicate-key error. It does not update/upsert attribution on repeat requests, including when the original values are null or an older document lacks `utm_content`. Timestamps, consent and suppression also remain unchanged. No migration, new index or backfill is required; treat a missing legacy field as unknown. Historical post identifiers cannot be reconstructed from repeat visits.
+
+Newsletter storage reads only the current URL, not analytics session storage. Campaign parameters must remain on the URL or travel through the existing article→signup links; arbitrary navigation that drops them can lose attribution. Separately, consent-based analytics already accepts `utm_content` and merges saved session context with current URL values, with current values taking precedence. That existing behavior is unchanged. The form emits `newsletter_signup` only after HTTP 201 with `status: "success"`, and only with analytics consent; duplicates and errors do not emit it. Submitted email is never added to GTM/GA4 events. Resend contact sync receives email and Segment membership, not campaign attribution.
+
+For the first personal-profile LinkedIn post, use:
+
+```text
+https://ctrplane.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=ctrlplane_launch&utm_content=launch_post_01#feliratkozas
+```
+
+For an article-led post, put the same query parameters on the article URL and follow its signup CTA. Keep source/medium/campaign consistent and assign a distinct `utm_content` per post. Compare article engagement in GA4 (consented traffic) with new Mongo subscriptions grouped by these four fields; the populations can differ because signup does not require analytics consent.
 
 ## Resend and manual recovery
 
@@ -97,16 +113,16 @@ Backend tests use a real disposable local MongoDB binary (downloaded on first ru
 
 Before posting the production signup link:
 
-1. Open production/preview, follow an article CTA (also on 375px mobile) to `/#feliratkozas` with LinkedIn campaign identifiers.
-2. Submit an **operator-owned test mailbox**; confirm success and directly verify the Mongo document, normalized email, `source`, date, consent version and attribution.
+1. After deploying the patch, open the exact campaign link above and also follow an article CTA (on 375px mobile) with all four LinkedIn campaign identifiers.
+2. Submit a fresh **operator-owned test mailbox**; confirm success and directly verify the Mongo document, normalized email, `source`, date, consent version and all four values, including `utm_content: "launch_post_01"`. Also verify signup without `utm_content` stores null.
 3. If enabled, verify membership in **CtrlPlane Newsletter** and sync state. In an isolated preview with an invalid Resend key, repeat with another controlled mailbox; Mongo success must survive and sync become failed.
-4. Submit the same address again: duplicate feedback and exactly one record. Submit invalid input: no record. Test the error path in an isolated preview with an unavailable Mongo URI: no false success.
-5. Inspect browser URL, network and `dataLayer`: the email appears only in the HTTPS signup request body, never in analytics payloads. Reject analytics consent: signup still succeeds, no signup event. Check deployed GTM/GA4 configuration for automatic user-provided data collection and DOM/form-field variables; disable those for this form. Do not enable request-body capture in hosting logs/error reporting.
+4. Submit the same address again with a different post identifier: duplicate feedback, exactly one record and unchanged original attribution. Submit invalid input: no record. Test the error path in an isolated preview with an unavailable Mongo URI: no false success.
+5. Inspect browser URL, network and `dataLayer`: the email appears only in the HTTPS signup request body, never in analytics payloads. With consent, confirm one `newsletter_signup` after HTTP 201 and its post identifier in GTM Preview/GA4 DebugView; no event before success or for duplicate/error responses. Reject analytics consent: signup still succeeds, no signup event. Check deployed GTM/GA4 configuration for automatic user-provided data collection and DOM/form-field variables; disable those for this form. Do not enable request-body capture in hosting logs/error reporting.
 6. Confirm completed privacy notice/contact path and mobile layout; remove only the specific test records/contacts after review. Record evidence before calling production launch-ready.
 
 ## Deliberately manual / deferred
 
-Future delivery: Mongo active subscribers → reconcile suppressions → dedicated Resend Segment → **editorially approved** issue → manually approved Broadcast. Do not trigger delivery on signup, segment entry, sync retries or a schedule. The private repository's approval gate remains authoritative.
+Current manual sending workflow: Mongo active subscribers → reconcile suppressions → dedicated Resend Segment → **editorially reviewed** issue → manually sent Broadcast. The operator writes, reviews and initiates delivery. Do not trigger delivery on signup, segment entry, sync retries or a schedule. No external automation repository or approval system is required.
 
 Before real sends, reconcile Mongo with the provider's actual unsubscribe/suppression state. P2: a signature-verified, replay-safe Resend webhook (plus periodic/manual reconciliation for missed events) should set Mongo `status=unsubscribed` and `unsubscribed_at`, scoped to the appropriate brand/topic. Until that exists, manually reconcile opt-outs before each approved issue and honor requests received at the verified privacy mailbox. Never bulk-write `unsubscribed:false` to Resend or infer renewed consent from another brand's membership. Independent per-brand preferences may require Resend Topics. Confirm current webhook event contracts when implementing.
 
