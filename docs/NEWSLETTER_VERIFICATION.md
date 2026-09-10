@@ -62,3 +62,48 @@ Privacy copy adds only the post/creative identifier and clarifies that it can id
 Regression coverage includes all four campaign fields, signup without content, unsafe values and the 100-character boundary, raw Mongo persistence, concurrent first insert, repeat signup with different/missing values, legacy records, opt-outs and Resend retries. Browser coverage verifies article→form propagation on mobile, email campaign filtering, successful HTTP response handling, no signup analytics before the real response reaches the form, exactly one event after success, and no event for duplicates/errors or denied consent.
 
 No production subscriber/contact writes or newsletter sends were made for this patch. Deployment and the operator-owned-mailbox checks in [newsletter operations](NEWSLETTER_OPERATIONS.md#verification-commands-and-real-launch-check) remain manual: verify all four Mongo values, Resend Segment membership, first-subscription preservation, the deployed privacy copy and actual GTM/GA4 event delivery.
+
+## Canonical email presentation and welcome — local implementation, 2026-09-10
+
+The main repository now owns the email presentation port from the working Python renderer, not the old placeholder HTML. No new dependency or automation-repository runtime access was added. Newsletter issue sending remains manual; only a new signup can schedule the configured one-time welcome. The automation checkout remains unchanged. See [design provenance, sending policy and production checks](EMAIL_TEMPLATES.md).
+
+Added files:
+
+- `src/emails/CtrlPlaneEmailLayout.ts`
+- `src/emails/WelcomeEmail.ts`
+- `src/emails/NewsletterEmail.ts`
+- `src/emails/preview-data.ts`
+- `src/lib/newsletter/welcome.ts`
+- `scripts/email-preview.ts`
+- `tests/email-templates.test.ts`
+- `docs/EMAIL_TEMPLATES.md`
+
+Modified files:
+
+- `src/app/api/subscribe/route.ts`
+- `src/lib/newsletter/model.ts`
+- `src/lib/newsletter/subscribe.ts`
+- `src/lib/newsletter/resend.ts` (export existing config type only)
+- `src/app/privacy/page.tsx`
+- `scripts/newsletter-test-server.ts`
+- `tests/newsletter.test.ts`
+- `tests/browser/newsletter.spec.ts`
+- `package.json` (preview/template test commands only)
+- `.env.example`
+- `PROJECT_STATE.md`
+- `docs/NEWSLETTER_OPERATIONS.md`
+- `docs/NEWSLETTER_VERIFICATION.md`
+- `docs/VERCEL_SETUP.md`
+
+| Check | Result |
+| --- | --- |
+| Backend suite | 21 passed with disposable MongoDB and stubbed Resend; single send, concurrent claims, duplicates, attribution/consent, opt-outs, missing config, sync/send failures, and provider acceptance followed by DB failure |
+| Template suite | 5 passed: HTML/text rendering, shared design, section content, safe links/escaping and actual mailto unsubscribe capabilities |
+| Browser suite | 10 passed against production build with Resend disabled; persistence, duplicate behavior, no PII or duplicate analytics, mobile CTA and privacy |
+| Existing content suite / content check | 11 passed / passed |
+| TypeScript / production build | Passed; build used system TLS certificates with certificate validation retained |
+| Lint | Unavailable: no configured lint script/linter |
+| Local preview | HTML/text generated; Chromium visual comparison against the original Python renderer at 760px and 375px; no horizontal overflow |
+| Diff review | Compared against a pre-task snapshot to preserve pre-existing work; no attribution/analytics or unrelated code changes |
+
+Welcome state is stored on the subscriber only; historical records are neither migrated nor enrolled. `sent` records provider acceptance, not inbox delivery. Config adds only `RESEND_FROM_EMAIL`; the existing key must allow email sending. No live email, production DB write, commit, push or deployment was performed for this task. Actual verified sender, inbox rendering/delivery, reply/unsubscribe handling and duplicate behavior still require an operator-controlled production check after review/deployment.

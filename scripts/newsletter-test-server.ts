@@ -8,7 +8,7 @@ async function main() {
   await writeFile(".local/newsletter-test-mongo.json", JSON.stringify({ uri: mongo.getUri() }));
   const next = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", "3100"], {
     stdio: "inherit", windowsHide: true,
-    env: { ...process.env, MONGODB_URI: mongo.getUri(), MONGODB_DB_NAME: "ctrlplane", RESEND_API_KEY: "", RESEND_SEGMENT_ID: "", NEXT_PUBLIC_ENABLE_ANALYTICS: "false" },
+    env: { ...process.env, MONGODB_URI: mongo.getUri(), MONGODB_DB_NAME: "ctrlplane", RESEND_API_KEY: "", RESEND_SEGMENT_ID: "", RESEND_FROM_EMAIL: "", NEXT_PUBLIC_ENABLE_ANALYTICS: "false" },
   });
   const stop = async () => { next.kill(); await mongo.stop(); };
   process.on("SIGINT", () => { void stop(); });

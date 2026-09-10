@@ -8,7 +8,9 @@
     "start": "next start",
     "newsletter:test": "node --conditions=react-server --import tsx --test tests/newsletter.test.ts",
     "newsletter:test:e2e": "playwright test",
-    "newsletter:sync": "node --conditions=react-server --import tsx scripts/newsletter-sync.ts"
+    "newsletter:sync": "node --conditions=react-server --import tsx scripts/newsletter-sync.ts",
+    "email:preview": "tsx scripts/email-preview.ts",
+    "email:test": "node --import tsx --test tests/email-templates.test.ts"
   },
   "dependencies": {
     "@meniva/design-system": "file:./vendor/meniva-design-system-0.4.1.tgz",

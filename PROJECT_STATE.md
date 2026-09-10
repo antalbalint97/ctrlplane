@@ -6,7 +6,7 @@ Updated: 2026-09-10.
 
 - CtrlPlane is a live publication/site at https://ctrplane.com covering AI, data, work and technology strategy.
 - Newsletter subscription is live. The main Next.js application owns `POST /api/subscribe` and subscriber persistence in MongoDB (`ctrlplane.newsletter_subscribers`).
-- Resend is part of the current newsletter/contact workflow: saved subscribers are synchronized to the dedicated CtrlPlane Segment when configured. Signup and contact-sync retries do not send email.
+- Resend is part of the current newsletter/contact workflow: saved subscribers are synchronized to the dedicated CtrlPlane Segment when configured. The new local implementation sends one welcome email after a new signup when a verified sender is configured; deployment verification is still required. Contact-sync retries do not send mail.
 - GA4/GTM event instrumentation exists, including article engagement and successful newsletter signup, subject to analytics consent.
 - Editorial work, newsletter writing and sending are currently manual. The operator reviews each issue and reconciles opt-outs before sending through Resend.
 
@@ -23,6 +23,7 @@ Updated: 2026-09-10.
 - Fully automated newsletter generation, autonomous publishing and autonomous sending are not live.
 - A separate CtrlPlane social-media brand operation is not the current distribution model.
 - The main application does not depend on the separate `ctrlplane-newsletter-automation` project.
+- Canonical email presentation now belongs to this repository in `src/emails/`: shared layout, welcome email and reusable newsletter rendering. See [email templates and welcome delivery](docs/EMAIL_TEMPLATES.md). The separate project may prepare research/drafts in future; autonomous publishing or sending requires explicit human approval and is not introduced here.
 
 ## Future / optional
 

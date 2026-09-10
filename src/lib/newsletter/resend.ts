@@ -2,7 +2,7 @@ import "server-only";
 import type { Collection, ObjectId } from "mongodb";
 import type { Subscriber } from "./model";
 
-type ResendConfig = { apiKey: string; segmentId: string };
+export type ResendConfig = { apiKey: string; segmentId: string };
 type Contact = { id: string; unsubscribed: boolean };
 
 export function getResendConfig(): ResendConfig | null {

@@ -7,6 +7,7 @@ import { createSubscribeHandler } from "../src/lib/newsletter/handler";
 import { ensureSubscriberIndex } from "../src/lib/newsletter/mongodb";
 import type { Subscriber } from "../src/lib/newsletter/model";
 import { getResendConfig, syncResendContact } from "../src/lib/newsletter/resend";
+import { completeNewSignup, getWelcomeFromEmail, sendWelcomeEmail } from "../src/lib/newsletter/welcome";
 
 let mongo: MongoMemoryServer;
 let client: MongoClient;
@@ -42,6 +43,8 @@ test("valid request persists normalized, allowlisted data with unique index and 
   assert.deepEqual(attributionFrom(doc), launchAttribution);
   assert.equal(doc.resend_sync_status, "pending");
   assert.equal(doc.consent_version, "newsletter-2026-09-10");
+  assert.equal(doc.welcome_email_status, "pending");
+  assert.equal(doc.welcome_email_sent_at, null);
   assert.ok((await collection.indexes()).some((index) => index.key.email_normalized === 1 && index.unique));
 });
 
@@ -211,4 +214,144 @@ test("same-origin browser request behind Next's internal host is accepted", asyn
 test("attribution accepts campaign identifiers and drops addresses/free text", () => {
   assert.deepEqual(attributionFrom(launchAttribution), launchAttribution);
   assert.deepEqual(attributionFrom({ utm_source: "reader@example.com", utm_medium: "reader%40example.com", utm_campaign: { $ne: null }, utm_content: "free text" }), { utm_source: null, utm_medium: null, utm_campaign: null, utm_content: null });
+});
+
+test("new signup schedules one welcome after contact sync; concurrent/duplicate signup never schedules another", async () => {
+  let sent = 0;
+  const calls: string[] = [];
+  const provider: typeof fetch = async (url, options) => {
+    calls.push(`${options?.method} ${url}`);
+    if (options?.method === "GET") return new Response(null, { status: 404 });
+    if (String(url).endsWith("/contacts")) return Response.json({ id: "contact-1" });
+    assert.equal(String(url), "https://api.resend.com/emails");
+    sent++;
+    const doc = await collection.findOne({});
+    assert.equal(doc?.resend_sync_status, "synced");
+    assert.equal(doc?.welcome_email_status, "sending");
+    const body = JSON.parse(options?.body as string);
+    assert.equal(body.subject, "Üdv a CtrlPlane-en");
+    assert.equal(body.from, "CtrlPlane <hello@ctrplane.com>");
+    assert.equal(body.reply_to, "info@meniva.net");
+    assert.deepEqual(body.to, ["reader@example.com"]);
+    assert.match(body.headers["List-Unsubscribe"], /^<mailto:info@meniva.net/);
+    assert.match(body.html, /Köszönöm, hogy feliratkoztál/);
+    assert.match(body.text, /Köszönöm, hogy feliratkoztál/);
+    assert.equal(new Headers(options?.headers).get("Idempotency-Key"), `ctrlplane-welcome/${doc?._id.toHexString()}`);
+    assert.ok(!body.html.includes("reader@example.com"));
+    return Response.json({ id: "welcome-1" });
+  };
+  const route = createSubscribeHandler({ getCollection: async () => collection, scheduleSync: (c, doc) => { tasks.push(() => completeNewSignup(c, doc._id, config, "hello@ctrplane.com", provider)); } });
+  const responses = await Promise.all(Array.from({ length: 8 }, () => route(signup("reader@example.com", launchAttribution))));
+  assert.equal(responses.filter((response) => response.status === 201).length, 1);
+  assert.equal(tasks.length, 1);
+  assert.equal(sent, 0);
+  await tasks[0]();
+  const doc = await collection.findOne({});
+  assert.ok(doc);
+  assert.equal(sent, 1);
+  assert.equal(calls.length, 3);
+  assert.equal(doc.welcome_email_status, "sent");
+  assert.equal(doc.welcome_email_resend_id, "welcome-1");
+  assert.ok(doc.welcome_email_attempted_at instanceof Date);
+  assert.ok(doc.welcome_email_sent_at instanceof Date);
+  assert.deepEqual(attributionFrom(doc), launchAttribution);
+  assert.equal(doc.consent_version, "newsletter-2026-09-10");
+  assert.equal((await route(signup())).status, 200);
+  assert.equal(tasks.length, 1);
+  await sendWelcomeEmail(collection, doc._id, config, "hello@ctrplane.com", provider);
+  assert.equal(sent, 1);
+  assert.deepEqual(await collection.findOne({}), doc);
+});
+
+test("welcome provider failures preserve successful signup and never automatically retry", async (t) => {
+  const logs: unknown[][] = [];
+  t.mock.method(console, "warn", (...args: unknown[]) => { logs.push(args); });
+  for (const kind of ["http", "timeout", "malformed"]) {
+    let sent = 0;
+    const email = `${kind}@example.com`;
+    const provider: typeof fetch = async (url) => {
+      if (!String(url).endsWith("/emails")) return Response.json({ id: "existing", unsubscribed: false });
+      sent++;
+      if (kind === "timeout") throw new Error("SECRET token and reader@example.com");
+      return kind === "http" ? new Response("SECRET", { status: 503 }) : Response.json({ wrong: "value" });
+    };
+    const route = createSubscribeHandler({ getCollection: async () => collection, scheduleSync: (c, doc) => { tasks.push(() => completeNewSignup(c, doc._id, config, "hello@ctrplane.com", provider)); } });
+    const response = await route(signup(email));
+    assert.equal(response.status, 201);
+    assert.deepEqual(await response.json(), { status: "success" });
+    await tasks[tasks.length - 1]();
+    const doc = await collection.findOne({ email_normalized: email });
+    assert.ok(doc);
+    assert.equal(doc.status, "active");
+    assert.equal(doc.resend_sync_status, "synced");
+    assert.equal(doc.welcome_email_status, "failed");
+    assert.equal(doc.welcome_email_error_code, "send_failed");
+    assert.equal(doc.welcome_email_sent_at, null);
+    assert.equal(doc.welcome_email_resend_id, null);
+    assert.ok(doc.welcome_email_attempted_at instanceof Date);
+    assert.deepEqual(attributionFrom(doc), { utm_source: null, utm_medium: null, utm_campaign: null, utm_content: null });
+    assert.equal((await route(signup(email))).status, 200);
+    await sendWelcomeEmail(collection, doc._id, config, "hello@ctrplane.com", provider);
+    assert.equal(sent, 1);
+    assert.equal(await collection.countDocuments({ email_normalized: email }), 1);
+  }
+  assert.equal(logs.length, 3);
+  assert.ok(logs.every((entry) => entry.length === 1 && entry[0] === "newsletter_welcome_send_failed"));
+});
+
+test("atomic welcome claim prevents two workers from sending the same welcome", async () => {
+  await handler(signup());
+  await collection.updateOne({}, { $set: { resend_sync_status: "synced" } });
+  const doc = (await collection.findOne({}))!;
+  let sends = 0;
+  const provider: typeof fetch = async () => { sends++; return Response.json({ id: "one-send" }); };
+  await Promise.all(Array.from({ length: 8 }, () => sendWelcomeEmail(collection, doc._id, config, "hello@ctrplane.com", provider)));
+  assert.equal(sends, 1);
+});
+
+test("suppression, failed contact sync, missing config and legacy records never send", async () => {
+  for (const kind of ["suppressed", "sync-failed", "not-configured", "legacy", "unsubscribed"]) {
+    await handler(signup(`${kind}@example.com`));
+    const doc = (await collection.findOne({ email_normalized: `${kind}@example.com` }))!;
+    if (kind === "legacy") await collection.updateOne({ _id: doc._id }, { $unset: { welcome_email_status: "" } });
+    if (kind === "unsubscribed") await collection.updateOne({ _id: doc._id }, { $set: { status: "unsubscribed" } });
+    const provider: typeof fetch = async (url) => {
+      assert.ok(!String(url).endsWith("/emails"));
+      return kind === "sync-failed" ? new Response(null, { status: 503 }) : Response.json({ id: "contact", unsubscribed: kind === "suppressed" });
+    };
+    await completeNewSignup(collection, doc._id, kind === "not-configured" ? null : config, kind === "not-configured" ? null : "hello@ctrplane.com", provider);
+    const current = (await collection.findOne({ _id: doc._id }))!;
+    assert.equal(current.welcome_email_status, kind === "legacy" ? undefined : kind === "sync-failed" ? "failed" : "skipped");
+    assert.equal(current.welcome_email_attempted_at, null);
+  }
+  assert.equal((await collection.findOne({ email_normalized: "sync-failed@example.com" }))?.welcome_email_error_code, "contact_sync_failed");
+});
+
+test("provider acceptance followed by a status-write failure is not automatically resent", async () => {
+  await handler(signup());
+  await collection.updateOne({}, { $set: { resend_sync_status: "synced" } });
+  const doc = (await collection.findOne({}))!;
+  const stateFailure = new Proxy(collection, { get(target, property) {
+    if (property === "updateOne") return async () => { throw new Error("private error"); };
+    const value = Reflect.get(target, property);
+    return typeof value === "function" ? value.bind(target) : value;
+  } });
+  let sent = 0;
+  const provider: typeof fetch = async () => { sent++; return Response.json({ id: "accepted" }); };
+  await sendWelcomeEmail(stateFailure, doc._id, config, "hello@ctrplane.com", provider);
+  await sendWelcomeEmail(collection, doc._id, config, "hello@ctrplane.com", provider);
+  assert.equal(sent, 1);
+  assert.equal((await collection.findOne({}))?.welcome_email_status, "sending");
+});
+
+test("welcome sender configuration accepts only a plain valid mailbox", () => {
+  const before = process.env.RESEND_FROM_EMAIL;
+  try {
+    for (const value of ["", "bad", "CtrlPlane <hello@ctrplane.com>", "hello@ctrplane.com\r\nBcc: other@example.com"]) {
+      process.env.RESEND_FROM_EMAIL = value;
+      assert.equal(getWelcomeFromEmail(), null);
+    }
+    process.env.RESEND_FROM_EMAIL = " Hello@Ctrplane.com ";
+    assert.equal(getWelcomeFromEmail(), "hello@ctrplane.com");
+  } finally { if (before === undefined) delete process.env.RESEND_FROM_EMAIL; else process.env.RESEND_FROM_EMAIL = before; }
 });
